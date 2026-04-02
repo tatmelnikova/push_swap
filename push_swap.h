@@ -4,6 +4,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include "ft_printf.h"
 
 void	print_error(void);
 int		ft_atoi(const char *nptr);

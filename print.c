@@ -13,23 +13,23 @@ void print_stack(t_stack *stack)
 		current_node = stack;
 		while(current_node)
 		{
-			printf("%d ", current_node->content);
+			ft_printf("%d ", current_node->content);
 			current_node = current_node->next;
 		}
 	}
 	else
 	{
-		printf("NULL");
+		ft_printf("NULL");
 	}
 }
 
 void	print_stack_holder(t_stack_holder *sh)
 {
-	printf("a = ");
+	ft_printf("a = ");
 	print_stack(sh->a);
-	printf("\n");
-	printf("b = ");
+	ft_printf("\n");
+	ft_printf("b = ");
 	print_stack(sh->b);
-	printf("\n");
+	ft_printf("\n");
 }
 
