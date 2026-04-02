@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skorenev <skorenev@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tkazmina <tkazmina@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 15:41:28 by skorenev          #+#    #+#             */
-/*   Updated: 2026/03/25 17:36:19 by skorenev         ###   ########.fr       */
+/*   Updated: 2026/04/02 14:45:54 by tkazmina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
+
+int	ft_isdigit(char c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
+}
 
 /**
  * @brief converts string number into integer. 
@@ -44,3 +51,4 @@ int	ft_atoi(const char *nptr)
 	}
 	return (sign * result);
 }
+

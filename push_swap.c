@@ -18,5 +18,6 @@ int	main(void)
 	// }
 	stack = (t_stack_holder *)malloc(sizeof(t_stack_holder));
 	init_stack_holder(stack, args, 6);
+	print_stack_holder(stack);
 	return (0);
 }

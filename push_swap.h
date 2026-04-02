@@ -3,8 +3,10 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h>
 
 void	print_error(void);
+// int		ft_atoi(const char *nptr);
 
 typedef struct stack
 {
@@ -33,5 +35,6 @@ void	sb(t_stack_holder *stack);
 //=======================================================================
 
 t_stack_holder *init_stack_holder(t_stack_holder *sh, int *args, int count);
+void	print_stack_holder(t_stack_holder *sh);
 
 #endif
