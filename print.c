@@ -28,8 +28,10 @@ void	print_stack_holder(t_stack_holder *sh)
 	ft_printf("a = ");
 	print_stack(sh->a);
 	ft_printf("\n");
+	ft_printf("a_count: %d\n", sh->a_count);
 	ft_printf("b = ");
 	print_stack(sh->b);
 	ft_printf("\n");
+	ft_printf("b_count: %d\n", sh->b_count);
 }
 
