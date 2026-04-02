@@ -35,6 +35,8 @@ void	sa(t_stack_holder *stack);
 void	sb(t_stack_holder *stack);
 void	pa(t_stack_holder *stack);
 void	pb(t_stack_holder *stack);
+void	ra(t_stack_holder *stack);
+void	rb(t_stack_holder *stack);
 
 //=======================================================================
 //========================= TESTS =======================================
