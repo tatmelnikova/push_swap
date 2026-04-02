@@ -24,6 +24,7 @@ typedef struct stack_holder
 void	ft_lstadd_back(t_stack **lst, t_stack *new);
 t_stack	*ft_lstnew(int content);
 t_stack	*ft_lstlast(t_stack *lst);
+void	ft_lstclear(t_stack **lst);
 void	sa(t_stack_holder *stack);
 void	sb(t_stack_holder *stack);
 
@@ -31,6 +32,6 @@ void	sb(t_stack_holder *stack);
 //========================= TESTS =======================================
 //=======================================================================
 
-t_stack_holder *init_stack_holder(t_stack_holder sh, int **args, int count);
+t_stack_holder *init_stack_holder(t_stack_holder *sh, int *args, int count);
 
 #endif

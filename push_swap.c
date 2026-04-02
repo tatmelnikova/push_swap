@@ -4,7 +4,7 @@ int	main(void)
 {
 	t_stack_holder	*stack;
 
-	char **args[6]; // 2 1 3 6 5 8
+	int args[6]; // 2 1 3 6 5 8
 	args[0] = 2;
 	args[1] = 1;
 	args[2] = 3;
@@ -17,4 +17,6 @@ int	main(void)
 	// 	return (0);
 	// }
 	stack = (t_stack_holder *)malloc(sizeof(t_stack_holder));
+	init_stack_holder(stack, args, 6);
+	return (0);
 }
