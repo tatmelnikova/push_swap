@@ -20,5 +20,15 @@ void test_sa()
 	print_stack_holder(stack);
 	sa(stack);
 	print_stack_holder(stack);
+	pb(stack);
+	pb(stack);
+	pb(stack);
+	pb(stack);
+	pb(stack);
+	pb(stack);
+	pb(stack);
+	print_stack_holder(stack);
 }
+
+
 

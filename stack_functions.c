@@ -15,6 +15,30 @@ void	ft_lstadd_back(t_stack **lst, t_stack *new)
 		*lst = new;
 }
 
+// Adds the node ’new’ at the beginning of the list.
+// lst: The address of a pointer to the first node of
+// a list.
+// new: The address of a pointer to the node to be
+// added.
+void	ft_lstadd_front(t_stack **lst, t_stack *new)
+{
+	if (!lst || !new)
+		return ;
+	new->next = *lst;
+	*lst = new;
+}
+t_stack *pop_head(t_stack **stack)
+{
+	t_stack *pop_node;
+
+	assert(stack);
+	if (!stack || !*stack)
+		return (NULL);
+
+	pop_node = *stack;
+	*stack = (*stack)->next;
+	return (pop_node);
+}
 t_stack	*ft_lstnew(int content)
 {
 	t_stack	*newnode;

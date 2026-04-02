@@ -20,6 +20,7 @@ int	main(void)
 	init_stack_holder(stack, args, 6);
 
 	test_sa();
+	
 	return (0);
 }
 

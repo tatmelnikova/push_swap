@@ -4,6 +4,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <assert.h>
 # include "ft_printf.h"
 
 void	print_error(void);
@@ -25,11 +26,14 @@ typedef struct stack_holder
 	char	**operations;
 }	t_stack_holder;
 void	ft_lstadd_back(t_stack **lst, t_stack *new);
+void	ft_lstadd_front(t_stack **lst, t_stack *new);
 t_stack	*ft_lstnew(int content);
 t_stack	*ft_lstlast(t_stack *lst);
 void	ft_lstclear(t_stack **lst);
+t_stack *pop_head(t_stack **stack);
 void	sa(t_stack_holder *stack);
 void	sb(t_stack_holder *stack);
+void	pb(t_stack_holder *stack);
 
 //=======================================================================
 //========================= TESTS =======================================
@@ -38,5 +42,6 @@ void	sb(t_stack_holder *stack);
 t_stack_holder *init_stack_holder(t_stack_holder *sh, int *args, int count);
 void	print_stack_holder(t_stack_holder *sh);
 void	test_sa();
+
 
 #endif
