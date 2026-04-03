@@ -6,8 +6,8 @@ void	pa(t_stack_holder *stack)
 	t_stack *head_b;
 
 	assert(stack->b_count);
-	head_b = pop_head(&stack->b);
-	ft_lstadd_front(&stack->a, head_b);
+	head_b = st_pop_head(&stack->b);
+	st_add_front(&stack->a, head_b);
 	stack->a_count = stack->a_count + 1;
 	stack->b_count = stack->b_count - 1;
 }
@@ -18,8 +18,8 @@ void	pb(t_stack_holder *stack)
 	t_stack *head_a;
 
 	assert(stack->a_count);
-	head_a = pop_head(&stack->a);
-	ft_lstadd_front(&stack->b, head_a);
+	head_a = st_pop_head(&stack->a);
+	st_add_front(&stack->b, head_a);
 	stack->a_count = stack->a_count - 1;
 	stack->b_count = stack->b_count + 1;
 }

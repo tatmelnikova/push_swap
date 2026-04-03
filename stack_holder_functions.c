@@ -13,13 +13,13 @@ t_stack_holder *init_stack_holder(t_stack_holder *sh, int *args, int count)
 	head = NULL;
 	while (i < count)
 	{
-		new_node =  ft_lstnew(args[i]);
+		new_node =  st_new(args[i]);
 		if (!new_node)
 		{
-			ft_lstclear(&head);
+			st_clear(&head);
 			return (NULL);
 		}
-		ft_lstadd_back(&head, new_node);
+		st_add_back(&head, new_node);
 		i++;
 	}
 	sh->total = i;

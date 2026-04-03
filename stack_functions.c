@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void	ft_lstadd_back(t_stack **lst, t_stack *new)
+void	st_add_back(t_stack **lst, t_stack *new)
 {
 	t_stack	*last;
 
@@ -8,7 +8,7 @@ void	ft_lstadd_back(t_stack **lst, t_stack *new)
 		return ;
 	if (*lst)
 	{
-		last = ft_lstlast(*lst);
+		last = st_last(*lst);
 		last->next = new;
 	}
 	else
@@ -20,14 +20,14 @@ void	ft_lstadd_back(t_stack **lst, t_stack *new)
 // a list.
 // new: The address of a pointer to the node to be
 // added.
-void	ft_lstadd_front(t_stack **lst, t_stack *new)
+void	st_add_front(t_stack **lst, t_stack *new)
 {
 	if (!lst || !new)
 		return ;
 	new->next = *lst;
 	*lst = new;
 }
-t_stack *pop_head(t_stack **stack)
+t_stack *st_pop_head(t_stack **stack)
 {
 	t_stack *pop_node;
 
@@ -39,7 +39,7 @@ t_stack *pop_head(t_stack **stack)
 	*stack = (*stack)->next;
 	return (pop_node);
 }
-t_stack	*ft_lstnew(int content)
+t_stack	*st_new(int content)
 {
 	t_stack	*newnode;
 
@@ -51,7 +51,7 @@ t_stack	*ft_lstnew(int content)
 	return (newnode);
 }
 
-t_stack	*ft_lstlast(t_stack *lst)
+t_stack	*st_last(t_stack *lst)
 {
 	if (!lst)
 		return (NULL);
@@ -62,7 +62,7 @@ t_stack	*ft_lstlast(t_stack *lst)
 
 // Deletes and frees the given node and all its
 // successors. Sets the pointer to the list to NULL.
-void	ft_lstclear(t_stack **lst)
+void	st_clear(t_stack **lst)
 {
 	t_stack	*next_node;
 

@@ -25,12 +25,12 @@ typedef struct stack_holder
 	t_stack	*b;
 	char	**operations;
 }	t_stack_holder;
-void	ft_lstadd_back(t_stack **lst, t_stack *new);
-void	ft_lstadd_front(t_stack **lst, t_stack *new);
-t_stack	*ft_lstnew(int content);
-t_stack	*ft_lstlast(t_stack *lst);
-void	ft_lstclear(t_stack **lst);
-t_stack *pop_head(t_stack **stack);
+void	st_add_back(t_stack **lst, t_stack *new);
+void	st_add_front(t_stack **lst, t_stack *new);
+t_stack	*st_new(int content);
+t_stack	*st_last(t_stack *lst);
+void	st_clear(t_stack **lst);
+t_stack *st_pop_head(t_stack **stack);
 void	sa(t_stack_holder *stack);
 void	sb(t_stack_holder *stack);
 void	pa(t_stack_holder *stack);
