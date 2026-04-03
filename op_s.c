@@ -9,23 +9,6 @@ static void	swap(t_stack *stack)
 	stack->next->content = tmp;
 }
 
-void	ss(t_stack_holder *stack_holder)
-{
-	int	a_count;
-	int	b_count;
-
-	a_count = stack_holder->a_count;
-	b_count = stack_holder->b_count;
-	assert(a_count);
-	assert(b_count);
-
-	if (a_count > 1 && b_count > 1)
-	{
-		sa(stack_holder);
-		sb(stack_holder);
-	}
-}
-
 void	sa(t_stack_holder *stack_holder)
 {
 	int	a_count;
@@ -50,4 +33,21 @@ void	sb(t_stack_holder *stack_holder)
 		swap(stack_holder->b);
 	}
 	ft_printf("sb\n");
+}
+
+void	ss(t_stack_holder *stack_holder)
+{
+	int	a_count;
+	int	b_count;
+
+	a_count = stack_holder->a_count;
+	b_count = stack_holder->b_count;
+	assert(a_count);
+	assert(b_count);
+
+	if (a_count > 1 && b_count > 1)
+	{
+		sa(stack_holder);
+		sb(stack_holder);
+	}
 }

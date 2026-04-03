@@ -15,6 +15,7 @@ void rrb(t_stack_holder *sh)
 	assert(sh->b_count);
 	if (sh->b_count)
 		rr_stack(&sh->b);
+	ft_printf("rrb\n");
 }
 
 // (reverse rotate a): Shift down all elements of stack a by one.
@@ -24,6 +25,7 @@ void rra(t_stack_holder *sh)
 	assert(sh->a_count);
 	if (sh->a_count)
 		rr_stack(&sh->a);
+	ft_printf("rra\n");
 }
 
 void rrr(t_stack_holder *sh)

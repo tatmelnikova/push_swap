@@ -1,21 +1,5 @@
 #include "push_swap.h"
 
-void	rr(t_stack_holder *stack_holder)
-{
-	int	a_count;
-	int	b_count;
-
-	a_count = stack_holder->a_count;
-	b_count = stack_holder->b_count;
-	assert(a_count);
-	assert(b_count);
-	if (a_count > 1 && b_count > 1)
-	{
-		ra(stack_holder);
-		rb(stack_holder);
-	}
-}
-
 // Shift up all elements of stack a by one.
 // The first element becomes the last one.
 void	ra(t_stack_holder *stack_holder)
@@ -51,4 +35,20 @@ void	rb(t_stack_holder *stack_holder)
 		st_add_back(&stack_holder->b, head);
 	}
 	ft_printf("rb\n");
+}
+
+void	rr(t_stack_holder *stack_holder)
+{
+	int	a_count;
+	int	b_count;
+
+	a_count = stack_holder->a_count;
+	b_count = stack_holder->b_count;
+	assert(a_count);
+	assert(b_count);
+	if (a_count > 1 && b_count > 1)
+	{
+		ra(stack_holder);
+		rb(stack_holder);
+	}
 }

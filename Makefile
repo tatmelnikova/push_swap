@@ -1,0 +1,29 @@
+NAME = push_swap
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
+
+
+SRC = ft_atoi.c \
+	  ft_print_char.c ft_printf.c ft_putnbr.c print.c \
+	  op_p.c op_r.c op_rr.c op_s.c \
+	  push_swap.c \
+	  stack_functions.c stack_holder_functions.c 
+
+OBJ = $(SRC:.c=.o)
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) 
+
+bonus: all
+
+clean:
+	rm -f $(OBJ)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re bonus
