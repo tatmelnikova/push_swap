@@ -28,8 +28,6 @@ void test_sa()
 	// pa(stack);
 	ra(stack);
 	print_stack_holder(stack);
-	rb(stack);
-	print_stack_holder(stack);
 	rra(stack);
 	print_stack_holder(stack);
 	pb(stack);

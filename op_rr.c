@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void rr(t_stack **stack)
+static void rr_stack(t_stack **stack)
 {
 	t_stack	*last;
 	
@@ -14,7 +14,7 @@ void rrb(t_stack_holder *sh)
 {
 	assert(sh->b_count);
 	if (sh->b_count)
-		rr(&sh->b);
+		rr_stack(&sh->b);
 }
 
 // (reverse rotate a): Shift down all elements of stack a by one.
@@ -23,7 +23,7 @@ void rra(t_stack_holder *sh)
 {
 	assert(sh->a_count);
 	if (sh->a_count)
-		rr(&sh->a);
+		rr_stack(&sh->a);
 }
 
 void rrr(t_stack_holder *sh)
