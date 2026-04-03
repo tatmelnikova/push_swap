@@ -36,6 +36,7 @@ void	sa(t_stack_holder *stack_holder)
 	{
 		swap(stack_holder->a);
 	}
+	ft_printf("sa\n");
 }
 
 void	sb(t_stack_holder *stack_holder)
@@ -48,4 +49,5 @@ void	sb(t_stack_holder *stack_holder)
 	{
 		swap(stack_holder->b);
 	}
+	ft_printf("sb\n");
 }
