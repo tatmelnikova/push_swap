@@ -8,18 +8,44 @@ static void	swap(t_stack *stack)
 	stack->content = stack->next->content;
 	stack->next->content = tmp;
 }
-void	sa(t_stack_holder *stack)
+
+void	ss(t_stack_holder *stack_holder)
 {
-	if (stack->a_count > 1)
+	int	a_count;
+	int	b_count;
+
+	a_count = stack_holder->a_count;
+	b_count = stack_holder->b_count;
+	assert(a_count);
+	assert(b_count);
+
+	if (a_count > 1 && b_count > 1)
 	{
-		swap(stack->a);
+		sa(stack_holder);
+		sb(stack_holder);
 	}
 }
 
-void	sb(t_stack_holder *stack)
+void	sa(t_stack_holder *stack_holder)
 {
-	if (stack->b_count > 1)
+	int	a_count;
+
+	a_count = stack_holder->a_count;
+	assert(a_count);
+	if (a_count > 1)
 	{
-		swap(stack->b);
+		swap(stack_holder->a);
+	}
+}
+
+void	sb(t_stack_holder *stack_holder)
+{
+	int	b_count;
+
+	b_count = stack_holder->b_count;
+	assert(b_count);
+	if (stack_holder->b_count > 1)
+	{
+		swap(stack_holder->b);
 	}
 }

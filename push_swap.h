@@ -34,6 +34,7 @@ t_stack	*st_pop_head(t_stack **stack);
 t_stack	*st_pop_tail(t_stack **stack);
 void	sa(t_stack_holder *stack);
 void	sb(t_stack_holder *stack);
+void	ss(t_stack_holder *stack_holder);
 void	pa(t_stack_holder *stack);
 void	pb(t_stack_holder *stack);
 void	ra(t_stack_holder *stack);
