@@ -30,13 +30,17 @@ void	st_add_front(t_stack **lst, t_stack *new);
 t_stack	*st_new(int content);
 t_stack	*st_last(t_stack *lst);
 void	st_clear(t_stack **lst);
-t_stack *st_pop_head(t_stack **stack);
+t_stack	*st_pop_head(t_stack **stack);
+t_stack	*st_pop_tail(t_stack **stack);
 void	sa(t_stack_holder *stack);
 void	sb(t_stack_holder *stack);
 void	pa(t_stack_holder *stack);
 void	pb(t_stack_holder *stack);
 void	ra(t_stack_holder *stack);
 void	rb(t_stack_holder *stack);
+void	rra(t_stack_holder *sh);
+void	rrb(t_stack_holder *sh);
+void	rrr(t_stack_holder *sh);
 
 //=======================================================================
 //========================= TESTS =======================================

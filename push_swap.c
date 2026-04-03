@@ -30,6 +30,17 @@ void test_sa()
 	print_stack_holder(stack);
 	rb(stack);
 	print_stack_holder(stack);
+	rra(stack);
+	print_stack_holder(stack);
+	pb(stack);
+	pb(stack);
+	pb(stack);
+	print_stack_holder(stack);
+	rrb(stack);
+	print_stack_holder(stack);
+	rrb(stack);
+	print_stack_holder(stack);
+
 }
 
 int	main(void)

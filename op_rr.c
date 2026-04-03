@@ -1,0 +1,33 @@
+#include "push_swap.h"
+
+void rr(t_stack **stack)
+{
+	t_stack	*last;
+	
+	last = st_pop_tail(stack);
+	st_add_front(stack, last);
+}
+
+// (reverse rotate b): Shift down all elements of stack b by one.
+// The last element becomes the first one.
+void rrb(t_stack_holder *sh)
+{
+	assert(sh->b_count);
+	if (sh->b_count)
+		rr(&sh->b);
+}
+
+// (reverse rotate a): Shift down all elements of stack a by one.
+// The last element becomes the first one.
+void rra(t_stack_holder *sh)
+{
+	assert(sh->a_count);
+	if (sh->a_count)
+		rr(&sh->a);
+}
+
+void rrr(t_stack_holder *sh)
+{
+	rra(sh);
+	rrb(sh);
+}
