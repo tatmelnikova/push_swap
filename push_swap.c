@@ -38,7 +38,8 @@ void test_sa()
 	print_stack_holder(stack);
 	rrb(stack);
 	print_stack_holder(stack);
-
+	rrr(stack);
+	print_stack_holder(stack);
 }
 
 int	main(void)
