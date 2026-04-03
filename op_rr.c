@@ -30,6 +30,8 @@ void rra(t_stack_holder *sh)
 
 void rrr(t_stack_holder *sh)
 {
+	assert(sh->a_count);
+	assert(sh->b_count);
 	rra(sh);
 	rrb(sh);
 }
