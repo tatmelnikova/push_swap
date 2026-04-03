@@ -44,7 +44,7 @@ void test_sa()
 	// print_stack_holder(stack);
 	// rrr(stack);
 	// print_stack_holder(stack);
-	bubble_sort(stack);
+	bubble_sort(stack); //test
 }
 
 int	main(void)
