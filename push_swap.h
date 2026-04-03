@@ -44,6 +44,8 @@ void	rra(t_stack_holder *sh);
 void	rrb(t_stack_holder *sh);
 void	rrr(t_stack_holder *sh);
 
+t_stack_holder	*bubble_sort(t_stack_holder *stack_holder);
+
 //=======================================================================
 //========================= TESTS =======================================
 //=======================================================================
