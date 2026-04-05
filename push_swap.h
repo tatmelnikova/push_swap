@@ -16,6 +16,12 @@ typedef struct stack
 	struct stack	*next;
 }	t_stack;
 
+typedef struct operation
+{
+	char *content;
+	struct operation *next;
+} t_operation;
+
 typedef struct stack_holder
 {
 	int		total;
@@ -23,7 +29,7 @@ typedef struct stack_holder
 	int		b_count;
 	t_stack	*a;
 	t_stack	*b;
-	char	**operations;
+	t_operation *operations;
 }	t_stack_holder;
 void	st_add_back(t_stack **lst, t_stack *new);
 void	st_add_front(t_stack **lst, t_stack *new);
@@ -44,6 +50,13 @@ void	rra(t_stack_holder *sh);
 void	rrb(t_stack_holder *sh);
 void	rrr(t_stack_holder *sh);
 
+//=======================================================================
+//==================== OPERATIONS =======================================
+//=======================================================================
+t_operation	*op_new(char *content);
+void	op_clear(t_operation **lst);
+void	op_add_back(t_operation **lst, t_operation *new);
+
 t_stack_holder	*bubble_sort(t_stack_holder *stack_holder);
 
 //=======================================================================
@@ -52,7 +65,7 @@ t_stack_holder	*bubble_sort(t_stack_holder *stack_holder);
 
 t_stack_holder *init_stack_holder(t_stack_holder *sh, int *args, int count);
 void	print_stack_holder(t_stack_holder *sh);
-void	test_sa();
+void test_sa(t_stack_holder	*stack);
 
 
 #endif

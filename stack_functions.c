@@ -1,5 +1,10 @@
 #include "push_swap.h"
 
+// Adds the node ’new’ at the end of the list.
+// lst: The address of a pointer to the first node of
+// a list.
+// new: The address of a pointer to the node to be
+// added.
 void	st_add_back(t_stack **lst, t_stack *new)
 {
 	t_stack	*last;
