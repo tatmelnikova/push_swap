@@ -15,6 +15,11 @@ void	print_operations(t_stack_holder *sh)
 	}
 }
 
+void	print_total(t_stack_holder *sh)
+{
+	ft_printf("total_ops: %d\n", get_op_count(sh->operations, NULL));
+}
+
 // ◦ The computed disorder (% with two decimals).
 // ◦ The name of the strategy used and its theoretical complexity class.
 // ◦ The total number of operations.
@@ -23,6 +28,7 @@ void	print_operations(t_stack_holder *sh)
 void print_bench(t_stack_holder *sh)
 {
 	print_operations(sh);
+	print_total(sh);
 }
 
 
