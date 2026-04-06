@@ -58,3 +58,19 @@ void	op_add_back(t_operation **lst, t_operation *new)
 	else
 		*lst = new;
 }
+
+int	get_op_count(t_operation *lst, char *op)
+{
+	t_operation	*current;
+	int			count;
+
+	current = lst;
+	count = 0;
+	while (current)
+	{
+		if (!strcmp(current->content, op))
+			count++;
+		current = current->next;
+	}
+	return (count);
+}
