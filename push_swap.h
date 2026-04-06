@@ -6,6 +6,7 @@
 # include <stdio.h>
 # include <assert.h>
 # include "ft_printf.h"
+# include <limits.h>
 
 # define SIMPLE 1
 # define MEDIUM 2
@@ -13,7 +14,10 @@
 # define ADAPTIVE 4
 
 void	print_error(void);
+char	**ft_split(char const *s, char c);
+int		count_words(char const *s, char c);
 int		ft_atoi(const char *nptr);
+int		*parse_numbers(char **s_numbers, int size);
 
 typedef struct stack
 {
@@ -63,6 +67,10 @@ t_operation	*op_new(char *content);
 void	op_clear(t_operation **lst);
 void	op_add_back(t_operation **lst, t_operation *new);
 
+//=======================================================================
+//========================= ERROR =======================================
+//=======================================================================
+int	error();
 
 //=======================================================================
 //========================= TESTS =======================================

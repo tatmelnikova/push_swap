@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkazmina <tkazmina@student.codam.nl>       +#+  +:+       +#+        */
+/*   By: skorenev <skorenev@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 15:41:28 by skorenev          #+#    #+#             */
-/*   Updated: 2026/04/02 14:45:54 by tkazmina         ###   ########.fr       */
+/*   Updated: 2026/04/06 16:44:03 by skorenev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int	ft_isdigit(char c)
  */
 int	ft_atoi(const char *nptr)
 {
-	int	i;
-	int	result;
-	int	sign;
+	int		i;
+	long	result;
+	int		sign;
 
 	i = 0;
 	sign = 1;
@@ -49,6 +49,8 @@ int	ft_atoi(const char *nptr)
 		result = (result * 10) + nptr[i] - '0';
 		i++;
 	}
-	return (sign * result);
+	if (sign * result < INT_MIN || sign * result > INT_MAX || nptr[i] != '\0')
+		error();
+	return ((int)(sign * result));
 }
 
