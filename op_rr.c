@@ -14,7 +14,10 @@ void rrb(t_stack_holder *sh)
 {
 	assert(sh->b_count);
 	if (sh->b_count)
+	{
 		rr_stack(&sh->b);
+		op_add_back(&sh->operations, op_new("rrb"));
+	}
 	ft_printf("rrb\n");
 }
 
@@ -24,7 +27,10 @@ void rra(t_stack_holder *sh)
 {
 	assert(sh->a_count);
 	if (sh->a_count)
+	{
 		rr_stack(&sh->a);
+		op_add_back(&sh->operations, op_new("rra"));
+	}
 	ft_printf("rra\n");
 }
 

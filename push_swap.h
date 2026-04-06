@@ -7,6 +7,11 @@
 # include <assert.h>
 # include "ft_printf.h"
 
+# define SIMPLE 1
+# define MEDIUM 2
+# define COMPLEX 3
+# define ADAPTIVE 4
+
 void	print_error(void);
 int		ft_atoi(const char *nptr);
 
@@ -16,6 +21,12 @@ typedef struct stack
 	struct stack	*next;
 }	t_stack;
 
+typedef struct operation
+{
+	char *content;
+	struct operation *next;
+} t_operation;
+
 typedef struct stack_holder
 {
 	int		total;
@@ -23,7 +34,7 @@ typedef struct stack_holder
 	int		b_count;
 	t_stack	*a;
 	t_stack	*b;
-	char	**operations;
+	t_operation *operations;
 }	t_stack_holder;
 void	st_add_back(t_stack **lst, t_stack *new);
 void	st_add_front(t_stack **lst, t_stack *new);
@@ -45,6 +56,13 @@ void	rrb(t_stack_holder *sh);
 void	rrr(t_stack_holder *sh);
 
 t_stack_holder	*bubble_sort(t_stack_holder *holder);
+//=======================================================================
+//==================== OPERATIONS =======================================
+//=======================================================================
+t_operation	*op_new(char *content);
+void	op_clear(t_operation **lst);
+void	op_add_back(t_operation **lst, t_operation *new);
+
 
 //=======================================================================
 //========================= TESTS =======================================
@@ -52,7 +70,9 @@ t_stack_holder	*bubble_sort(t_stack_holder *holder);
 
 t_stack_holder *init_stack_holder(t_stack_holder *sh, int *args, int count);
 void	print_stack_holder(t_stack_holder *sh);
-void	test_sa();
+void test_sa(t_stack_holder	*stack);
 
+//========================= INPUT =======================================
+int	get_strategy(int argc, char *argv[]);
 
 #endif

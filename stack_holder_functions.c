@@ -26,5 +26,6 @@ t_stack_holder *init_stack_holder(t_stack_holder *sh, int *args, int count)
 	sh->a_count = i;
 	sh->b_count = 0;
 	sh->a = head;
+	sh->operations = NULL;
 	return (sh);
 }

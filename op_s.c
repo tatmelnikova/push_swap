@@ -18,6 +18,7 @@ void	sa(t_stack_holder *stack_holder)
 	if (a_count > 1)
 	{
 		swap(stack_holder->a);
+		op_add_back(&stack_holder->operations, op_new("sa"));
 	}
 	ft_printf("sa\n");
 }
@@ -31,6 +32,7 @@ void	sb(t_stack_holder *stack_holder)
 	if (stack_holder->b_count > 1)
 	{
 		swap(stack_holder->b);
+		op_add_back(&stack_holder->operations, op_new("sb"));
 	}
 	ft_printf("sb\n");
 }
