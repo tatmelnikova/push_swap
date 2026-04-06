@@ -33,7 +33,7 @@ void test_sa(t_stack_holder	*stack)
 	bubble_sort(stack); //test
 }
 
-int	main(void)
+int	main(int argc, char *argv[])
 {
 	t_stack_holder	*stack;
 
@@ -48,11 +48,11 @@ int	main(void)
 	args[7] = 10;
 	args[8] = 100;
 	args[9] = 2;
-	// if (c_arg <= 1)
-	// {
-	// 	print_error();
-	// 	return (0);
-	// }
+	printf("args = %d\n", argc);
+	if (argc > 1)
+	{
+		return (get_strategy(argc, argv));
+	}
 	stack = (t_stack_holder *)malloc(sizeof(t_stack_holder));
 	init_stack_holder(stack, args, 10);
 

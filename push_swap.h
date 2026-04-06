@@ -7,6 +7,11 @@
 # include <assert.h>
 # include "ft_printf.h"
 
+# define SIMPLE 1
+# define MEDIUM 2
+# define COMPLEX 3
+# define ADAPTIVE 4
+
 void	print_error(void);
 int		ft_atoi(const char *nptr);
 
@@ -67,5 +72,7 @@ t_stack_holder *init_stack_holder(t_stack_holder *sh, int *args, int count);
 void	print_stack_holder(t_stack_holder *sh);
 void test_sa(t_stack_holder	*stack);
 
+//========================= INPUT =======================================
+int	get_strategy(int argc, char *argv[]);
 
 #endif
