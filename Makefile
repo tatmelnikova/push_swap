@@ -8,7 +8,7 @@ SRC = ft_atoi.c \
 	  op_p.c op_r.c op_rr.c op_s.c \
 	  push_swap.c \
 	  stack_functions.c stack_holder_functions.c \
-	  bubble_sort.c
+	  bubble_sort.c  operations.c args.c
 
 OBJ = $(SRC:.c=.o)
 
