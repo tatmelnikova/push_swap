@@ -20,7 +20,6 @@ void	sa(t_stack_holder *stack_holder)
 		swap(stack_holder->a);
 		op_add_back(&stack_holder->operations, op_new("sa"));
 	}
-	ft_printf("sa\n");
 }
 
 void	sb(t_stack_holder *stack_holder)
@@ -34,7 +33,6 @@ void	sb(t_stack_holder *stack_holder)
 		swap(stack_holder->b);
 		op_add_back(&stack_holder->operations, op_new("sb"));
 	}
-	ft_printf("sb\n");
 }
 
 void	ss(t_stack_holder *stack_holder)
