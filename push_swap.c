@@ -37,6 +37,8 @@ void test_sa(t_stack_holder	*stack)
 int	main(int argc, char *argv[])
 {
 	t_stack_holder	*stack;
+	int	strategy;
+	int	bench;
 
 	int args[10]; // 2 1 3 6 5 8
 	args[0] = 2;
@@ -52,13 +54,15 @@ int	main(int argc, char *argv[])
 	printf("args = %d\n", argc);
 	if (argc > 1)
 	{
-		return (get_strategy(argc, argv));
+		strategy = get_strategy(argc, argv);
+		bench = get_bench(argc, argv);
 	}
 	stack = (t_stack_holder *)malloc(sizeof(t_stack_holder));
 	init_stack_holder(stack, args, 10);
 
 	test_sa(stack);
-	
-	return (0);
+	if (bench)
+		print_bench(stack);
+	return (strategy == bench);
 }
 

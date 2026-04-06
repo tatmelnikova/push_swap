@@ -1,0 +1,28 @@
+#include "push_swap.h"
+
+void	print_operations(t_stack_holder *sh)
+{
+	char *ops[] = {"sa", "sb", "ss", "pa", "pb", "ra", "rb", "rr",
+		"rra", "rrb", "rrr"};
+	int	op_count  = 11;
+	int	counter;
+
+	counter = 0;
+	while(counter < op_count)
+	{
+		ft_printf("%s: %d\n", ops[counter], get_op_count(sh->operations, ops[counter]));
+		counter++;
+	}
+}
+
+// ◦ The computed disorder (% with two decimals).
+// ◦ The name of the strategy used and its theoretical complexity class.
+// ◦ The total number of operations.
+// ◦ The count of each operation type (sa, sb, ss, pa, pb, ra, rb,
+//   rr, rra, rrb, rrr).
+void print_bench(t_stack_holder *sh)
+{
+	print_operations(sh);
+}
+
+

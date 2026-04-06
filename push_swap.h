@@ -62,7 +62,7 @@ t_stack_holder	*bubble_sort(t_stack_holder *holder);
 t_operation	*op_new(char *content);
 void	op_clear(t_operation **lst);
 void	op_add_back(t_operation **lst, t_operation *new);
-
+int		get_op_count(t_operation *lst, char *op);
 
 //=======================================================================
 //========================= TESTS =======================================
@@ -74,5 +74,10 @@ void test_sa(t_stack_holder	*stack);
 
 //========================= INPUT =======================================
 int	get_strategy(int argc, char *argv[]);
+int	get_bench(int argc, char *argv[]);
+//========================= STRINGS =====================================
+int	strcmp(const char *s1, const char *s2);
+//========================= BENCH ++=====================================
+void print_bench(t_stack_holder *sh);
 
 #endif
