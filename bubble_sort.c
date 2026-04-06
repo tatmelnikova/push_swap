@@ -1,43 +1,60 @@
 #include "push_swap.h"
 
+static t_stack_holder	*return_in_stack_a(t_stack_holder *holder)
+{
+	while (holder->b_count > 0)
+		pa(holder);
+
+	return (holder);
+}
+
+static int	sort_check(t_stack_holder *holder)
+{
+	t_stack	*first;
+	t_stack	*second;
+	int		is_sorted;
+
+	first = holder->a;
+	second = first->next;
+	is_sorted = 1;
+	while (second->next)
+	{
+		if (first->content > second->content)
+			is_sorted = 0;
+		first = second;
+		second = second->next;
+	}
+	if (first->content > second->content)
+		is_sorted = 0;
+	return (is_sorted);
+}
+
 t_stack_holder	*bubble_sort(t_stack_holder *holder)
 {
-	t_stack *first;
-	t_stack	*second;
 	int	a_count;
-	int b_count;
 	int	i;
-	int op_count;
+	int j;
+	t_stack	*first;
+	t_stack	*second;
 
-	op_count = 0;
 	a_count = holder->a_count;
-	while (a_count > 1)
+	j = 0;
+	while (j < a_count)
 	{
 		i = 0;
-		while (i <= a_count)
+		while (i < a_count - j - 1)
 		{
 			first = holder->a;
 			second = first->next;
-			if (first->content < second->content)
-			{	
+			if (first->content > second->content)
 				sa(holder);
-				op_count++;
-			}
-			ra(holder);
-			op_count++;
+			pb(holder);
 			i++;
 		}
-		pb(holder);
-		a_count = holder->a_count;
+		return_in_stack_a(holder);
+		if (sort_check(holder))
+			break ;
+		j++;
 	}
-	b_count = holder->b_count;
-	while (b_count > 0)
-	{
-		pa(holder);
-		op_count++;
-		b_count = holder->b_count;
-	}
-	print_stack_holder(holder);
-	ft_printf("op count: %d\n", op_count);
-	return (holder);
+	return(holder);
 }
