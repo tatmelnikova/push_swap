@@ -31,4 +31,13 @@ void print_bench(t_stack_holder *sh)
 	print_total(sh);
 }
 
+//disorder: 49.93%
+void	print_disorder(float disorder)
+{
+	int	i_disorder;
+
+	i_disorder = (int) disorder;
+	ft_printf("disorder: %d.%d%%\n", i_disorder, (int)((disorder - i_disorder) * 100));
+}
+
 

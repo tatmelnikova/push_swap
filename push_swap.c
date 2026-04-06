@@ -66,6 +66,9 @@ int	main(int argc, char *argv[])
 		init_stack_holder(stack, args, 10);
 		strategy = get_strategy(argc, argv);
 		bench = get_bench(argc, argv);
+		print_args(argc, argv);
+		float disorder = compute_disorder(stack->a); 
+		print_disorder(disorder);
 	}
 	// stack = (t_stack_holder *)malloc(sizeof(t_stack_holder));
 	// init_stack_holder(stack, numbers, count_words(argv[1], ' '));

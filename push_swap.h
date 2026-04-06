@@ -47,6 +47,7 @@ t_stack	*st_last(t_stack *lst);
 void	st_clear(t_stack **lst);
 t_stack	*st_pop_head(t_stack **stack);
 t_stack	*st_pop_tail(t_stack **stack);
+float	compute_disorder(t_stack *lst);
 void	sa(t_stack_holder *stack);
 void	sb(t_stack_holder *stack);
 void	ss(t_stack_holder *stack_holder);
@@ -85,9 +86,11 @@ void	test_sa(t_stack_holder	*stack);
 //========================= INPUT =======================================
 int	get_strategy(int argc, char *argv[]);
 int	get_bench(int argc, char *argv[]);
+void print_args(int argc, char *argv[]);
 //========================= STRINGS =====================================
 int	strcmp(const char *s1, const char *s2);
 //========================= BENCH ++=====================================
 void print_bench(t_stack_holder *sh);
+void	print_disorder(float disorder);
 
 #endif

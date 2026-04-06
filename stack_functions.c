@@ -103,3 +103,38 @@ void	st_clear(t_stack **lst)
 	}
 	*lst = NULL;
 }
+
+// function compute_disorder(stack a):
+// mistakes = 0
+// total_pairs = 0
+// for i from 0 to size(a)-1:
+// for j from i+1 to size(a)-1:
+// total_pairs += 1
+// if a[i] > a[j]:
+// mistakes += 1
+// return mistakes / total_pairs
+
+float compute_disorder(t_stack *lst)
+{
+	int	mistakes;
+	int	pairs;
+	t_stack *current;
+	t_stack *compare_to;
+
+	mistakes = 0;
+	pairs = 0;
+	current = lst;
+	while (current != NULL )
+	{
+		compare_to = current->next;
+		while (compare_to != NULL)
+		{
+			if (current->content > compare_to->content)
+				mistakes++;
+			pairs++;
+			compare_to = compare_to->next;
+		}
+		current = current->next;
+	}
+	return (100.0f * mistakes / pairs);
+}

@@ -39,3 +39,15 @@ int	get_bench(int argc, char *argv[])
 	}
 	return (0);
 }
+
+void print_args(int argc, char *argv[])
+{
+	int	i;
+
+	i = 0;
+	while (i < argc)
+	{
+		printf("%s\n", argv[i]);
+		i++;
+	}
+}
