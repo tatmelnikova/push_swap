@@ -33,7 +33,7 @@ int	get_bench(int argc, char *argv[])
 	i = 0;
 	while (i < argc)
 	{
-		if (strcmp(argv[i], "--bench"))
+		if (!strcmp(argv[i], "--bench"))
 			return (1);
 		i++;
 	}
