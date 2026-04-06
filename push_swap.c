@@ -2,6 +2,11 @@
 
 void test_sa(t_stack_holder	*stack)
 {
+	// if (c_arg <= 1)
+	// {
+	// 	print_error();
+	// 	return (0);
+	// }
 	print_stack_holder(stack);
 	// sa(stack);
 	// print_stack_holder(stack);
