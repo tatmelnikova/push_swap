@@ -68,7 +68,9 @@ int	get_op_count(t_operation *lst, char *op)
 	count = 0;
 	while (current)
 	{
-		if (!strcmp(current->content, op))
+		if (op && !strcmp(current->content, op))
+			count++;
+		if (!op)
 			count++;
 		current = current->next;
 	}
