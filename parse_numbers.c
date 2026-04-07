@@ -1,11 +1,5 @@
 #include "push_swap.h"
 
-static int	is_keyword(char *word)
-{
-	return (!strcmp(word, "--simple") || !strcmp(word, "--medium") || !strcmp(word, "--complex") 
-			|| !strcmp(word, "--adaptive") || !strcmp(word, "--bench"));
-}
-
 static void	add_number(char **s_numbers, int *numbers, int i)
 {
 	int j;
