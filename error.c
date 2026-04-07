@@ -1,7 +1,6 @@
 #include "push_swap.h"
 
-int error()
+void error()
 {
-	ft_printf("Error\n");
-	exit(1);
+	ft_printf(STDOUT_FILENO, "Error\n");
 }

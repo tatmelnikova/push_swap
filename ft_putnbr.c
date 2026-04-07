@@ -1,17 +1,17 @@
 #include "ft_printf.h"
 
-int	ft_putptr(uintptr_t ptr)
+int	ft_putptr(int fd, uintptr_t ptr)
 {
 	int	len;
 
 	if (!ptr)
-		return (ft_putstr("(nil)"));
-	ft_putstr("0x");
-	len = 2 + ft_putnbr_hex(ptr, 'x');
+		return (ft_putstr(fd, "(nil)"));
+	ft_putstr(fd, "0x");
+	len = 2 + ft_putnbr_hex(fd, ptr, 'x');
 	return (len);
 }
 
-int	ft_putnbr_hex(unsigned long n, char user_case)
+int	ft_putnbr_hex(int fd, unsigned long n, char user_case)
 {
 	int		len;
 	char	*base;
@@ -22,13 +22,13 @@ int	ft_putnbr_hex(unsigned long n, char user_case)
 	else
 		base = "0123456789abcdef";
 	if (n > 15)
-		len += ft_putnbr_hex(n / 16, user_case);
-	ft_putchar(base[n % 16]);
+		len += ft_putnbr_hex(fd, n / 16, user_case);
+	ft_putchar(fd, base[n % 16]);
 	len++;
 	return (len);
 }
 
-int	ft_putnbr(int n)
+int	ft_putnbr(int fd, int n)
 {
 	long	num_l;
 	char	c;
@@ -43,21 +43,21 @@ int	ft_putnbr(int n)
 		len++;
 	}
 	if (num_l > 9)
-		len += ft_putnbr((int)(num_l / 10));
+		len += ft_putnbr(fd, (int)(num_l / 10));
 	c = (num_l % 10) + '0';
-	ft_putchar(c);
+	ft_putchar(fd, c);
 	return (++len);
 }
 
-int	ft_putnbr_u(unsigned int n)
+int	ft_putnbr_u(int fd, unsigned int n)
 {
 	int		len;
 	char	c;
 
 	len = 0;
 	if (n > 9)
-		len += ft_putnbr_u(n / 10);
+		len += ft_putnbr_u(fd, n / 10);
 	c = (n % 10) + '0';
-	ft_putchar(c);
+	ft_putchar(fd, c);
 	return (++len);
 }

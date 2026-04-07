@@ -84,7 +84,7 @@ void print_all_ops(t_stack_holder *st)
 	current = st->operations;
 	while (current)
 	{
-		ft_printf("%s\n", current->content);
+		ft_printf(STDOUT_FILENO, "%s\n", current->content);
 		current = current->next;
 	}
 }
