@@ -9,7 +9,7 @@ SRC = ft_atoi.c ft_split.c \
 	  push_swap.c \
 	  stack_functions.c stack_holder_functions.c \
 	  bubble_sort.c operations.c args.c \
-	  parse_numbers.c \
+	  parse_numbers.c  print_bench.c \
 	  util.c 
 
 OBJ = $(SRC:.c=.o)

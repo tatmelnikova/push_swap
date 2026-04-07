@@ -2,9 +2,9 @@
 
 void test_sort(t_stack_holder	*stack)
 {
-	//print_stack_holder(stack);
+	// print_stack_holder(stack);
 	bubble_sort(stack);
-	//print_stack_holder(stack);
+	// print_stack_holder(stack);
 	print_all_ops(stack);
 	if (stack->bench)
 		print_bench(stack);
@@ -20,8 +20,6 @@ int	main(int argc, char *argv[])
 	int size;
 
 	i = 1;
-	if (argc > 1)
-	{
 		while (i < argc)
 		{
 			if (is_keyword(argv[i]))
@@ -45,7 +43,6 @@ int	main(int argc, char *argv[])
 		stack->strategy = get_strategy(argc, argv);
 		stack->bench = get_bench(argc, argv);
 		//print_stack_holder(stack);
-	}
 	test_sort(stack);
 	return (0);
 }
