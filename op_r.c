@@ -17,7 +17,6 @@ void	ra(t_stack_holder *stack_holder)
 		st_add_back(&stack_holder->a, head);
 		op_add_back(&stack_holder->operations, op_new("ra"));
 	}
-	ft_printf("ra\n");
 }
 // Shift up all elements of stack b by one.
 // The first element becomes the last one.
@@ -36,7 +35,6 @@ void	rb(t_stack_holder *stack_holder)
 		st_add_back(&stack_holder->b, head);
 		op_add_back(&stack_holder->operations, op_new("rb"));
 	}
-	ft_printf("rb\n");
 }
 
 void	rr(t_stack_holder *stack_holder)

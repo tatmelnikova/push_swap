@@ -18,7 +18,6 @@ void rrb(t_stack_holder *sh)
 		rr_stack(&sh->b);
 		op_add_back(&sh->operations, op_new("rrb"));
 	}
-	ft_printf("rrb\n");
 }
 
 // (reverse rotate a): Shift down all elements of stack a by one.
@@ -31,7 +30,6 @@ void rra(t_stack_holder *sh)
 		rr_stack(&sh->a);
 		op_add_back(&sh->operations, op_new("rra"));
 	}
-	ft_printf("rra\n");
 }
 
 void rrr(t_stack_holder *sh)
