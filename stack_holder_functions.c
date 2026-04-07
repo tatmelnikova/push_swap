@@ -1,5 +1,14 @@
 #include "push_swap.h"
 
+static void init_params(t_stack_holder *sh)
+{
+	sh->b = NULL;
+	sh->b_count = 0;
+	sh->operations = NULL;
+	sh->disorder = compute_disorder(sh->a);
+	//print_disorder(sh->disorder);
+}
+
 t_stack_holder *init_stack_holder(t_stack_holder *sh, int *args, int count)
 {
 	
@@ -8,8 +17,6 @@ t_stack_holder *init_stack_holder(t_stack_holder *sh, int *args, int count)
 	int				i;
 
 	i = 0;
-	
-	sh->b = NULL;
 	head = NULL;
 	while (i < count)
 	{
@@ -24,9 +31,8 @@ t_stack_holder *init_stack_holder(t_stack_holder *sh, int *args, int count)
 	}
 	sh->total = i;
 	sh->a_count = i;
-	sh->b_count = 0;
 	sh->a = head;
-	sh->operations = NULL;
+	init_params(sh);
 	return (sh);
 }
 
