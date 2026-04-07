@@ -76,3 +76,15 @@ int	get_op_count(t_operation *lst, char *op)
 	}
 	return (count);
 }
+
+void print_all_ops(t_stack_holder *st)
+{
+	t_operation *current;
+
+	current = st->operations;
+	while (current)
+	{
+		ft_printf("%s\n", current->content);
+		current = current->next;
+	}
+}

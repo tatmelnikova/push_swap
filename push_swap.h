@@ -71,6 +71,7 @@ t_operation	*op_new(char *content);
 void	op_clear(t_operation **lst);
 void	op_add_back(t_operation **lst, t_operation *new);
 int		get_op_count(t_operation *lst, char *op);
+void	print_all_ops(t_stack_holder *st);
 
 //=======================================================================
 //========================= ERROR =======================================

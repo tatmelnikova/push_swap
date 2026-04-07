@@ -5,6 +5,9 @@ void test_sort(t_stack_holder	*stack)
 	print_stack_holder(stack);
 	bubble_sort(stack);
 	print_stack_holder(stack);
+	print_all_ops(stack);
+	if (stack->bench)
+		print_bench(stack);
 	clear(stack);
 }
 
@@ -23,6 +26,7 @@ int	main(int argc, char *argv[])
 	args[8] = 100;
 	args[9] = 2;
 	// printf("args = %d\n", argc);
+	print_args(argc, argv);
 	int		*numbers;
 	stack = (t_stack_holder *)malloc(sizeof(t_stack_holder));
 	if (argc == 2)
@@ -35,13 +39,10 @@ int	main(int argc, char *argv[])
 	else
 	{
 		init_stack_holder(stack, args, 10);
-		stack->strategy = get_strategy(argc, argv);
-		stack->bench = get_bench(argc, argv);
-		print_args(argc, argv);
 	}
+	stack->strategy = get_strategy(argc, argv);
+	stack->bench = get_bench(argc, argv);
 	test_sort(stack);
-	if (stack->bench)
-		print_bench(stack);
 	return (0);
 }
 
