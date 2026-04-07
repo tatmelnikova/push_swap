@@ -37,6 +37,9 @@ typedef struct stack_holder
 	int		total;
 	int		a_count;
 	int		b_count;
+	int		strategy;
+	int		bench;
+	float	disorder;
 	t_stack	*a;
 	t_stack	*b;
 	t_operation *operations;
@@ -69,6 +72,7 @@ t_operation	*op_new(char *content);
 void	op_clear(t_operation **lst);
 void	op_add_back(t_operation **lst, t_operation *new);
 int		get_op_count(t_operation *lst, char *op);
+void	print_all_ops(t_stack_holder *st);
 
 //=======================================================================
 //========================= ERROR =======================================
@@ -82,7 +86,7 @@ int	error();
 t_stack_holder *init_stack_holder(t_stack_holder *sh, int *args, int count);
 void	print_stack_holder(t_stack_holder *sh);
 void	clear(t_stack_holder *sh);
-void	test_sa(t_stack_holder	*stack);
+void	test_sort(t_stack_holder	*stack);
 
 //========================= INPUT =======================================
 int	get_strategy(int argc, char *argv[]);

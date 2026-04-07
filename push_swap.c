@@ -1,37 +1,14 @@
 #include "push_swap.h"
 
-void test_sa(t_stack_holder	*stack)
+void test_sort(t_stack_holder	*stack)
 {
-	// if (c_arg <= 1)
-	// {
-	// 	print_error();
-	// 	return (0);
-	// }
 	print_stack_holder(stack);
-	// sa(stack);
-	// print_stack_holder(stack);
-	// // pb(stack);
-	// // pb(stack);
-	// // pb(stack);
-	// // pb(stack);
-	// // print_stack_holder(stack);
-	// // pa(stack);
-	// ra(stack);
-	// print_stack_holder(stack);
-	// rra(stack);
-	// print_stack_holder(stack);
-	// pb(stack);
-	// pb(stack);
-	// pb(stack);
-	// print_stack_holder(stack);
-	// rrb(stack);
-	// print_stack_holder(stack);
-	// rrb(stack);
-	// print_stack_holder(stack);
-	// rrr(stack);
-	// print_stack_holder(stack);
-	bubble_sort(stack); //test
+	bubble_sort(stack);
 	print_stack_holder(stack);
+	print_all_ops(stack);
+	if (stack->bench)
+		print_bench(stack);
+	clear(stack);
 }
 
 int	main(int argc, char *argv[])
@@ -83,12 +60,6 @@ int	main(int argc, char *argv[])
 		init_stack_holder(stack, numbers, size);
 		print_stack_holder(stack);
 	}
-	test_sa(stack);
-	// stack = (t_stack_holder *)malloc(sizeof(t_stack_holder));
-	// init_stack_holder(stack, numbers, count_words(argv[1], ' '));
-
-	// test_sa(stack);
-	// if (bench)
-	// 	print_bench(stack);
-	// return (strategy == bench);
+	test_sort(stack);
+	return (0);
 }

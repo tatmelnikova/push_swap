@@ -47,7 +47,7 @@ void print_args(int argc, char *argv[])
 	i = 0;
 	while (i < argc)
 	{
-		printf("%s\n", argv[i]);
+		printf("arg[%d] = %s\n", i, argv[i]);
 		i++;
 	}
 }
