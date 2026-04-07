@@ -30,8 +30,8 @@ void	print_total(t_stack_holder *sh)
 void print_bench(t_stack_holder *sh)
 {
 	print_disorder(sh->disorder);
-	print_operations(sh);
 	print_total(sh);
+	print_operations(sh);
 }
 
 //disorder: 49.93%
