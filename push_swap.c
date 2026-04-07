@@ -8,29 +8,7 @@ void test_sa(t_stack_holder	*stack)
 	// 	return (0);
 	// }
 	print_stack_holder(stack);
-	// sa(stack);
-	// print_stack_holder(stack);
-	// // pb(stack);
-	// // pb(stack);
-	// // pb(stack);
-	// // pb(stack);
-	// // print_stack_holder(stack);
-	// // pa(stack);
-	// ra(stack);
-	// print_stack_holder(stack);
-	// rra(stack);
-	// print_stack_holder(stack);
-	// pb(stack);
-	// pb(stack);
-	// pb(stack);
-	// print_stack_holder(stack);
-	// rrb(stack);
-	// print_stack_holder(stack);
-	// rrb(stack);
-	// print_stack_holder(stack);
-	// rrr(stack);
-	// print_stack_holder(stack);
-	bubble_sort(stack); //test
+	bubble_sort(stack);
 	print_stack_holder(stack);
 }
 
@@ -70,9 +48,6 @@ int	main(int argc, char *argv[])
 		float disorder = compute_disorder(stack->a); 
 		print_disorder(disorder);
 	}
-	// stack = (t_stack_holder *)malloc(sizeof(t_stack_holder));
-	// init_stack_holder(stack, numbers, count_words(argv[1], ' '));
-
 	test_sa(stack);
 	if (bench)
 		print_bench(stack);
