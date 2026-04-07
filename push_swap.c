@@ -52,17 +52,35 @@ int	main(int argc, char *argv[])
 	// args[8] = 100;
 	// args[9] = 2;
 	// printf("args = %d\n", argc);
-	int		*numbers;
-	int i;
+	int	*numbers;
+	int	i;
+	int size;
 
-	i = 0;
+	i = 1;
 	if (argc > 1)
 	{
 		strategy = get_strategy(argc, argv);
 		bench = get_bench(argc, argv);
-		numbers = parse_numbers(&argv[1], argc - 1);
+		while (i < argc)
+		{
+			if (is_keyword(argv[i]))
+				i++;
+			else
+				break ;
+		}
+		if (argc - i > 1)
+		{	
+			numbers = parse_numbers(&argv[i], argc - i);
+			size = argc - i - 1;
+		}
+		else
+		{
+			size = count_words(argv[i], ' ');
+			char **splited_num = ft_split(argv[i], ' ');
+			numbers = parse_numbers(splited_num, size);
+		}
 		stack = (t_stack_holder *)malloc(sizeof(t_stack_holder));
-		init_stack_holder(stack, numbers, argc - 1);
+		init_stack_holder(stack, numbers, size);
 		print_stack_holder(stack);
 	}
 	test_sa(stack);
