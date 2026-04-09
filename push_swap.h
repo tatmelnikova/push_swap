@@ -65,7 +65,10 @@ void	rrb(t_stack_holder *sh);
 void	rrr(t_stack_holder *sh);
 
 t_stack_holder	*bubble_sort(t_stack_holder *holder);
+//==================== MERGE SORT =======================================
 t_stack_holder *merge_sort(t_stack_holder *sh);
+int	move_top_b_to_bottom_a(t_stack_holder *sh, int taken_from_b);
+int	move_top_a_to_bottom_a(t_stack_holder *sh, int taken_from_a);
 //=======================================================================
 //==================== OPERATIONS =======================================
 //=======================================================================

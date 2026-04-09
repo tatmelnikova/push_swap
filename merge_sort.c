@@ -1,12 +1,13 @@
 #include "push_swap.h"
 
+// calculate how many elements we want to push.
+// it should be the biggest power of two, less than chunk_size
 int	calculate_push_size(int chunk_size)
 {
 	int	power;
 
 	if (chunk_size == 1)
 		return (0);
-
 	power = 2;
 	while (power < chunk_size)
 	{
@@ -25,17 +26,8 @@ void	divide(t_stack_holder *sh, int chunk_size)
 {
 	int	count;
 	int push_to_b_count;
-	//int rb_count;
-
-	//rb_count = 0;
-	if (chunk_size == 1)
-	{
-		ra(sh);
-		return ;
-	}
 	
 	push_to_b_count = calculate_push_size(chunk_size);
-	//ft_printf(STDOUT_FILENO, "push b size = %d\n", push_to_b_count);
 	count = 0;
 	while (count < push_to_b_count)
 	{
@@ -48,69 +40,46 @@ void	divide(t_stack_holder *sh, int chunk_size)
 	}
 }
 
-
 // merge elements from both stacks, the minimum is always at top,
 // so we take the min from one stack and move it to stack A bottom.
-// every step we take chunk_size/2 elements and combine them into a sorted
-// chunk twice bigger
+// every step we take chunk_size/2 elements from each stack and 
+// combine them into a sorted chunk twice bigger. if chunk_size
+// is not a power of two (in the end), stack B has power of two
+// elements and stack A has (chunk_size - b_count) elements
 void merge(t_stack_holder *sh, int chunk_size)
 {
 	int	from_a;
 	int	from_b;
-	int	b_count;
 	int	take_from_a;
 
 	from_a = 0;
 	from_b = 0;
-
-	
-	b_count = sh->b_count;
-	take_from_a = chunk_size - b_count;
-	//printf("chunk_size = %d, b_count = %d, take_from_a = %d\n", chunk_size, b_count, take_from_a);
-	if (chunk_size == 1)
-		return ;
+	take_from_a = chunk_size - sh->b_count;
 	while(from_a + from_b < chunk_size)
-	{
-		if ((from_a < take_from_a) && b_count)
+		if ((from_a < take_from_a) && sh->b_count)
 		{
 			if (sh->a->content < sh->b->content)
-			{
-				ra(sh);
-				from_a++;
-			}
+				from_a = move_top_a_to_bottom_a(sh, from_a);
 			else
-			{
-				pa(sh);
-				ra(sh);
-				from_b++;
-			}
+				from_b = move_top_b_to_bottom_a(sh, from_b);
 		}
 		else if (from_a < take_from_a)
-		{
-			ra(sh);
-			from_a++;
-		}
+			from_a = move_top_a_to_bottom_a(sh, from_a);
 		else if (sh->b_count)
-		{
-			pa(sh);
-			ra(sh);
-			from_b++;
-		}
-		b_count = sh->b_count;
-	}
-
+			from_b = move_top_b_to_bottom_a(sh, from_b);
 }
-// part size - how many elements we want to combine at each step.
-// for step 1 we combine single elements, so the part_size = 1.
+// chunk_size is how many elements we want to combine at each step.
+// for step 1 we combine single elements, so the chunk_size = 2.
 // at the 2nd step we combine pairs with sorted elements inside
-// each pair, the part_size = 2
+// each pair, the part_size = 4
+// if chunk_size == 1, it means there is just one element left,
+// so no elements to divide and merge, just push it 
+// to the bottom of A
 void divide_merge(t_stack_holder *sh, int chunk_size)
 {
 	int parts_to_merge;
 	int merged_count;
 
-	//printf("start divide_merge, part_size = %d\n", chunk_size);
-	//print_stack_holder(sh);
 	parts_to_merge = sh->total / (chunk_size);
 	if (sh->total % chunk_size != 0)
 		parts_to_merge++;
@@ -119,30 +88,30 @@ void divide_merge(t_stack_holder *sh, int chunk_size)
 	{
 		if (merged_count == parts_to_merge - 1)
 			chunk_size = sh->total - (parts_to_merge - 1) * chunk_size;
-		divide(sh, chunk_size);
-		//printf("divided result, chunk_size = %d\n", chunk_size);
-		//print_stack_holder(sh);
-		merge(sh, chunk_size);
-		//printf("merged result, chunk_size = %d\n", chunk_size);
-		//print_stack_holder(sh);
+		if (chunk_size == 1)
+			ra(sh);
+		else
+		{
+			divide(sh, chunk_size);
+			merge(sh, chunk_size);
+		}
 		merged_count++;
 	}
 }
 
-t_stack_holder *merge_sort(t_stack_holder *sh)
+// call divide and merge while chunk_size is less than total.
+// in the end call divide and merge again to process the tail.
+// we always have a tail if total is not a power of two
+t_stack_holder	*merge_sort(t_stack_holder *sh)
 {
-	int	part_size;
+	int	chunk_size;
 
-	part_size = 2;
-	while (part_size < sh->total)
+	chunk_size = 2;
+	while (chunk_size < sh->total)
 	{
-		divide_merge(sh, part_size);
-		//move_tail(sh, part_size);
-		part_size = part_size * 2;
+		divide_merge(sh, chunk_size);
+		chunk_size = chunk_size * 2;
 	}
-	divide_merge(sh, part_size);
-	//ft_printf(STDOUT_FILENO, "result = \n");
-	//int result = sort_check(sh);
-	//printf("sorted = %d\n", result);
+	divide_merge(sh, chunk_size);
 	return (sh);
 }
