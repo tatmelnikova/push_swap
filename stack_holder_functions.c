@@ -42,3 +42,23 @@ void clear(t_stack_holder *sh)
 	st_clear(&sh->b);
 	op_clear(&sh->operations);
 }
+int	sort_check(t_stack_holder *holder)
+{
+	t_stack	*first;
+	t_stack	*second;
+	int		is_sorted;
+
+	first = holder->a;
+	second = first->next;
+	is_sorted = 1;
+	while (second->next)
+	{
+		if (first->content > second->content)
+			is_sorted = 0;
+		first = second;
+		second = second->next;
+	}
+	if (first->content > second->content)
+		is_sorted = 0;
+	return (is_sorted);
+}

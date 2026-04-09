@@ -3,8 +3,8 @@
 void test_sort(t_stack_holder	*stack)
 {
 	// print_stack_holder(stack);
-	bubble_sort(stack);
-	//merge_sort(stack);
+	//bubble_sort(stack);
+	merge_sort(stack);
 	// print_stack_holder(stack);
 	print_all_ops(stack);
 	if (stack->bench)

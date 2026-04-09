@@ -8,27 +8,6 @@ static t_stack_holder	*return_in_stack_a(t_stack_holder *holder)
 	return (holder);
 }
 
-static int	sort_check(t_stack_holder *holder)
-{
-	t_stack	*first;
-	t_stack	*second;
-	int		is_sorted;
-
-	first = holder->a;
-	second = first->next;
-	is_sorted = 1;
-	while (second->next)
-	{
-		if (first->content > second->content)
-			is_sorted = 0;
-		first = second;
-		second = second->next;
-	}
-	if (first->content > second->content)
-		is_sorted = 0;
-	return (is_sorted);
-}
-
 t_stack_holder	*bubble_sort(t_stack_holder *holder)
 {
 	int	a_count;
