@@ -136,5 +136,7 @@ float compute_disorder(t_stack *lst)
 		}
 		current = current->next;
 	}
+	if (!pairs)
+		return (0.0f);
 	return (100.0f * mistakes / pairs);
 }
