@@ -62,3 +62,11 @@ int	sort_check(t_stack_holder *holder)
 		is_sorted = 0;
 	return (is_sorted);
 }
+
+t_stack_holder	*return_in_stack_a(t_stack_holder *holder)
+{
+	while (holder->b_count > 0)
+		pa(holder);
+
+	return (holder);
+}

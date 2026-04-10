@@ -1,12 +1,38 @@
 #include "push_swap.h"
 
+int	chose_algorithm(int disorder)
+{
+	if (disorder < 20)
+		return (SIMPLE);
+	if (disorder >= 50)
+		return (COMPLEX);
+	else
+		return (MEDIUM);
+}
+
 void test_sort(t_stack_holder	*stack)
 {
-	// print_stack_holder(stack);
-	//bubble_sort(stack);
-	bucket_sort(stack);
-	// merge_sort(stack);
-	// print_stack_holder(stack);
+	int	strategy;
+	if (stack->strategy == ADAPTIVE)
+		strategy = chose_algorithm(stack->disorder);
+	else
+		strategy = stack->strategy;
+	if (strategy == SIMPLE)
+	{	
+		bubble_sort(stack);
+		ft_printf(1, "SIMPLE\n");
+	}
+	else if (strategy == MEDIUM)
+	{	
+		bucket_sort(stack);
+		ft_printf(1, "MEDIUM\n");
+	}
+	else
+	{	
+		merge_sort(stack);
+		ft_printf(1, "COMPLEX\n");
+	}
+	print_stack_holder(stack);
 	print_all_ops(stack);
 	if (stack->bench)
 		print_bench(stack);
@@ -23,6 +49,8 @@ int	main(int argc, char *argv[])
 	int size;
 
 	i = 1;
+	if (argc > 1)
+	{
 		while (i < argc)
 		{
 			if (is_keyword(argv[i]))
@@ -46,6 +74,9 @@ int	main(int argc, char *argv[])
 		stack->strategy = get_strategy(argc, argv);
 		stack->bench = get_bench(argc, argv);
 		//print_stack_holder(stack);
-	test_sort(stack);
+		test_sort(stack);
+	}
+	else
+		error();
 	return (0);
 }

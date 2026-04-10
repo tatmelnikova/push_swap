@@ -80,14 +80,6 @@ static void	find_rang(t_stack_holder *holder)
 	}
 }
 
-static t_stack_holder	*return_in_stack_a(t_stack_holder *holder)
-{
-	while (holder->b_count > 0)
-		pa(holder);
-
-	return (holder);
-}
-
 t_stack_holder	*bucket_sort(t_stack_holder *holder)
 {
 	int	j;

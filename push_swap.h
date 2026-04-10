@@ -94,6 +94,7 @@ void	print_stack_holder(t_stack_holder *sh);
 void	clear(t_stack_holder *sh);
 void	test_sort(t_stack_holder	*stack);
 int	sort_check(t_stack_holder *holder);
+t_stack_holder	*return_in_stack_a(t_stack_holder *holder);
 
 //========================= INPUT =======================================
 int	get_strategy(int argc, char *argv[]);
