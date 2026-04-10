@@ -4,11 +4,13 @@ void test_sort(t_stack_holder	*stack)
 {
 	// print_stack_holder(stack);
 	//bubble_sort(stack);
-	merge_sort(stack);
+	bucket_sort(stack);
+	// merge_sort(stack);
 	// print_stack_holder(stack);
 	print_all_ops(stack);
 	if (stack->bench)
 		print_bench(stack);
+	print_stack_holder(stack);
 	clear(stack);
 }
 
@@ -31,7 +33,7 @@ int	main(int argc, char *argv[])
 		if (argc - i > 1)
 		{	
 			numbers = parse_numbers(&argv[i], argc - i);
-			size = argc - i - 1;
+			size = argc - i;
 		}
 		else
 		{
