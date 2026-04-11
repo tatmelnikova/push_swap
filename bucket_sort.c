@@ -27,37 +27,6 @@ static	int	ft_sqrt(int nb)
 	return (rigth);
 }
 
-static void	push_and_check(t_stack_holder *holder)
-{
-	int 	i;
-	t_stack	*first;
-	t_stack	*second;
-
-	i = 0;
-	pb(holder);
-	while (1)
-	{
-		first = holder->b;
-		if (!first->next)
-			return ;
-		second = first->next;
-		if (first->content < second->content)
-		{
-			sb(holder);
-			pa(holder);
-			i++;
-		}
-		else
-			break ;
-	}
-	while (i > 0)
-	{
-		pb(holder);
-		i--;
-	}
-}
-
-
 static void	find_rang(t_stack_holder *holder)
 {
 	int		range;
@@ -80,6 +49,56 @@ static void	find_rang(t_stack_holder *holder)
 	}
 }
 
+static int	find_max_place(t_stack_holder *holder)
+{
+	int		i;
+	int		max;
+	int		index;
+	t_stack	*node;
+
+	i = 0;
+	index = 0;
+	max = holder->b->range;
+	node = holder->b;
+	while (node)
+	{
+		if (node->range > max)
+		{
+			index = i;
+			max = node->range;
+		}
+		i++;
+		node = node->next;
+	}
+	return (index);
+}
+
+static t_stack_holder	*return_in_stack_a(t_stack_holder *holder)
+{
+    int	idx;
+    int	i;
+
+    while (holder->b_count)
+    {
+        idx = find_max_place(holder);
+
+        if (idx <= holder->b_count / 2)
+        {
+            i = idx;
+            while (i-- > 0)
+                rb(holder);
+        }
+        else
+        {
+            i = holder->b_count - idx;
+            while (i-- > 0)
+                rrb(holder);
+        }
+        pa(holder);
+    }
+    return (holder);
+}
+
 t_stack_holder	*bucket_sort(t_stack_holder *holder)
 {
 	int	j;
@@ -97,7 +116,7 @@ t_stack_holder	*bucket_sort(t_stack_holder *holder)
 		{
 			node = holder->a;
 			if (node->range >= range && node->range < range + sqrt_n)
-				push_and_check(holder);
+				pb(holder);
 			else
 				ra(holder);
 			j--;
