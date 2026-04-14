@@ -39,6 +39,7 @@ typedef struct stack_holder
 	int		a_count;
 	int		b_count;
 	int		strategy;
+	int		chosen_strategy;
 	int		bench;
 	float	disorder;
 	t_stack	*a;
@@ -92,7 +93,7 @@ void	error();
 t_stack_holder *init_stack_holder(t_stack_holder *sh, int *args, int count);
 void	print_stack_holder(t_stack_holder *sh);
 void	clear(t_stack_holder *sh);
-void	test_sort(t_stack_holder	*stack);
+void	sort(t_stack_holder	*stack);
 int	sort_check(t_stack_holder *holder);
 
 //========================= INPUT =======================================

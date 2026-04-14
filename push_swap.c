@@ -10,28 +10,18 @@ int	chose_algorithm(int disorder)
 		return (MEDIUM);
 }
 
-void test_sort(t_stack_holder	*stack)
+void sort(t_stack_holder *stack)
 {
-	int	strategy;
 	if (stack->strategy == ADAPTIVE)
-		strategy = chose_algorithm(stack->disorder);
+		stack->chosen_strategy = chose_algorithm(stack->disorder);
 	else
-		strategy = stack->strategy;
-	if (strategy == SIMPLE)
-	{	
+		stack->chosen_strategy = stack->strategy;
+	if (stack->chosen_strategy == SIMPLE)
 		bubble_sort(stack);
-		ft_printf(1, "SIMPLE\n");
-	}
-	else if (strategy == MEDIUM)
-	{	
+	else if (stack->chosen_strategy == MEDIUM)
 		bucket_sort(stack);
-		ft_printf(1, "MEDIUM\n");
-	}
 	else
-	{	
 		merge_sort(stack);
-		ft_printf(1, "COMPLEX\n");
-	}
 	print_stack_holder(stack);
 	print_all_ops(stack);
 	if (stack->bench)
@@ -74,7 +64,7 @@ int	main(int argc, char *argv[])
 		stack->strategy = get_strategy(argc, argv);
 		stack->bench = get_bench(argc, argv);
 		//print_stack_holder(stack);
-		test_sort(stack);
+		sort(stack);
 	}
 	else
 		error();

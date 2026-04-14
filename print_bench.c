@@ -8,12 +8,33 @@ void	print_operations(t_stack_holder *sh)
 	int	counter;
 
 	counter = 0;
+	ft_printf(STDERR_FILENO, "[bench] ");
 	while(counter < op_count)
 	{
-		ft_printf(STDERR_FILENO, "[bench] ");
-		ft_printf(STDERR_FILENO, "%s: %d\n", ops[counter], get_op_count(sh->operations, ops[counter]));
+		if (counter == 5)
+		{
+			ft_printf(STDERR_FILENO, "\n");
+			ft_printf(STDERR_FILENO, "[bench] ");
+		}
+		ft_printf(STDERR_FILENO, "%s: %d  ", ops[counter], get_op_count(sh->operations, ops[counter]));
 		counter++;
 	}
+	ft_printf(STDERR_FILENO, "\n");
+}
+
+void	print_strategy(t_stack_holder *sh)
+{
+	ft_printf(STDERR_FILENO, "[bench] ");
+	ft_printf(STDERR_FILENO, "strategy: ");
+	if (sh->strategy == ADAPTIVE)
+		ft_printf(STDERR_FILENO, "adaptive / ");
+	if (sh->chosen_strategy == SIMPLE)
+		ft_printf(STDERR_FILENO, "simple");
+	else if (sh->chosen_strategy == COMPLEX)
+		ft_printf(STDERR_FILENO, "complex");
+	else if (sh->chosen_strategy == MEDIUM)
+		ft_printf(STDERR_FILENO, "medium");
+	ft_printf(STDERR_FILENO, "\n");
 }
 
 void	print_total(t_stack_holder *sh)
@@ -30,6 +51,7 @@ void	print_total(t_stack_holder *sh)
 void print_bench(t_stack_holder *sh)
 {
 	print_disorder(sh->disorder);
+	print_strategy(sh);
 	print_total(sh);
 	print_operations(sh);
 }
