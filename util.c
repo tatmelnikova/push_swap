@@ -2,6 +2,14 @@
 
 int	is_keyword(char *word)
 {
-	return (!strcmp(word, "--simple") || !strcmp(word, "--medium") || !strcmp(word, "--complex") 
-			|| !strcmp(word, "--adaptive") || !strcmp(word, "--bench"));
+	return (!ft_strcmp(word, "--simple") || !ft_strcmp(word, "--medium") || !ft_strcmp(word, "--complex") 
+			|| !ft_strcmp(word, "--adaptive") || !ft_strcmp(word, "--bench"));
+}
+
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	while (*s1 == *s2++)
+		if (*s1++ == 0)
+			return (0);
+	return (*(unsigned char *)s1 - *(unsigned char *)--s2);
 }

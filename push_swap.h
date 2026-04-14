@@ -101,7 +101,7 @@ int	get_strategy(int argc, char *argv[]);
 int	get_bench(int argc, char *argv[]);
 void print_args(int argc, char *argv[]);
 //========================= STRINGS =====================================
-int	strcmp(const char *s1, const char *s2);
+int	ft_strcmp(const char *s1, const char *s2);
 //========================= BENCH ++=====================================
 void print_bench(t_stack_holder *sh);
 void	print_disorder(float disorder);

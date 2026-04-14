@@ -15,11 +15,11 @@ int	get_strategy(int argc, char *argv[])
 	i = 0;
 	while (i < argc)
 	{
-		if (!strcmp(argv[i], "--simple"))
+		if (!ft_strcmp(argv[i], "--simple"))
 			return (SIMPLE);
-		if (!strcmp(argv[i], "--medium"))
+		if (!ft_strcmp(argv[i], "--medium"))
 			return (MEDIUM);
-		if (!strcmp(argv[i], "--complex"))
+		if (!ft_strcmp(argv[i], "--complex"))
 			return (COMPLEX);
 		i++;
 	}
@@ -33,7 +33,7 @@ int	get_bench(int argc, char *argv[])
 	i = 0;
 	while (i < argc)
 	{
-		if (!strcmp(argv[i], "--bench"))
+		if (!ft_strcmp(argv[i], "--bench"))
 			return (1);
 		i++;
 	}
