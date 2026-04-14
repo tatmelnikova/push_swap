@@ -36,20 +36,39 @@ int	main(int argc, char *argv[])
 
 	int	*numbers;
 	int	i;
+	int	j;
 	int size;
+	int	is_numbers;
+	int	is_flags;
 
+	j = 1;
 	i = 1;
+	is_numbers = 0;
+	is_flags = 0;
 	if (argc > 1)
 	{
-		while (i < argc)
+		while (argv[j])
 		{
-			if (is_keyword(argv[i]))
+			if (is_keyword(argv[j]) && !is_numbers)
+			{	
+				is_flags = 1;
 				i++;
+			}
+			else if (is_keyword(argv[j]) && is_numbers)
+			{
+				is_flags = 1;
+				is_numbers = -1;
+				i++;
+			}
+			else if (!is_keyword(argv[j]) && is_numbers == -1)
+				error();
 			else
-				break ;
+				is_numbers = 1;
+			j++;
 		}
 		if (argc - i > 1)
 		{	
+			ft_printf(1, "atoi, i = %d\n", i);
 			numbers = parse_numbers(&argv[i], argc - i);
 			size = argc - i;
 		}
