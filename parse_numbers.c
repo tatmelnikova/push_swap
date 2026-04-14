@@ -22,22 +22,16 @@ int	*parse_numbers(char **s_numbers, int size)
 {
 	int	*numbers;
 	int	i;
-	int	num_count;
 
 	i = 0;
-	num_count = size;
-	while (i < size)
-	{
-		if (is_keyword(s_numbers[i]))
-			num_count--;
-		i++;
-	}
-	numbers = malloc(sizeof(int *) * num_count);
+	ft_printf(1, "\n!!!size = %d\n", size);
+	numbers = malloc(sizeof(int *) * size);
 	if (!numbers)
 		return (NULL);
-	i = 0;
-	while (i < size)
+	while (s_numbers[i])
 	{	
+		if (is_keyword(s_numbers[i]))
+			continue ;
 		add_number(s_numbers, numbers, i);
 		i++;
 	}

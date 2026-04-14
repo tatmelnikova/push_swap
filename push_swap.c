@@ -69,7 +69,7 @@ int	main(int argc, char *argv[])
 		if (argc - i > 1)
 		{	
 			ft_printf(1, "atoi, i = %d\n", i);
-			numbers = parse_numbers(&argv[i], argc - i);
+			numbers = parse_numbers(&argv[1], argc - 3);
 			size = argc - i;
 		}
 		else
