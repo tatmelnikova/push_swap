@@ -1,13 +1,12 @@
 #include "push_swap.h"
 
-int	chose_algorithm(int disorder)
+int chose_algorithm(int disorder)
 {
 	if (disorder < 20)
 		return (SIMPLE);
 	if (disorder >= 50)
 		return (COMPLEX);
-	else
-		return (MEDIUM);
+	return (MEDIUM);
 }
 
 void sort(t_stack_holder *stack)
@@ -30,16 +29,16 @@ void sort(t_stack_holder *stack)
 	clear(stack);
 }
 
-int	main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
-	t_stack_holder	*stack;
+	t_stack_holder *stack;
 
-	int	*numbers;
-	int	i;
-	int	j;
+	int *numbers;
+	int i;
+	int j;
 	int size;
-	int	is_numbers;
-	int	is_flags;
+	int is_numbers;
+	int is_flags;
 
 	j = 1;
 	i = 1;
@@ -50,7 +49,7 @@ int	main(int argc, char *argv[])
 		while (argv[j])
 		{
 			if (is_keyword(argv[j]) && !is_numbers)
-			{	
+			{
 				is_flags = 1;
 				i++;
 			}
@@ -67,9 +66,8 @@ int	main(int argc, char *argv[])
 			j++;
 		}
 		if (argc - i > 1)
-		{	
-			ft_printf(1, "atoi, i = %d\n", i);
-			numbers = parse_numbers(&argv[1], argc - 3);
+		{
+			numbers = parse_numbers(&argv[1], argc - i);
 			size = argc - i;
 		}
 		else
@@ -82,7 +80,7 @@ int	main(int argc, char *argv[])
 		init_stack_holder(stack, numbers, size);
 		stack->strategy = get_strategy(argc, argv);
 		stack->bench = get_bench(argc, argv);
-		//print_stack_holder(stack);
+		// print_stack_holder(stack);
 		sort(stack);
 	}
 	else
