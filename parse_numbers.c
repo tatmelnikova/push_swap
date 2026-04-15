@@ -1,14 +1,12 @@
 #include "push_swap.h"
 
-static void	add_number(char **s_numbers, int *numbers, int i)
+static void	add_number(char *s_number, int *numbers, int i)
 {
-	int j;
-	int n;
+	int	j;
+	int	n;
 
-	if (is_keyword(s_numbers[i]))
-		return ;
 	j = 0;
-	n = ft_atoi(s_numbers[i]);
+	n = ft_atoi(s_number);
 	while (j < i)
 	{
 		if (numbers[j] == n)
@@ -22,23 +20,17 @@ int	*parse_numbers(char **s_numbers, int size)
 {
 	int	*numbers;
 	int	i;
-	int	num_count;
+	int	j;
 
 	i = 0;
-	num_count = size;
-	while (i < size)
-	{
-		if (is_keyword(s_numbers[i]))
-			num_count--;
-		i++;
-	}
-	numbers = malloc(sizeof(int *) * num_count);
+	j = 0;
+	numbers = malloc(sizeof(int *) * size);
 	if (!numbers)
 		return (NULL);
-	i = 0;
-	while (i < size)
-	{	
-		add_number(s_numbers, numbers, i);
+	while (j < size)
+	{
+		if (!is_keyword(s_numbers[i]))
+			add_number(s_numbers[i], numbers, j++);
 		i++;
 	}
 	return (numbers);

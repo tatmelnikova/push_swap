@@ -1,26 +1,27 @@
 NAME = push_swap
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-
+DEBUG_FLAGS = -g -O0
 
 SRC = ft_atoi.c ft_split.c \
-	  ft_print_char.c ft_printf.c ft_putnbr.c print.c \
-	  op_p.c op_r.c op_rr.c op_s.c \
-	  push_swap.c \
-	  stack_functions.c stack_holder_functions.c \
-	  bubble_sort.c bucket_sort.c merge_sort.c merge_sort2.c \
-	  operations.c args.c \
-	  parse_numbers.c  print_bench.c \
-	  util.c
+      ft_print_char.c ft_printf.c ft_putnbr.c print.c \
+      op_p.c op_r.c op_rr.c op_s.c \
+      push_swap.c \
+      stack_functions.c stack_holder_functions.c \
+      bubble_sort.c bucket_sort.c merge_sort.c merge_sort2.c \
+      operations.c args.c \
+      parse_numbers.c  print_bench.c \
+      util.c error.c
 
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) 
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
-bonus: all
+debug: CFLAGS += $(DEBUG_FLAGS)
+debug: re
 
 clean:
 	rm -f $(OBJ)
@@ -30,4 +31,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re debug bonus
