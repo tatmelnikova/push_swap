@@ -13,8 +13,6 @@
 # define COMPLEX 3
 # define ADAPTIVE 4
 
-void	print_error(void);
-void error();
 char	**ft_split(char const *s, char c);
 int		count_words(char const *s, char c);
 int		ft_atoi(const char *nptr);
@@ -85,7 +83,7 @@ void	print_all_ops(t_stack_holder *st);
 //=======================================================================
 //========================= ERROR =======================================
 //=======================================================================
-void	error();
+void	print_error(void);
 
 //=======================================================================
 //========================= TESTS =======================================

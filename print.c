@@ -2,7 +2,7 @@
 
 void	print_error(void)
 {
-	write(1, "Error\n", 6);
+	write(STDOUT_FILENO, "Error\n", 6);
 }
 
 void print_stack(t_stack *stack)

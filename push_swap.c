@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
 				i++;
 			}
 			else if (!is_keyword(argv[j]) && is_numbers == -1)
-				error();
+				print_error();
 			else
 				is_numbers = 1;
 			j++;
@@ -84,6 +84,6 @@ int main(int argc, char *argv[])
 		sort(stack);
 	}
 	else
-		error();
+		print_error();
 	return (0);
 }

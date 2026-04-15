@@ -10,7 +10,7 @@ static void	add_number(char *s_number, int *numbers, int i)
 	while (j < i)
 	{
 		if (numbers[j] == n)
-			error();
+			print_error();
 		j++;
 	}
 	numbers[i] = n;
