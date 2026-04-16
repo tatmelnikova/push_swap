@@ -17,6 +17,7 @@ char	**ft_split(char const *s, char c);
 int		count_words(char const *s, char c);
 int		ft_atoi(const char *nptr);
 int		*parse_numbers(char **s_numbers, int size);
+int		count_keywords(int argc, char *argv[]);
 int		is_keyword(char *word);
 
 typedef struct stack

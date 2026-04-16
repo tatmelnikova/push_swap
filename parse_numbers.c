@@ -35,3 +35,31 @@ int	*parse_numbers(char **s_numbers, int size)
 	}
 	return (numbers);
 }
+
+int	count_keywords(int argc, char *argv[])
+{
+	int	args_pos = 1;
+	int	is_numbers;
+	int	keywords_count;
+
+	keywords_count = 1;
+	is_numbers = 0;
+	while (args_pos < argc - 1)
+	{
+		if (is_keyword(argv[args_pos]) && !is_numbers)
+		{
+			keywords_count++;
+		}
+		else if (is_keyword(argv[args_pos]) && is_numbers)
+		{
+			is_numbers = -1;
+			keywords_count++;
+		}
+		else if (!is_keyword(argv[args_pos]) && is_numbers == -1)
+			print_error();
+		else
+			is_numbers = 1;
+		args_pos++;
+	}
+	return (keywords_count);
+}

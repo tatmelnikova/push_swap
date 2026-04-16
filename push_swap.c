@@ -36,53 +36,28 @@ int main(int argc, char *argv[])
 	t_stack_holder *stack;
 
 	int *numbers;
-	int i;
-	int j;
+	int keywords_count;
 	int size;
-	int is_numbers;
-	int is_flags;
 
-	j = 1;
-	i = 1;
-	is_numbers = 0;
-	is_flags = 0;
+	keywords_count = 1;
 	if (argc > 1)
 	{
-		while (argv[j])
+		keywords_count = count_keywords(argc, argv);
+		if (argc - keywords_count > 1)
 		{
-			if (is_keyword(argv[j]) && !is_numbers)
-			{
-				is_flags = 1;
-				i++;
-			}
-			else if (is_keyword(argv[j]) && is_numbers)
-			{
-				is_flags = 1;
-				is_numbers = -1;
-				i++;
-			}
-			else if (!is_keyword(argv[j]) && is_numbers == -1)
-				print_error();
-			else
-				is_numbers = 1;
-			j++;
-		}
-		if (argc - i > 1)
-		{
-			numbers = parse_numbers(&argv[1], argc - i);
-			size = argc - i;
+			numbers = parse_numbers(&argv[1], argc - keywords_count);
+			size = argc - keywords_count;
 		}
 		else
 		{
-			size = count_words(argv[i], ' ');
-			char **splited_num = ft_split(argv[i], ' ');
+			size = count_words(argv[keywords_count], ' ');
+			char **splited_num = ft_split(argv[keywords_count], ' ');
 			numbers = parse_numbers(splited_num, size);
 		}
 		stack = (t_stack_holder *)malloc(sizeof(t_stack_holder));
 		init_stack_holder(stack, numbers, size);
 		stack->strategy = get_strategy(argc, argv);
 		stack->bench = get_bench(argc, argv);
-		// print_stack_holder(stack);
 		sort(stack);
 	}
 	else
