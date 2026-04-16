@@ -38,6 +38,8 @@ t_stack_holder *init_stack_holder(t_stack_holder *sh, int *args)
 
 void clear(t_stack_holder *sh)
 {
+	if (!sh)
+		return ;
 	st_clear(&sh->a);
 	st_clear(&sh->b);
 	op_clear(&sh->operations);
