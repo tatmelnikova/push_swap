@@ -53,6 +53,7 @@ int main(int argc, char *argv[])
 		if (!numbers)
 			clear_and_exit(stack, 1);
 		init_stack_holder(stack, numbers);
+		free(numbers);
 		stack->strategy = get_strategy(argc, argv);
 		stack->bench = get_bench(argc, argv);
 		stack->debug = get_debug(argc, argv);
