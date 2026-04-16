@@ -16,9 +16,6 @@
 char	**ft_split(char const *s, char c);
 int		count_words(char const *s, char c);
 int		ft_atoi(const char *nptr);
-int		*parse_numbers(char **s_numbers, int size);
-int		count_keywords(int argc, char *argv[]);
-int		is_keyword(char *word);
 
 typedef struct stack
 {
@@ -90,16 +87,20 @@ void	print_error(void);
 //========================= TESTS =======================================
 //=======================================================================
 
-t_stack_holder *init_stack_holder(t_stack_holder *sh, int *args, int count);
+t_stack_holder *init_stack_holder(t_stack_holder *sh, int *args);
 void	print_stack_holder(t_stack_holder *sh);
 void	clear(t_stack_holder *sh);
 void	sort(t_stack_holder	*stack);
 int	sort_check(t_stack_holder *holder);
 
 //========================= INPUT =======================================
-int	get_strategy(int argc, char *argv[]);
-int	get_bench(int argc, char *argv[]);
-void print_args(int argc, char *argv[]);
+int		get_strategy(int argc, char *argv[]);
+int		get_bench(int argc, char *argv[]);
+void 	print_args(int argc, char *argv[]);
+int		*get_numbers(int argc, char *argv[], t_stack_holder *sh);
+int		*parse_numbers(char **s_numbers, int size);
+int		count_keywords(int argc, char *argv[]);
+int		is_keyword(char *word);
 //========================= STRINGS =====================================
 int	ft_strcmp(const char *s1, const char *s2);
 //========================= BENCH ++=====================================

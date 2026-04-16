@@ -9,7 +9,7 @@ static void init_params(t_stack_holder *sh)
 	//print_disorder(sh->disorder);
 }
 
-t_stack_holder *init_stack_holder(t_stack_holder *sh, int *args, int count)
+t_stack_holder *init_stack_holder(t_stack_holder *sh, int *args)
 {
 	
 	t_stack			*head;
@@ -18,7 +18,7 @@ t_stack_holder *init_stack_holder(t_stack_holder *sh, int *args, int count)
 
 	i = 0;
 	head = NULL;
-	while (i < count)
+	while (i < sh->total)
 	{
 		new_node =  st_new(args[i]);
 		if (!new_node)
@@ -29,7 +29,7 @@ t_stack_holder *init_stack_holder(t_stack_holder *sh, int *args, int count)
 		st_add_back(&head, new_node);
 		i++;
 	}
-	sh->total = i;
+	assert(sh->total == i);
 	sh->a_count = i;
 	sh->a = head;
 	init_params(sh);

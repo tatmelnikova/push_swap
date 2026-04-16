@@ -63,3 +63,25 @@ int	count_keywords(int argc, char *argv[])
 	}
 	return (keywords_count);
 }
+
+int	*get_numbers(int argc, char *argv[], t_stack_holder *sh)
+{
+	int *numbers;
+	int keywords_count;
+	int	size;
+
+	keywords_count = count_keywords(argc, argv);
+	if (argc - keywords_count > 1)
+	{
+		numbers = parse_numbers(&argv[1], argc - keywords_count);
+		size = argc - keywords_count;
+	}
+	else
+	{
+		size = count_words(argv[keywords_count], ' ');
+		char **splited_num = ft_split(argv[keywords_count], ' ');
+		numbers = parse_numbers(splited_num, size);
+	}
+	sh->total = size;
+	return (numbers);
+}

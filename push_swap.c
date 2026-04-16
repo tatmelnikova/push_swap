@@ -34,28 +34,13 @@ void sort(t_stack_holder *holder)
 int main(int argc, char *argv[])
 {
 	t_stack_holder *stack;
-
 	int *numbers;
-	int keywords_count;
-	int size;
 
-	keywords_count = 1;
 	if (argc > 1)
 	{
-		keywords_count = count_keywords(argc, argv);
-		if (argc - keywords_count > 1)
-		{
-			numbers = parse_numbers(&argv[1], argc - keywords_count);
-			size = argc - keywords_count;
-		}
-		else
-		{
-			size = count_words(argv[keywords_count], ' ');
-			char **splited_num = ft_split(argv[keywords_count], ' ');
-			numbers = parse_numbers(splited_num, size);
-		}
 		stack = (t_stack_holder *)malloc(sizeof(t_stack_holder));
-		init_stack_holder(stack, numbers, size);
+		numbers = get_numbers(argc, argv, stack);
+		init_stack_holder(stack, numbers);
 		stack->strategy = get_strategy(argc, argv);
 		stack->bench = get_bench(argc, argv);
 		sort(stack);
