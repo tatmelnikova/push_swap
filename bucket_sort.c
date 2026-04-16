@@ -75,22 +75,22 @@ static int	find_max_place(t_stack_holder *holder)
 
 static t_stack_holder	*return_in_stack_a(t_stack_holder *holder)
 {
-    int	idx;
+    int	max_index;
     int	i;
 
     while (holder->b_count)
     {
-        idx = find_max_place(holder);
+        max_index = find_max_place(holder);
 
-        if (idx <= holder->b_count / 2)
+        if (max_index <= holder->b_count / 2)
         {
-            i = idx;
+            i = max_index;
             while (i-- > 0)
                 rb(holder);
         }
         else
         {
-            i = holder->b_count - idx;
+            i = holder->b_count - max_index;
             while (i-- > 0)
                 rrb(holder);
         }
@@ -111,18 +111,19 @@ t_stack_holder	*bucket_sort(t_stack_holder *holder)
 	find_rang(holder);
 	while (holder->a_count)
 	{
-		j = holder->a_count;
-		while (j > 0)
+		j = sqrt_n;
+		while (holder->a_count != 0 && j > 0)
 		{
 			node = holder->a;
 			if (node->range >= range && node->range < range + sqrt_n)
+			{	
 				pb(holder);
+				j--;
+			}
 			else
 				ra(holder);
-			j--;
 		}
 		range += sqrt_n;
 	}
-	return_in_stack_a(holder);
-	return (holder);
+	return (return_in_stack_a(holder));
 }
