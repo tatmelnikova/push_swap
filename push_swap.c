@@ -36,7 +36,7 @@ void sort(t_stack_holder *holder)
 		print_bench(holder);
 	if (holder->debug)
 		print_stack_holder(holder);
-	clear(holder);
+	clear_and_exit(holder, 0);
 }
 
 int main(int argc, char *argv[])
