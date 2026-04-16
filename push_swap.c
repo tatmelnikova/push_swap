@@ -31,11 +31,11 @@ void sort(t_stack_holder *holder)
 		bucket_sort(holder);
 	else
 		merge_sort(holder);
-	print_stack_holder(holder);
 	print_all_ops(holder);
 	if (holder->bench)
 		print_bench(holder);
-	print_stack_holder(holder);
+	if (holder->debug)
+		print_stack_holder(holder);
 	clear(holder);
 }
 
@@ -55,6 +55,7 @@ int main(int argc, char *argv[])
 		init_stack_holder(stack, numbers);
 		stack->strategy = get_strategy(argc, argv);
 		stack->bench = get_bench(argc, argv);
+		stack->debug = get_debug(argc, argv);
 		sort(stack);
 	}
 	else

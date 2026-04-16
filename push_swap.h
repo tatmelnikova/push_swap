@@ -39,6 +39,7 @@ typedef struct stack_holder
 	int		chosen_strategy;
 	int		bench;
 	float	disorder;
+	int		debug;
 	t_stack	*a;
 	t_stack	*b;
 	t_operation *operations;
@@ -96,6 +97,7 @@ int	sort_check(t_stack_holder *holder);
 //========================= INPUT =======================================
 int		get_strategy(int argc, char *argv[]);
 int		get_bench(int argc, char *argv[]);
+int		get_debug(int argc, char *argv[]);
 void 	print_args(int argc, char *argv[]);
 int		*get_numbers(int argc, char *argv[], t_stack_holder *sh);
 int		*parse_numbers(char **s_numbers, int size);

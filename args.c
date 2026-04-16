@@ -7,7 +7,6 @@
 // --adaptive Forces the use of your adaptive algorithm
 // based on disorder. This is the default behavior if no
 // selector is given.
-
 int	get_strategy(int argc, char *argv[])
 {
 	int	i;
@@ -34,6 +33,20 @@ int	get_bench(int argc, char *argv[])
 	while (i < argc)
 	{
 		if (!ft_strcmp(argv[i], "--bench"))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int	get_debug(int argc, char *argv[])
+{
+int	i;
+
+	i = 0;
+	while (i < argc)
+	{
+		if (!ft_strcmp(argv[i], "--debug"))
 			return (1);
 		i++;
 	}
