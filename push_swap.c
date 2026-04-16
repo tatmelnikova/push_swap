@@ -9,6 +9,14 @@ int chose_algorithm(int disorder)
 	return (MEDIUM);
 }
 
+static void	clear_and_exit(t_stack_holder *sh, int throw_error)
+{
+	if (throw_error)
+		print_error();
+	clear(sh);
+	exit(0);
+}
+
 void sort(t_stack_holder *holder)
 {
 	if (holder->a_count == 1 || sort_check(holder))
@@ -36,26 +44,20 @@ int main(int argc, char *argv[])
 	t_stack_holder *stack;
 	int *numbers;
 
+	stack = (t_stack_holder *)malloc(sizeof(t_stack_holder));
 	if (argc > 1)
 	{
-		stack = (t_stack_holder *)malloc(sizeof(t_stack_holder));
 		if (!stack)
-		{
-			print_error();
-			exit(0);
-		}
+			clear_and_exit(stack, 1);
 		numbers = get_numbers(argc, argv, stack);
 		if (!numbers)
-		{
-			print_error();
-			exit(0);
-		}
+			clear_and_exit(stack, 1);
 		init_stack_holder(stack, numbers);
 		stack->strategy = get_strategy(argc, argv);
 		stack->bench = get_bench(argc, argv);
 		sort(stack);
 	}
 	else
-		print_error();
+		clear_and_exit(stack, 1);
 	return (0);
 }
