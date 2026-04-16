@@ -39,6 +39,11 @@ int main(int argc, char *argv[])
 	if (argc > 1)
 	{
 		stack = (t_stack_holder *)malloc(sizeof(t_stack_holder));
+		if (!stack)
+		{
+			print_error();
+			exit(0);
+		}
 		numbers = get_numbers(argc, argv, stack);
 		init_stack_holder(stack, numbers);
 		stack->strategy = get_strategy(argc, argv);
