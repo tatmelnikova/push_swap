@@ -4,7 +4,7 @@ int	is_keyword(char *word)
 {
 	return (!ft_strcmp(word, "--simple") || !ft_strcmp(word, "--medium")
 		|| !ft_strcmp(word, "--complex") || !ft_strcmp(word, "--adaptive")
-		|| !ft_strcmp(word, "--bench"));
+		|| !ft_strcmp(word, "--bench" ) || !ft_strcmp(word, "--debug"));
 }
 
 int	ft_strcmp(const char *s1, const char *s2)
