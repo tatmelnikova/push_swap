@@ -45,6 +45,11 @@ int main(int argc, char *argv[])
 			exit(0);
 		}
 		numbers = get_numbers(argc, argv, stack);
+		if (!numbers)
+		{
+			print_error();
+			exit(0);
+		}
 		init_stack_holder(stack, numbers);
 		stack->strategy = get_strategy(argc, argv);
 		stack->bench = get_bench(argc, argv);
