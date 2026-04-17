@@ -1,5 +1,5 @@
  ================================ TO FIX ============================
- - fix long value overflow issue
+ ✓ fix long value overflow issue
  - fix crash when no numbers provided
  ✓ remove unused flags from Makefile
  - remove test folder
