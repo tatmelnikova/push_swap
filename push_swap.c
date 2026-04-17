@@ -11,12 +11,12 @@ int chose_algorithm(int disorder)
 
 // clear stack holder and exit program.
 // @throw_error if != 0, print error message before exit
-static void	clear_and_exit(t_stack_holder *sh, int throw_error)
+static int	clear_and_exit(t_stack_holder *sh, int throw_error)
 {
 	if (throw_error)
 		print_error();
 	clear(sh);
-	exit(0);
+	return (0);
 }
 
 void sort(t_stack_holder *holder)
@@ -51,14 +51,14 @@ int main(int argc, char *argv[])
 
 	stack = (t_stack_holder *)malloc(sizeof(t_stack_holder));
 	if (!stack)
-			clear_and_exit(stack, 1);
+		return (clear_and_exit(stack, 1));
 	if (argc > 1)
 	{
 		numbers = get_numbers(argc, argv, stack);
 		if (!numbers)
 		{
 			free(stack);
-			clear_and_exit(NULL, 1);
+			return (clear_and_exit(NULL, 1));
 		}
 		init_stack_holder(stack, numbers);
 		free(numbers);
@@ -68,6 +68,6 @@ int main(int argc, char *argv[])
 		sort(stack);
 	}
 	else
-		clear_and_exit(stack, 1);
-	clear_and_exit(stack, 0);
+		return (clear_and_exit(stack, 1));
+	return (clear_and_exit(stack, 0));
 }
