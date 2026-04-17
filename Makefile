@@ -1,7 +1,6 @@
 NAME = push_swap
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-DEBUG_FLAGS = -g -O0
 
 SRC = ft_atoi.c ft_split.c \
       ft_print_char.c ft_printf.c ft_putnbr.c print.c \
@@ -20,8 +19,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
-debug: CFLAGS += $(DEBUG_FLAGS)
-debug: re
+bonus: all
 
 clean:
 	rm -f $(OBJ)
@@ -31,4 +29,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re debug bonus
+.PHONY: all clean fclean re bonus
