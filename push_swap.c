@@ -48,14 +48,16 @@ int main(int argc, char *argv[])
 {
 	t_stack_holder *stack;
 	int *numbers;
+	int	is_error;
 
+	is_error = 0;
 	stack = (t_stack_holder *)malloc(sizeof(t_stack_holder));
 	if (!stack)
 			clear_and_exit(stack, 1);
 	if (argc > 1)
 	{
-		numbers = get_numbers(argc, argv, stack);
-		if (!numbers)
+		numbers = get_numbers(argc, argv, stack, &is_error);
+		if (!numbers || is_error)
 			clear_and_exit(stack, 1);
 		init_stack_holder(stack, numbers);
 		free(numbers);

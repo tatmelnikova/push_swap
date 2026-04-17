@@ -1,22 +1,22 @@
 #include "push_swap.h"
 
-static void	add_number(char *s_number, int *numbers, int i)
+static void	add_number(char *s_number, int *numbers, int i, int	*is_error)
 {
 	int	j;
 	int	n;
 
 	j = 0;
-	n = ft_atoi(s_number);
+	n = ft_atoi(s_number, is_error);
 	while (j < i)
 	{
 		if (numbers[j] == n)
-			print_error();
+			*is_error = 1;
 		j++;
 	}
 	numbers[i] = n;
 }
 
-int	*parse_numbers(char **s_numbers, int size)
+int	*parse_numbers(char **s_numbers, int size, int *is_error)
 {
 	int	*numbers;
 	int	i;
@@ -30,13 +30,13 @@ int	*parse_numbers(char **s_numbers, int size)
 	while (j < size)
 	{
 		if (!is_keyword(s_numbers[i]))
-			add_number(s_numbers[i], numbers, j++);
+			add_number(s_numbers[i], numbers, j++, is_error);
 		i++;
 	}
 	return (numbers);
 }
 
-int	count_keywords(int argc, char *argv[])
+int	count_keywords(int argc, char *argv[], int *is_error)
 {
 	int	args_pos = 1;
 	int	is_numbers;
@@ -56,7 +56,7 @@ int	count_keywords(int argc, char *argv[])
 			keywords_count++;
 		}
 		else if (!is_keyword(argv[args_pos]) && is_numbers == -1)
-			print_error();
+			*is_error = 1;
 		else
 			is_numbers = 1;
 		args_pos++;
@@ -64,23 +64,23 @@ int	count_keywords(int argc, char *argv[])
 	return (keywords_count);
 }
 
-int	*get_numbers(int argc, char *argv[], t_stack_holder *sh)
+int	*get_numbers(int argc, char *argv[], t_stack_holder *sh, int *is_error)
 {
 	int *numbers;
 	int keywords_count;
 	int	size;
 
-	keywords_count = count_keywords(argc, argv);
+	keywords_count = count_keywords(argc, argv, is_error);
 	if (argc - keywords_count > 1)
 	{
-		numbers = parse_numbers(&argv[1], argc - keywords_count);
+		numbers = parse_numbers(&argv[1], argc - keywords_count, is_error);
 		size = argc - keywords_count;
 	}
 	else
 	{
 		size = count_words(argv[keywords_count], ' ');
 		char **splited_num = ft_split(argv[keywords_count], ' ');
-		numbers = parse_numbers(splited_num, size);
+		numbers = parse_numbers(splited_num, size, is_error);
 		free_arr(size, splited_num);
 	}
 	sh->total = size;

@@ -6,7 +6,7 @@
 /*   By: skorenev <skorenev@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 15:41:28 by skorenev          #+#    #+#             */
-/*   Updated: 2026/04/17 15:27:45 by skorenev         ###   ########.fr       */
+/*   Updated: 2026/04/17 17:30:54 by skorenev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_isdigit(char c)
  * @param nptr 
  * @return the converted value or en error. 
  */
-int	ft_atoi(const char *nptr)
+int	ft_atoi(const char *nptr, int *is_error)
 {
 	int		i;
 	long	result;
@@ -48,11 +48,11 @@ int	ft_atoi(const char *nptr)
 	{
 		result = (result * 10) + nptr[i] - '0';
 		if (sign * result < INT_MIN || sign * result > INT_MAX)
-			print_error();
+			*is_error = 1;
 		i++;
 	}
 	if (nptr[i] != '\0')
-		print_error();
+		*is_error = 1;
 	return ((int)(sign * result));
 }
 
