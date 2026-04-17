@@ -102,9 +102,9 @@ int		get_strategy(int argc, char *argv[]);
 int		get_bench(int argc, char *argv[]);
 int		get_debug(int argc, char *argv[]);
 void 	print_args(int argc, char *argv[]);
-int		*get_numbers(int argc, char *argv[], t_stack_holder *sh, int *is_error);
-int		*parse_numbers(char **s_numbers, int size, int *is_error);
-int		count_keywords(int argc, char *argv[], int *is_error);
+int		*get_numbers(int argc, char *argv[], t_stack_holder *sh);
+int		*parse_numbers(char **s_numbers, int size);
+int		count_keywords(int argc, char *argv[]);
 int		is_keyword(char *word);
 //========================= STRINGS =====================================
 int	ft_strcmp(const char *s1, const char *s2);
