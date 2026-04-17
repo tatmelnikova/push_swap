@@ -1,117 +1,139 @@
 #include "push_swap.h"
 
-// calculate how many elements we want to push.
-// it should be the biggest power of two, less than chunk_size
-int	calculate_push_size(int chunk_size)
-{
-	int	power;
 
-	if (chunk_size == 1)
-		return (0);
-	power = 2;
-	while (power < chunk_size)
-	{
-		power = power * 2;
-	}
-	power = (power / 2);
-	return (power);
-}
+#include <stdlib.h>
+#include <limits.h>
+#include <stdio.h>
 
-// push the next group of elements to stack B (should be empty 
-// at start). each element should be moved down after it's pushed,
-// so the minimum is always at the top of the stack
-// chunk size is 2* part_size or less, if there are no more 
-// elements left
-void	divide(t_stack_holder *sh, int chunk_size)
+/* ===================== HELPERS ===================== */
+
+int	find_min_pos(t_stack *stack)
 {
-	int	count;
-	int push_to_b_count;
-	
-	push_to_b_count = calculate_push_size(chunk_size);
-	count = 0;
-	while (count < push_to_b_count)
+	int min = INT_MAX, pos = 0, i = 0;
+
+	while (stack)
 	{
-		pb(sh);
-		if (sh->b_count > 1)
+		if (stack->content < min)
 		{
-			rb(sh);
+			min = stack->content;
+			pos = i;
 		}
-		count++;
+		stack = stack->next;
+		i++;
 	}
+	return pos;
 }
 
-// merge elements from both stacks, the minimum is always at top,
-// so we take the min from one stack and move it to stack A bottom.
-// every step we take chunk_size/2 elements from each stack and 
-// combine them into a sorted chunk twice bigger. if chunk_size
-// is not a power of two (in the end), stack B has power of two
-// elements and stack A has (chunk_size - b_count) elements
-void merge(t_stack_holder *sh, int chunk_size)
+int	find_target_pos(t_stack *a, int b_val)
 {
-	int	from_a;
-	int	from_b;
-	int	take_from_a;
+	t_stack *curr = a;
+	int pos = 0, target = 0;
+	int min_diff = INT_MAX;
 
-	from_a = 0;
-	from_b = 0;
-	take_from_a = chunk_size - sh->b_count;
-	while(from_a + from_b < chunk_size)
-		if ((from_a < take_from_a) && sh->b_count)
-		{
-			if (sh->a->content < sh->b->content)
-				from_a = move_top_a_to_bottom_a(sh, from_a);
-			else
-				from_b = move_top_b_to_bottom_a(sh, from_b);
-		}
-		else if (from_a < take_from_a)
-			from_a = move_top_a_to_bottom_a(sh, from_a);
-		else if (sh->b_count)
-			from_b = move_top_b_to_bottom_a(sh, from_b);
-}
-// chunk_size is how many elements we want to combine at each step.
-// for step 1 we combine single elements, so the chunk_size = 2.
-// at the 2nd step we combine pairs with sorted elements inside
-// each pair, the part_size = 4
-// if chunk_size == 1, it means there is just one element left,
-// so no elements to divide and merge, just push it 
-// to the bottom of A
-void divide_merge(t_stack_holder *sh, int chunk_size)
-{
-	int parts_to_merge;
-	int merged_count;
-
-	parts_to_merge = sh->total / (chunk_size);
-	if (sh->total % chunk_size != 0)
-		parts_to_merge++;
-	merged_count = 0;
-	while (merged_count < parts_to_merge)
+	while (curr)
 	{
-		if (merged_count == parts_to_merge - 1)
-			chunk_size = sh->total - (parts_to_merge - 1) * chunk_size;
-		if (chunk_size == 1)
-			ra(sh);
+		int diff = curr->content - b_val;
+		if (diff > 0 && diff < min_diff)
+		{
+			min_diff = diff;
+			target = pos;
+		}
+		curr = curr->next;
+		pos++;
+	}
+	if (min_diff == INT_MAX)
+		return find_min_pos(a);
+	return target;
+}
+
+int	get_cost(int pos, int size)
+{
+	if (pos <= size / 2)
+		return pos;
+	return pos - size;
+}
+
+int	abs_val(int x) { return x < 0 ? -x : x; }
+int	max(int a, int b) { return a > b ? a : b; }
+
+/* ===================== CORE ===================== */
+
+void	find_cheapest(t_stack_holder *h, int *best_b, int *best_a)
+{
+	t_stack *b = h->b;
+	int b_pos = 0;
+	int best_cost = INT_MAX;
+
+	while (b)
+	{
+		int a_pos = find_target_pos(h->a, b->content);
+
+		int cost_a = get_cost(a_pos, h->a_count);
+		int cost_b = get_cost(b_pos, h->b_count);
+
+		int total;
+		if ((cost_a >= 0 && cost_b >= 0) || (cost_a < 0 && cost_b < 0))
+			total = max(abs_val(cost_a), abs_val(cost_b));
 		else
+			total = abs_val(cost_a) + abs_val(cost_b);
+
+		if (total < best_cost)
 		{
-			divide(sh, chunk_size);
-			merge(sh, chunk_size);
+			best_cost = total;
+			*best_b = b_pos;
+			*best_a = a_pos;
 		}
-		merged_count++;
+		b = b->next;
+		b_pos++;
 	}
 }
 
-// call divide and merge while chunk_size is less than total.
-// in the end call divide and merge again to process the tail.
-// we always have a tail if total is not a power of two
-t_stack_holder	*merge_sort(t_stack_holder *sh)
+void	exec_move(t_stack_holder *sh, int a_pos, int b_pos)
 {
-	int	chunk_size;
+	int ca = get_cost(a_pos, sh->a_count);
+	int cb = get_cost(b_pos, sh->b_count);
 
-	chunk_size = 2;
-	while (chunk_size < sh->total)
+	while (ca > 0 && cb > 0)
 	{
-		divide_merge(sh, chunk_size);
-		chunk_size = chunk_size * 2;
+		rr(sh);
+		ca--; cb--;
 	}
-	divide_merge(sh, chunk_size);
-	return (sh);
+	while (ca < 0 && cb < 0)
+	{
+		rrr(sh);
+		ca++; cb++;
+	}
+	while (ca > 0) { ra(sh); ca--; }
+	while (ca < 0) { rra(sh); ca++; }
+	while (cb > 0) { rb(sh); cb--; }
+	while (cb < 0) { rrb(sh); cb++; }
+
+	pa(sh);
+}
+
+void	final_rotate(t_stack_holder *h)
+{
+	int min_pos = find_min_pos(h->a);
+	int cost = get_cost(min_pos, h->a_count);
+
+	while (cost > 0) { ra(h); cost--; }
+	while (cost < 0) { rra(h); cost++; }
+}
+
+/* ===================== SORT ===================== */
+
+t_stack_holder	*merge_sort(t_stack_holder *sh){
+	// push almost all to B
+	while (sh->a_count > 3)
+		pb(sh);
+
+	// simple sort for 3 (you can improve)
+	while (sh->b_count)
+	{
+		int a_pos, b_pos;
+		find_cheapest(sh, &b_pos, &a_pos);
+		exec_move(sh, a_pos, b_pos);
+	}
+	final_rotate(sh);
+	return(sh);
 }
