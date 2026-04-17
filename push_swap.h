@@ -14,6 +14,7 @@
 # define ADAPTIVE 4
 
 char	**ft_split(char const *s, char c);
+char	**free_arr(int j, char **splited_words);
 int		count_words(char const *s, char c);
 int		ft_atoi(const char *nptr);
 

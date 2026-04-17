@@ -43,6 +43,7 @@ void clear(t_stack_holder *sh)
 	st_clear(&sh->a);
 	st_clear(&sh->b);
 	op_clear(&sh->operations);
+	free(sh);
 }
 int	sort_check(t_stack_holder *holder)
 {

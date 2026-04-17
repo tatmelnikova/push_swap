@@ -81,6 +81,7 @@ int	*get_numbers(int argc, char *argv[], t_stack_holder *sh)
 		size = count_words(argv[keywords_count], ' ');
 		char **splited_num = ft_split(argv[keywords_count], ' ');
 		numbers = parse_numbers(splited_num, size);
+		free_arr(size, splited_num);
 	}
 	sh->total = size;
 	return (numbers);

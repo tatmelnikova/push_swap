@@ -50,7 +50,7 @@ static char	*fill_word(char const *s, char c, char *word, int *count)
 	return (word);
 }
 
-static char	**free_arr(int j, char **splited_words)
+char	**free_arr(int j, char **splited_words)
 {
 	while (--j >= 0)
 		free(splited_words[j]);
