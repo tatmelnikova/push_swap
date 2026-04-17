@@ -9,6 +9,8 @@ int chose_algorithm(int disorder)
 	return (MEDIUM);
 }
 
+// clear stack holder and exit program.
+// @throw_error if != 0, print error message before exit
 static void	clear_and_exit(t_stack_holder *sh, int throw_error)
 {
 	if (throw_error)
@@ -36,7 +38,6 @@ void sort(t_stack_holder *holder)
 		print_bench(holder);
 	if (holder->debug)
 		print_stack_holder(holder);
-	clear_and_exit(holder, 0);
 }
 
 int main(int argc, char *argv[])
@@ -53,6 +54,7 @@ int main(int argc, char *argv[])
 		if (!numbers)
 			clear_and_exit(stack, 1);
 		init_stack_holder(stack, numbers);
+		free(numbers);
 		stack->strategy = get_strategy(argc, argv);
 		stack->bench = get_bench(argc, argv);
 		stack->debug = get_debug(argc, argv);
@@ -60,5 +62,5 @@ int main(int argc, char *argv[])
 	}
 	else
 		clear_and_exit(stack, 1);
-	return (0);
+	clear_and_exit(stack, 0);
 }
