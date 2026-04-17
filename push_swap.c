@@ -27,7 +27,11 @@ void sort(t_stack_holder *holder)
 		holder->chosen_strategy = chose_algorithm(holder->disorder);
 	else
 		holder->chosen_strategy = holder->strategy;
-	if (holder->chosen_strategy == SIMPLE)
+	if (holder->a_count == 2)
+		sort_two(holder);
+	else if (holder->a_count == 3)
+		sort_three(holder);
+	else if (holder->chosen_strategy == SIMPLE)
 		bubble_sort(holder);
 	else if (holder->chosen_strategy == MEDIUM)
 		bucket_sort(holder);

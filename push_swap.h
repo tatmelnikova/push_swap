@@ -65,6 +65,8 @@ void	rra(t_stack_holder *sh);
 void	rrb(t_stack_holder *sh);
 void	rrr(t_stack_holder *sh);
 
+t_stack_holder	*sort_two(t_stack_holder *holder);
+t_stack_holder	*sort_three(t_stack_holder *holder);
 t_stack_holder	*bubble_sort(t_stack_holder *holder);
 t_stack_holder	*bucket_sort(t_stack_holder	*holder);
 //==================== MERGE SORT =======================================
