@@ -1,20 +1,28 @@
 #include "push_swap.h"
 
-static int	add_number(char *s_number, int *numbers, int i, int	*is_error)
+// converts char* s_number and writes the value into number[i]
+// returns 0 on fail
+static int	add_number(char *s_number, int *numbers, int i)
 {
 	int	j;
 	int	*n;
 
 	j = 0;
 	n = ft_atoi(s_number);
+	if (!n)
+		return (0);
 	while (j < i)
 	{
 		if (numbers[j] == *n)
-			*is_error = 1;
+		{
+			free(n);
+			return (0);
+		}
 		j++;
 	}
 	numbers[i] = *n;
 	free(n);
+	return (1);
 }
 
 int	*parse_numbers(char **s_numbers, int size, int *is_error)
@@ -31,7 +39,7 @@ int	*parse_numbers(char **s_numbers, int size, int *is_error)
 	while (j < size)
 	{
 		if (!is_keyword(s_numbers[i]))
-			add_number(s_numbers[i], numbers, j++, is_error);
+			add_number(s_numbers[i], numbers, j++);
 		i++;
 	}
 	return (numbers);
