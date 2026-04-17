@@ -88,7 +88,7 @@ int	*get_numbers(int argc, char *argv[], t_stack_holder *sh)
 	int	size;
 
 	keywords_count = count_keywords(argc, argv);
-	if (keywords_count < 0)
+	if (keywords_count < 0 || (keywords_count == argc - 1))
 		return (NULL);
 	if (argc - keywords_count > 1)
 	{
