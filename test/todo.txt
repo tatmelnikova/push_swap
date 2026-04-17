@@ -6,6 +6,7 @@
  - remove --debug flag
 
  ================================ TODO ==============================
-- different sorting method for  3-4 (-5 ?) elements
+- different sorting method for  2, 3-4 (-5 ?) elements
 - show nothing when no number arguments
 - check memory leaks when input bugs are fixed
+- add check if we have more flags that can be (e.: "--simple --complex" etc)
