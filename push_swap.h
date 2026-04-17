@@ -91,6 +91,7 @@ void	print_error(void);
 //========================= TESTS =======================================
 //=======================================================================
 
+void	init_empty(t_stack_holder *sh);
 t_stack_holder *init_stack_holder(t_stack_holder *sh, int *args);
 void	print_stack_holder(t_stack_holder *sh);
 void	clear(t_stack_holder *sh);
