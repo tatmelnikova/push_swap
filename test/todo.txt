@@ -4,6 +4,7 @@
  ✓ remove unused flags from Makefile
  - remove test folder
  - remove --debug flag
+ - remove assert from op
 
  ================================ TODO ==============================
 - different sorting method for  2, 3-4 (-5 ?) elements
