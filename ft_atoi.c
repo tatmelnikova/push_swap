@@ -6,7 +6,7 @@
 /*   By: skorenev <skorenev@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 15:41:28 by skorenev          #+#    #+#             */
-/*   Updated: 2026/04/15 13:54:30 by skorenev         ###   ########.fr       */
+/*   Updated: 2026/04/17 15:27:45 by skorenev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,11 @@ int	ft_atoi(const char *nptr)
 	while (ft_isdigit(nptr[i]))
 	{
 		result = (result * 10) + nptr[i] - '0';
+		if (sign * result < INT_MIN || sign * result > INT_MAX)
+			print_error();
 		i++;
 	}
-	if (sign * result < INT_MIN || sign * result > INT_MAX || nptr[i] != '\0')
+	if (nptr[i] != '\0')
 		print_error();
 	return ((int)(sign * result));
 }
