@@ -9,6 +9,8 @@ int chose_algorithm(int disorder)
 	return (MEDIUM);
 }
 
+// clear stack holder and exit program.
+// @throw_error if != 0, print error message before exit
 static void	clear_and_exit(t_stack_holder *sh, int throw_error)
 {
 	if (throw_error)

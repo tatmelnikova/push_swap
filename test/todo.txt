@@ -1,0 +1,11 @@
+ ================================ TO FIX ============================
+ - fix long value overflow issue
+ - fix crash when no numbers provided
+ - remove unused flags from Makefile
+ - remove test folder
+ - remove --debug flag
+
+ ================================ TODO ==============================
+- different sorting method for  3-4 (-5 ?) elements
+- show nothing when no number arguments
+- check memory leaks when input bugs are fixed
