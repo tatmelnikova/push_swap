@@ -90,6 +90,8 @@ void divide_merge(t_stack_holder *sh, int chunk_size)
 			chunk_size = sh->total - (parts_to_merge - 1) * chunk_size;
 		if (chunk_size == 1)
 			ra(sh);
+		else if (chunk_size == 2)
+			merge_sort_two(sh);
 		else
 		{
 			divide(sh, chunk_size);
