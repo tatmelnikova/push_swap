@@ -43,7 +43,7 @@ void sort(t_stack_holder *holder)
 	else if (holder->chosen_strategy == MEDIUM)
 		bucket_sort(holder);
 	else
-		merge_sort(holder);
+		radix_sort(holder);
 	print_all_ops(holder);
 	if (holder->bench)
 		print_bench(holder);

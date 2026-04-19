@@ -74,6 +74,7 @@ t_stack_holder *merge_sort(t_stack_holder *sh);
 int	move_top_b_to_bottom_a(t_stack_holder *sh, int taken_from_b);
 int	move_top_a_to_bottom_a(t_stack_holder *sh, int taken_from_a);
 void	merge_sort_two(t_stack_holder *sh);
+void	radix_sort(t_stack_holder *sh);
 //=======================================================================
 //==================== OPERATIONS =======================================
 //=======================================================================
