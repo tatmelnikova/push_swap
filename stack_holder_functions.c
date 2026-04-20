@@ -6,7 +6,8 @@ void	init_empty(t_stack_holder *sh)
 	sh->a = NULL;
 	sh->b = NULL;
 }
-static void init_params(t_stack_holder *sh)
+
+static	void	init_params(t_stack_holder *sh)
 {
 	sh->b = NULL;
 	sh->b_count = 0;
@@ -14,18 +15,17 @@ static void init_params(t_stack_holder *sh)
 	sh->disorder = compute_disorder(sh->a);
 }
 
-t_stack_holder *init_stack_holder(t_stack_holder *sh, int *args)
+t_stack_holder	*init_stack_holder(t_stack_holder *sh, int *args)
 {
-	
-	t_stack			*head;
-	t_stack			*new_node;
-	int				i;
+	t_stack		*head;
+	t_stack		*new_node;
+	int			i;
 
 	i = 0;
 	head = NULL;
 	while (i < sh->total)
 	{
-		new_node =  st_new(args[i]);
+		new_node = st_new(args[i]);
 		if (!new_node)
 		{
 			st_clear(&head);
@@ -41,7 +41,7 @@ t_stack_holder *init_stack_holder(t_stack_holder *sh, int *args)
 	return (sh);
 }
 
-void clear(t_stack_holder *sh)
+void	clear(t_stack_holder *sh)
 {
 	if (!sh)
 		return ;
@@ -50,6 +50,7 @@ void clear(t_stack_holder *sh)
 	op_clear(&sh->operations);
 	free(sh);
 }
+
 int	sort_check(t_stack_holder *holder)
 {
 	t_stack	*first;

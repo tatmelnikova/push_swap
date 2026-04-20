@@ -18,6 +18,7 @@ void	ra(t_stack_holder *stack_holder)
 		op_add_back(&stack_holder->operations, op_new("ra"));
 	}
 }
+
 // Shift up all elements of stack b by one.
 // The first element becomes the last one.
 void	rb(t_stack_holder *stack_holder)

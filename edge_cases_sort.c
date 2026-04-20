@@ -31,7 +31,7 @@ t_stack_holder	*sort_three(t_stack_holder *holder)
 
 	first = holder->a;
 	second = first->next;
-	third  = second->next;
+	third = second->next;
 	max = find_max(first->content, second->content, third->content);
 	if (first->content == max)
 		ra(holder);

@@ -2,9 +2,11 @@
 
 int	get_max_bits(t_stack *a)
 {
-	int	max = INT_MIN;
-	int	max_bits = 0;
+	int	max;
+	int	max_bits;
 
+	max = INT_MIN;
+	max_bits = 0;
 	while (a)
 	{
 		if (a->range > max)
@@ -18,10 +20,10 @@ int	get_max_bits(t_stack *a)
 
 void	init_ranges(t_stack_holder *stack)
 {
-	t_stack *current;
+	t_stack	*current;
 
 	current = stack->a;
-	while(current)
+	while (current)
 	{
 		current->range = -1;
 		current = current->next;
@@ -30,14 +32,13 @@ void	init_ranges(t_stack_holder *stack)
 
 void	apply_ranges(t_stack_holder *stack)
 {
-	int	i;
-	int	min_val;
+	int		i;
+	int		min_val;
 	t_stack	*min_node;
-	t_stack *current;
+	t_stack	*current;
 
 	i = 0;
-	
-	while(i < stack->total)
+	while (i < stack->total)
 	{
 		min_val = INT_MAX;
 		current = stack->a;
@@ -83,4 +84,3 @@ void	radix_sort(t_stack_holder *sh)
 		i++;
 	}
 }
-
