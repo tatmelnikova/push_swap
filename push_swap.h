@@ -39,7 +39,6 @@ typedef struct stack_holder
 	int		chosen_strategy;
 	int		bench;
 	float	disorder;
-	int		debug;
 	t_stack	*a;
 	t_stack	*b;
 	t_operation *operations;

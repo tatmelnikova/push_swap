@@ -5,6 +5,9 @@ void	init_empty(t_stack_holder *sh)
 	sh->operations = NULL;
 	sh->a = NULL;
 	sh->b = NULL;
+	sh->disorder = -1;
+	sh->strategy = -1;
+	sh->chosen_strategy = -1;
 }
 
 static	void	init_params(t_stack_holder *sh)
