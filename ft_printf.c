@@ -1,21 +1,56 @@
 #include "ft_printf.h"
 
+int	ft_putstr(int fd, char *s)
+{
+	size_t	i;
+
+	i = 0;
+	if (s == NULL)
+	{
+		write(fd, "(null)", 6);
+		return (6);
+	}
+	while (s[i])
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
+	return (i);
+}
+
+int	ft_putchar(int fd, char c)
+{
+	write(fd, &c, 1);
+	return (1);
+}
+
+int	ft_putnbr(int fd, int n)
+{
+	long	num_l;
+	char	c;
+	int		len;
+
+	len = 0;
+	num_l = n;
+	if (num_l < 0)
+	{
+		num_l *= -1L;
+		write(1, "-", 1);
+		len++;
+	}
+	if (num_l > 9)
+		len += ft_putnbr(fd, (int)(num_l / 10));
+	c = (num_l % 10) + '0';
+	ft_putchar(fd, c);
+	return (++len);
+}
+
 int	conversion(int fd, char c, va_list *args)
 {
-	if (c == 'c')
-		return (ft_putchar(fd, va_arg(*args, int)));
-	else if (c == 's')
+	if (c == 's')
 		return (ft_putstr(fd, va_arg(*args, char *)));
-	else if (c == 'd' || c == 'i')
+	else if (c == 'd')
 		return (ft_putnbr(fd, va_arg(*args, int)));
-	else if (c == 'p')
-		return (ft_putptr(fd, va_arg(*args, uintptr_t)));
-	else if (c == 'x' || c == 'X')
-		return (ft_putnbr_hex(fd, va_arg(*args, unsigned int), c));
-	else if (c == 'u')
-		return (ft_putnbr_u(fd, va_arg(*args, unsigned int)));
-	else if (c == '%')
-		return (ft_putchar(fd, '%'));
 	return (-1);
 }
 

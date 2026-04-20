@@ -3,7 +3,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 SRC = ft_atoi.c ft_split.c \
-      ft_print_char.c ft_printf.c ft_putnbr.c print.c \
+      ft_printf.c print.c \
       op_p.c op_r.c op_rr.c op_s.c \
       push_swap.c \
       stack_functions.c stack_functions2.c stack_holder_functions.c \
