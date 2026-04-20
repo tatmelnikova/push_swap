@@ -37,5 +37,7 @@ int	validate_keywords(int non_num_count, int argc, char *argv[])
 		return (0);
 	if (argc == non_num_count)
 		return (0);
+	if (non_num_count < 0)
+		return (0);
 	return (1);
 }
