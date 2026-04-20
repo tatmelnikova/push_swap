@@ -8,7 +8,6 @@ void	ra(t_stack_holder *stack_holder)
 	int		a_count;
 
 	a_count = stack_holder->a_count;
-	assert(a_count);
 	if (a_count > 1)
 	{
 		head = stack_holder->a;
@@ -27,7 +26,6 @@ void	rb(t_stack_holder *stack_holder)
 	int		b_count;
 
 	b_count = stack_holder->b_count;
-	assert(b_count);
 	if (b_count > 1)
 	{
 		head = stack_holder->b;
@@ -45,8 +43,6 @@ void	rr(t_stack_holder *stack_holder)
 
 	a_count = stack_holder->a_count;
 	b_count = stack_holder->b_count;
-	assert(a_count);
-	assert(b_count);
 	if (a_count > 1 && b_count > 1)
 	{
 		ra(stack_holder);

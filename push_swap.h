@@ -4,7 +4,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
-# include <assert.h>
 # include "ft_printf.h"
 # include <limits.h>
 
@@ -40,7 +39,6 @@ typedef struct stack_holder
 	int		chosen_strategy;
 	int		bench;
 	float	disorder;
-	int		debug;
 	t_stack	*a;
 	t_stack	*b;
 	t_operation *operations;
@@ -106,7 +104,7 @@ int		get_bench(int argc, char *argv[]);
 int		get_debug(int argc, char *argv[]);
 int		*get_numbers(int argc, char *argv[], t_stack_holder *sh);
 int		*parse_numbers(char **s_numbers, int size);
-int		count_keywords(int argc, char *argv[]);
+int		count_non_numeric_args(int argc, char *argv[]);
 int		is_keyword(char *word);
 int		is_bench(char *word);
 int		is_strategy(char *word);

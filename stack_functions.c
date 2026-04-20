@@ -37,7 +37,6 @@ t_stack	*st_pop_head(t_stack **stack)
 {
 	t_stack	*pop_node;
 
-	assert(stack);
 	if (!stack || !*stack)
 		return (NULL);
 	pop_node = *stack;
@@ -50,7 +49,6 @@ t_stack	*st_pop_tail(t_stack **stack)
 	t_stack	*prev_node;
 	t_stack	*current_node;
 
-	assert(stack);
 	if (!stack || !*stack)
 		return (NULL);
 	current_node = *stack;
