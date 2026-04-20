@@ -11,7 +11,7 @@ SRC = ft_atoi.c ft_split.c \
 	  edge_cases_sort.c \
       operations.c args.c \
       parse_numbers.c  print_bench.c \
-      util.c radix_sort.c
+      util.c radix_sort.c keywords.c
 
 OBJ = $(SRC:.c=.o)
 

@@ -69,10 +69,6 @@ t_stack_holder	*sort_three(t_stack_holder *holder);
 t_stack_holder	*bubble_sort(t_stack_holder *holder);
 t_stack_holder	*chunk_sort(t_stack_holder	*holder);
 //==================== MERGE SORT =======================================
-t_stack_holder *merge_sort(t_stack_holder *sh);
-int	move_top_b_to_bottom_a(t_stack_holder *sh, int taken_from_b);
-int	move_top_a_to_bottom_a(t_stack_holder *sh, int taken_from_a);
-void	merge_sort_two(t_stack_holder *sh);
 void	radix_sort(t_stack_holder *sh);
 //=======================================================================
 //==================== OPERATIONS =======================================
@@ -102,7 +98,8 @@ int	sort_check(t_stack_holder *holder);
 //========================= INPUT =======================================
 int		get_strategy(int argc, char *argv[]);
 int		get_bench(int argc, char *argv[]);
-int		get_debug(int argc, char *argv[]);
+
+int		validate_numbers_string(char *num_str);
 int		*get_numbers(int argc, char *argv[], t_stack_holder *sh);
 int		*parse_numbers(char **s_numbers, int size);
 int		count_non_numeric_args(int argc, char *argv[]);
@@ -111,6 +108,8 @@ int		is_bench(char *word);
 int		is_strategy(char *word);
 //========================= STRINGS =====================================
 int	ft_strcmp(const char *s1, const char *s2);
+int	validate_keywords(int non_num_count, int argc, char *argv[]);
+int	check_uniq_keywords(int argc, char *argv[]);
 //========================= BENCH ++=====================================
 void print_bench(t_stack_holder *sh);
 void	print_disorder(float disorder);

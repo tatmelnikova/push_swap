@@ -57,3 +57,14 @@ int	get_bench(int argc, char *argv[])
 	}
 	return (0);
 }
+
+int	validate_numbers_string(char *num_str)
+{
+	while (*num_str)
+	{
+		if ((*num_str < '0' || *num_str > '9') && (*num_str != ' '))
+			return (0);
+		num_str++;
+	}
+	return (1);
+}

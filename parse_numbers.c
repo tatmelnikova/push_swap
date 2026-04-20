@@ -110,40 +110,6 @@ int	count_non_numeric_args(int argc, char *argv[])
 }
 
 /**
- * @brief Validates keyword usage in command-line arguments.
- *
- * Ensures that only valid and non-duplicate keywords are present
- * (e.g., benchmark or strategy flags).
- * @param argc Number of command-line arguments.
- * @param argv Argument vector.
- * @return 1 if valid, 0 otherwise.
- */
-int	keywords_check(int argc, char *argv[])
-{
-	int	args_pos;
-	int	bench;
-	int	strategy;
-
-	bench = 0;
-	strategy = 0;
-	args_pos = 1;
-	while (args_pos < argc - 1)
-	{
-		if (is_keyword(argv[args_pos]))
-		{
-			if (!bench && is_bench(argv[args_pos]))
-				bench = 1;
-			else if (!strategy && is_strategy(argv[args_pos]))
-				strategy = 1;
-			else
-				return (0);
-		}
-		args_pos++;
-	}
-	return (1);
-}
-
-/**
  * @brief Extracts and prepares numeric input from program arguments.
  *
  * Processes command-line arguments, handles optional keywords,
@@ -162,18 +128,17 @@ int	*get_numbers(int argc, char *argv[], t_stack_holder *sh)
 	char	**splited_num;
 
 	non_num_count = count_non_numeric_args(argc, argv);
-	if (non_num_count < 0 || non_num_count > 3 ||
-		!keywords_check(argc, argv))
+	if (!validate_keywords(non_num_count, argc, argv))
 		return (NULL);
 	if (argc - non_num_count > 1)
 	{
 		numbers = parse_numbers(&argv[1], argc - non_num_count);
 		size = argc - non_num_count;
 	}
-	else if (argc == non_num_count)
-		return (NULL);
 	else
 	{
+		if (!validate_numbers_string(argv[non_num_count]))
+			return (NULL);
 		size = count_words(argv[non_num_count], ' ');
 		splited_num = ft_split(argv[non_num_count], ' ');
 		numbers = parse_numbers(splited_num, size);
