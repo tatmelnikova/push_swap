@@ -50,3 +50,14 @@ void	print_args(int argc, char *argv[])
 		i++;
 	}
 }
+
+int	validate_numbers_string(char *num_str)
+{
+	while (*num_str)
+	{
+		if ((*num_str < '0' || *num_str > '9') && (*num_str != ' '))
+			return (0);
+		num_str++;
+	}
+	return (1);
+}

@@ -102,6 +102,7 @@ int	sort_check(t_stack_holder *holder);
 int		get_strategy(int argc, char *argv[]);
 int		get_bench(int argc, char *argv[]);
 void 	print_args(int argc, char *argv[]);
+int		validate_numbers_string(char *num_str);
 int		*get_numbers(int argc, char *argv[], t_stack_holder *sh);
 int		*parse_numbers(char **s_numbers, int size);
 int		count_non_numeric_args(int argc, char *argv[]);
@@ -110,6 +111,8 @@ int		is_bench(char *word);
 int		is_strategy(char *word);
 //========================= STRINGS =====================================
 int	ft_strcmp(const char *s1, const char *s2);
+int	validate_keywords(int non_num_count, int argc, char *argv[]);
+int	check_uniq_keywords(int argc, char *argv[]);
 //========================= BENCH ++=====================================
 void print_bench(t_stack_holder *sh);
 void	print_disorder(float disorder);
