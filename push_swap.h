@@ -28,7 +28,7 @@ typedef struct stack
 typedef struct operation
 {
 	char				*content;
-	struct t_operation	*next;
+	struct operation	*next;
 }						t_operation;
 
 typedef struct stack_holder
