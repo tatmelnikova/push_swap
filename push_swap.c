@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-int chose_algorithm(int disorder)
+int	chose_algorithm(int disorder)
 {
 	if (disorder < 20)
 		return (SIMPLE);
@@ -26,7 +26,7 @@ static int	check_args(int argc)
 	return (1);
 }
 
-void sort(t_stack_holder *holder)
+void	sort(t_stack_holder *holder)
 {
 	if (holder->a_count == 1 || sort_check(holder))
 		return ;
@@ -41,7 +41,7 @@ void sort(t_stack_holder *holder)
 	else if (holder->chosen_strategy == SIMPLE)
 		bubble_sort(holder);
 	else if (holder->chosen_strategy == MEDIUM)
-		bucket_sort(holder);
+		chunk_sort(holder);
 	else
 		radix_sort(holder);
 	print_all_ops(holder);
@@ -51,10 +51,10 @@ void sort(t_stack_holder *holder)
 		print_stack_holder(holder);
 }
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
-	t_stack_holder *stack;
-	int *numbers;
+	t_stack_holder	*stack;
+	int				*numbers;
 
 	stack = (t_stack_holder *)malloc(sizeof(t_stack_holder));
 	init_empty(stack);

@@ -4,27 +4,27 @@ static	int	ft_sqrt(int nb)
 {
 	int				middle;
 	int				left;
-	int				rigth;
+	int				right;
 	unsigned long	sqrt;
 	unsigned long	nb_long;
 
 	left = 0;
-	rigth = nb;
+	right = nb;
 	nb_long = nb;
 	if (nb < 0)
 		return (0);
-	while (left <= rigth)
+	while (left <= right)
 	{
-		middle = (rigth + left) / 2;
+		middle = (right + left) / 2;
 		sqrt = middle * middle;
 		if (sqrt == nb_long)
 			return (middle);
 		else if (sqrt > nb_long)
-			rigth = middle - 1;
+			right = middle - 1;
 		else
 			left = middle + 1;
 	}
-	return (rigth);
+	return (right);
 }
 
 static void	find_rang(t_stack_holder *holder)
@@ -32,7 +32,7 @@ static void	find_rang(t_stack_holder *holder)
 	int		range;
 	t_stack	*node;
 	t_stack	*compare_node;
-	
+
 	node = holder->a;
 	while (node)
 	{
@@ -75,35 +75,34 @@ static int	find_max_place(t_stack_holder *holder)
 
 static t_stack_holder	*return_in_stack_a(t_stack_holder *holder)
 {
-    int	max_index;
-    int	i;
+	int	max_index;
+	int	i;
 
-    while (holder->b_count)
-    {
-        max_index = find_max_place(holder);
-
-        if (max_index <= holder->b_count / 2)
-        {
-            i = max_index;
-            while (i-- > 0)
-                rb(holder);
-        }
-        else
-        {
-            i = holder->b_count - max_index;
-            while (i-- > 0)
-                rrb(holder);
-        }
-        pa(holder);
-    }
-    return (holder);
+	while (holder->b_count)
+	{
+		max_index = find_max_place(holder);
+		if (max_index <= holder->b_count / 2)
+		{
+			i = max_index;
+			while (i-- > 0)
+				rb(holder);
+		}
+		else
+		{
+			i = holder->b_count - max_index;
+			while (i-- > 0)
+				rrb(holder);
+		}
+		pa(holder);
+	}
+	return (holder);
 }
 
-t_stack_holder	*bucket_sort(t_stack_holder *holder)
+t_stack_holder	*chunk_sort(t_stack_holder *holder)
 {
-	int	j;
-	int	range;
-	int	sqrt_n;
+	int		j;
+	int		range;
+	int		sqrt_n;
 	t_stack	*node;
 
 	range = 0;
@@ -116,7 +115,7 @@ t_stack_holder	*bucket_sort(t_stack_holder *holder)
 		{
 			node = holder->a;
 			if (node->range >= range && node->range < range + sqrt_n)
-			{	
+			{
 				pb(holder);
 				j--;
 			}

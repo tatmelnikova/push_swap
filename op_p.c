@@ -3,7 +3,7 @@
 // pushes the head node from list b to the head of list a
 void	pa(t_stack_holder *stack)
 {
-	t_stack *head_b;
+	t_stack	*head_b;
 
 	assert(stack->b_count);
 	head_b = st_pop_head(&stack->b);
@@ -16,7 +16,7 @@ void	pa(t_stack_holder *stack)
 // pushes the head node from list a to the head of list b
 void	pb(t_stack_holder *stack)
 {
-	t_stack *head_a;
+	t_stack	*head_a;
 
 	assert(stack->a_count);
 	head_a = st_pop_head(&stack->a);

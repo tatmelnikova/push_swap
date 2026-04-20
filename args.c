@@ -41,7 +41,7 @@ int	get_bench(int argc, char *argv[])
 
 int	get_debug(int argc, char *argv[])
 {
-int	i;
+	int	i;
 
 	i = 0;
 	while (i < argc)
@@ -53,7 +53,7 @@ int	i;
 	return (0);
 }
 
-void print_args(int argc, char *argv[])
+void	print_args(int argc, char *argv[])
 {
 	int	i;
 

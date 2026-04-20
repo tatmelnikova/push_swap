@@ -42,10 +42,10 @@ int	*parse_numbers(char **s_numbers, int size)
 		if (!is_keyword(s_numbers[i]))
 		{
 			added = add_number(s_numbers[i], numbers, j++);
-			if (!added) 
+			if (!added)
 			{
 				free(numbers);
-				return(NULL);
+				return (NULL);
 			}
 		}
 		i++;
@@ -55,27 +55,28 @@ int	*parse_numbers(char **s_numbers, int size)
 
 int	count_keywords(int argc, char *argv[])
 {
-	int	args_pos = 1;
-	int	is_numbers;
+	int	args_pos;
+	int	had_numbers;
 	int	keywords_count;
 
+	args_pos = 1;
 	keywords_count = 1;
-	is_numbers = 0;
+	had_numbers = 0;
 	while (args_pos < argc - 1)
 	{
-		if (is_keyword(argv[args_pos]) && !is_numbers)
+		if (is_keyword(argv[args_pos]) && !had_numbers)
 		{
 			keywords_count++;
 		}
-		else if (is_keyword(argv[args_pos]) && is_numbers)
+		else if (is_keyword(argv[args_pos]) && had_numbers)
 		{
-			is_numbers = -1;
+			had_numbers = -1;
 			keywords_count++;
 		}
-		else if (!is_keyword(argv[args_pos]) && is_numbers == -1)
+		else if (!is_keyword(argv[args_pos]) && had_numbers == -1)
 			return (-1);
 		else
-			is_numbers = 1;
+			had_numbers = 1;
 		args_pos++;
 	}
 	return (keywords_count);
@@ -93,7 +94,7 @@ int	keywords_check(int argc, char *argv[])
 	while (args_pos < argc - 1)
 	{
 		if (is_keyword(argv[args_pos]))
-		{	
+		{
 			if (!bench && is_bench(argv[args_pos]))
 				bench = 1;
 			else if (!strategy && is_strategy(argv[args_pos]))
@@ -108,9 +109,10 @@ int	keywords_check(int argc, char *argv[])
 
 int	*get_numbers(int argc, char *argv[], t_stack_holder *sh)
 {
-	int *numbers;
-	int keywords_count;
-	int	size;
+	int		*numbers;
+	int		keywords_count;
+	int		size;
+	char	**splited_num;
 
 	keywords_count = count_keywords(argc, argv);
 	if (keywords_count < 0 || keywords_count > 3 || !keywords_check(argc, argv))
@@ -123,7 +125,7 @@ int	*get_numbers(int argc, char *argv[], t_stack_holder *sh)
 	else
 	{
 		size = count_words(argv[keywords_count], ' ');
-		char **splited_num = ft_split(argv[keywords_count], ' ');
+		splited_num = ft_split(argv[keywords_count], ' ');
 		numbers = parse_numbers(splited_num, size);
 		free_arr(size, splited_num);
 	}

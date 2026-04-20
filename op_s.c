@@ -44,7 +44,6 @@ void	ss(t_stack_holder *stack_holder)
 	b_count = stack_holder->b_count;
 	assert(a_count);
 	assert(b_count);
-
 	if (a_count > 1 && b_count > 1)
 	{
 		sa(stack_holder);
