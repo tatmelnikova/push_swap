@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skorenev <skorenev@student.codam.nl>       +#+  +:+       +#+        */
+/*   By: tkazmina <tkazmina@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 15:41:28 by skorenev          #+#    #+#             */
-/*   Updated: 2026/04/20 15:59:59 by skorenev         ###   ########.fr       */
+/*   Updated: 2026/04/20 19:45:09 by tkazmina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ long	get_sign(const char *str, int *position)
 	int	sign;
 
 	sign = 1;
-	if (str[*position] == '-' || str[*position]  == '+')
+	if (str[*position] == '-' || str[*position] == '+')
 	{
 		if (str[*position] == '-')
 			sign = -1;

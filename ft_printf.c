@@ -92,7 +92,7 @@ int	conversion(int fd, char c, va_list *args)
 	else if (c == 'd')
 		return (ft_putnbr(fd, va_arg(*args, int)));
 	else if (c == '%')
-        return (ft_putchar(fd, '%'));
+		return (ft_putchar(fd, '%'));
 	return (-1);
 }
 
