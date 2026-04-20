@@ -25,7 +25,7 @@ void	print_operations(t_stack_holder *sh)
 			ft_printf(STDERR_FILENO, "[bench] ");
 		}
 		ft_printf(STDERR_FILENO, "%s: %d  ",
-			(char *)ops[counter], 
+			(char *)ops[counter],
 			get_op_count(sh->operations, (char *)ops[counter]));
 		counter++;
 	}
