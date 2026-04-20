@@ -1,12 +1,17 @@
 #include "push_swap.h"
 
+void	init_empty(t_stack_holder *sh)
+{
+	sh->operations = NULL;
+	sh->a = NULL;
+	sh->b = NULL;
+}
 static void init_params(t_stack_holder *sh)
 {
 	sh->b = NULL;
 	sh->b_count = 0;
 	sh->operations = NULL;
 	sh->disorder = compute_disorder(sh->a);
-	//print_disorder(sh->disorder);
 }
 
 t_stack_holder *init_stack_holder(t_stack_holder *sh, int *args)

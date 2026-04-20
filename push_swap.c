@@ -19,6 +19,13 @@ static int	clear_and_exit(t_stack_holder *sh, int throw_error)
 	return (0);
 }
 
+static int	check_args(int argc)
+{
+	if (argc <= 1)
+		return (0);
+	return (1);
+}
+
 void sort(t_stack_holder *holder)
 {
 	if (holder->a_count == 1 || sort_check(holder))
@@ -36,7 +43,7 @@ void sort(t_stack_holder *holder)
 	else if (holder->chosen_strategy == MEDIUM)
 		bucket_sort(holder);
 	else
-		merge_sort(holder);
+		radix_sort(holder);
 	print_all_ops(holder);
 	if (holder->bench)
 		print_bench(holder);
@@ -50,24 +57,21 @@ int main(int argc, char *argv[])
 	int *numbers;
 
 	stack = (t_stack_holder *)malloc(sizeof(t_stack_holder));
+	init_empty(stack);
 	if (!stack)
 		return (clear_and_exit(stack, 1));
-	if (argc > 1)
+	if (!check_args(argc))
+		return (clear_and_exit(stack, 0));
+	numbers = get_numbers(argc, argv, stack);
+	if (!numbers)
 	{
-		numbers = get_numbers(argc, argv, stack);
-		if (!numbers)
-		{
-			free(stack);
-			return (clear_and_exit(NULL, 1));
-		}
-		init_stack_holder(stack, numbers);
-		free(numbers);
-		stack->strategy = get_strategy(argc, argv);
-		stack->bench = get_bench(argc, argv);
-		stack->debug = get_debug(argc, argv);
-		sort(stack);
-	}
-	else
 		return (clear_and_exit(stack, 1));
+	}
+	init_stack_holder(stack, numbers);
+	free(numbers);
+	stack->strategy = get_strategy(argc, argv);
+	stack->bench = get_bench(argc, argv);
+	stack->debug = get_debug(argc, argv);
+	sort(stack);
 	return (clear_and_exit(stack, 0));
 }
