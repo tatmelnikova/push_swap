@@ -106,6 +106,8 @@ int		*get_numbers(int argc, char *argv[], t_stack_holder *sh);
 int		*parse_numbers(char **s_numbers, int size);
 int		count_keywords(int argc, char *argv[]);
 int		is_keyword(char *word);
+int		is_bench(char *word);
+int		is_strategy(char *word);
 //========================= STRINGS =====================================
 int	ft_strcmp(const char *s1, const char *s2);
 //========================= BENCH ++=====================================

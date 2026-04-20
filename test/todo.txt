@@ -12,5 +12,6 @@
 - different sorting method for 4 (-5 ?) elements
 - show nothing when no number arguments
 - check memory leaks when input bugs are fixed
-- add check if we have more flags that can be (e.: "--simple --complex" etc)
+✓ add check if we have more flags that can be (e.: "--simple --complex" etc)
 - exit program when we have error
+- change ft_printf for library

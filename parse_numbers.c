@@ -81,6 +81,31 @@ int	count_keywords(int argc, char *argv[])
 	return (keywords_count);
 }
 
+int	keywords_check(int argc, char *argv[])
+{
+	int	args_pos;
+	int	bench;
+	int	strategy;
+
+	bench = 0;
+	strategy = 0;
+	args_pos = 1;
+	while (args_pos < argc - 1)
+	{
+		if (is_keyword(argv[args_pos]))
+		{	
+			if (!bench && is_bench(argv[args_pos]))
+				bench = 1;
+			else if (!strategy && is_strategy(argv[args_pos]))
+				strategy = 1;
+			else
+				return (0);
+		}
+		args_pos++;
+	}
+	return (1);
+}
+
 int	*get_numbers(int argc, char *argv[], t_stack_holder *sh)
 {
 	int *numbers;
@@ -88,7 +113,7 @@ int	*get_numbers(int argc, char *argv[], t_stack_holder *sh)
 	int	size;
 
 	keywords_count = count_keywords(argc, argv);
-	if (keywords_count < 0)
+	if (keywords_count < 0 || keywords_count > 3 || !keywords_check(argc, argv))
 		return (NULL);
 	if (argc - keywords_count > 1)
 	{
