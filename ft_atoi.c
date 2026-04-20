@@ -6,7 +6,7 @@
 /*   By: skorenev <skorenev@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 15:41:28 by skorenev          #+#    #+#             */
-/*   Updated: 2026/04/20 14:51:32 by skorenev         ###   ########.fr       */
+/*   Updated: 2026/04/20 15:32:39 by skorenev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,20 @@ int	ft_isdigit(char c)
 	if (c >= '0' && c <= '9')
 		return (1);
 	return (0);
+}
+
+long	get_sign(const char *str, int *position)
+{
+	int	sign;
+
+	sign = 1;
+	if (str[*position] == '-' || str[*position]  == '+')
+	{
+		if (str[*position] == '-')
+			sign = -1;
+		(*position)++;
+	}
+	return (sign);
 }
 
 /**
@@ -35,16 +49,10 @@ int	*ft_atoi(const char *nptr)
 	int		*ret;
 
 	i = 0;
-	sign = 1;
 	result = 0;
 	while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13))
 		i++;
-	if (nptr[i] == '-' || nptr[i] == '+')
-	{
-		if (nptr[i] == '-')
-			sign *= -1;
-		i++;
-	}
+	sign = get_sign(nptr, &i);
 	while (ft_isdigit(nptr[i]))
 	{
 		result = (result * 10) + nptr[i] - '0';
