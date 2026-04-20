@@ -89,6 +89,36 @@ fi
 
 echo "===== DONE ====="
 
+# 6 Checker test
+for i in 1 2 3
+do
+    ARG=$(shuf -i 1-5 -n 5 | tr '\n' ' ')
+
+    INSTRUCTIONS=$($EXEC $ARG)
+    RESULT=$(echo "$INSTRUCTIONS" | $CHECKER $ARG)
+    COUNT=$(echo "$INSTRUCTIONS" | wc -l | tr -d ' ')
+
+    echo "Run #$i n=5"
+    echo "Checker result: $RESULT"
+    echo "Instruction count: $COUNT"
+
+    if [ "$RESULT" = "OK" ]; then
+        echo "✅ Checker OK"
+    else
+        echo "❌ Checker failed"
+    fi
+
+    if [ "$COUNT" -le 12 ]; then
+        echo "🔥 Excellent (<12)"
+    elif [ "$COUNT" -le 15 ]; then
+        echo "✅ Acceptable (<15)"
+    else
+        echo "⚠️ Too many instructions"
+    fi
+
+    echo "----------------------"
+done
+
 
 # 7 Checker test
 for i in 1 2 3
@@ -99,7 +129,7 @@ do
     RESULT=$(echo "$INSTRUCTIONS" | $CHECKER $ARG)
     COUNT=$(echo "$INSTRUCTIONS" | wc -l | tr -d ' ')
 
-    echo "Run #$i"
+    echo "Run #$i n=100"
     echo "Checker result: $RESULT"
     echo "Instruction count: $COUNT"
 
@@ -132,7 +162,7 @@ do
     RESULT=$(echo "$INSTRUCTIONS" | $CHECKER $ARG)
     COUNT=$(echo "$INSTRUCTIONS" | wc -l | tr -d ' ')
 
-    echo "Run #$i"
+    echo "Run #$i n=500"
     echo "Checker result: $RESULT"
     echo "Instruction count: $COUNT"
 
