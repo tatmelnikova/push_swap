@@ -71,7 +71,6 @@ int	main(int argc, char *argv[])
 	free(numbers);
 	stack->strategy = get_strategy(argc, argv);
 	stack->bench = get_bench(argc, argv);
-	stack->debug = get_debug(argc, argv);
 	sort(stack);
 	return (clear_and_exit(stack, 0));
 }
