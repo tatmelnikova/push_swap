@@ -6,12 +6,18 @@
 /*   By: skorenev <skorenev@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 15:41:28 by skorenev          #+#    #+#             */
-/*   Updated: 2026/04/20 15:32:39 by skorenev         ###   ########.fr       */
+/*   Updated: 2026/04/20 15:59:59 by skorenev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/**
+ * @brief Checks whether a character is a decimal digit.
+ * 
+ * @param c The character to check.
+ * @return int 1 if the character is a digit, 0 otherwise.
+ */
 int	ft_isdigit(char c)
 {
 	if (c >= '0' && c <= '9')
@@ -19,6 +25,15 @@ int	ft_isdigit(char c)
 	return (0);
 }
 
+/**
+ * @brief Extracts the sign from a numeric string.
+ *
+ * This function checks the character at the current position for a sign
+ * indicator ('+' or '-') and updates the position accordingly.
+ * @param The input string being parsed.
+ * @param position Pointer to the current index in the string.
+ * @return 1 if the number is positive, -1 if negative.
+ */
 long	get_sign(const char *str, int *position)
 {
 	int	sign;
@@ -68,4 +83,3 @@ int	*ft_atoi(const char *nptr)
 	*ret = (int)(sign * result);
 	return (ret);
 }
-
