@@ -1,5 +1,12 @@
 #include "push_swap.h"
 
+/**
+ * @brief Allocates and initializes a new t_operation node with the 
+ * given content.
+ * 
+ * @param content String representing the operation name.
+ * @return Pointer to the newly created node, or NULL on allocation failure.
+ */
 t_operation	*op_new(char *content)
 {
 	t_operation	*newnode;
@@ -12,8 +19,11 @@ t_operation	*op_new(char *content)
 	return (newnode);
 }
 
-// Deletes and frees the given node and all its
-// successors. Sets the pointer to the list to NULL.
+/**
+ * @brief Frees all nodes in the list and sets the pointer to NULL.
+ * 
+ * @param lst Double pointer to the head of the operation list.
+ */
 void	op_clear(t_operation **lst)
 {
 	t_operation	*next_node;
@@ -30,6 +40,12 @@ void	op_clear(t_operation **lst)
 	*lst = NULL;
 }
 
+/**
+ * @brief Returns the last node of the operation list.
+ *
+ * @param lst Pointer to the first node of the list.
+ * @return Pointer to the last node, or NULL if the list is empty.
+ */
 t_operation	*op_last(t_operation *lst)
 {
 	if (!lst)
@@ -39,11 +55,13 @@ t_operation	*op_last(t_operation *lst)
 	return (lst);
 }
 
-// Adds the node ’new’ at the end of the list.
-// lst: The address of a pointer to the first node of
-// a list.
-// new: The address of a pointer to the node to be
-// added.
+/**
+ * @brief Appends the given node to the end of the list. If the list is empty,
+ * the new node becomes the head.
+ * 
+ * @param lst Pointer to the head pointer of the list.
+ * @param new Node to be added at the end.
+ */
 void	op_add_back(t_operation **lst, t_operation *new)
 {
 	t_operation	*last;
@@ -59,6 +77,15 @@ void	op_add_back(t_operation **lst, t_operation *new)
 		*lst = new;
 }
 
+/**
+ * @brief Counts operations in a list, optionally filtering by name.
+ *
+ * Iterates through the list and counts nodes. If a specific operation
+ * string is provided, only matching operations are counted.
+ * @param lst Pointer to the operation list.
+ * @param op  Operation name to filter by, or NULL to count all.
+ * @return Number of matching operations.
+ */
 int	get_op_count(t_operation *lst, char *op)
 {
 	t_operation	*current;

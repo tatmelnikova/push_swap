@@ -1,6 +1,13 @@
 #include "push_swap.h"
 
-// pushes the head node from list b to the head of list a
+/**
+ * @brief Pushes the top element from stack B to stack A.
+ *
+ * Removes the head node from stack B and places it at the front of stack A.
+ * Updates both stack sizes accordingly and records the operation ("pa").
+ * @param stack Pointer to the stack holder containing stacks A and B.
+ * @note If stack B is empty, behavior depends on st_pop_head() implementation.
+ */
 void	pa(t_stack_holder *stack)
 {
 	t_stack	*head_b;
@@ -12,7 +19,14 @@ void	pa(t_stack_holder *stack)
 	op_add_back(&stack->operations, op_new("pa"));
 }
 
-// pushes the head node from list a to the head of list b
+/**
+ * @brief Pushes the top element from stack A to stack B.
+ *
+ * Removes the head node from stack A and places it at the front of stack B.
+ * Updates both stack sizes accordingly and records the operation ("pb").
+ * @param stack Pointer to the stack holder containing stacks A and B.
+ * @note If stack A is empty, behavior depends on st_pop_head() implementation.
+ */
 void	pb(t_stack_holder *stack)
 {
 	t_stack	*head_a;

@@ -1,5 +1,12 @@
 #include "push_swap.h"
 
+/**
+ * @brief Counts the number of words in a string separated by a delimiter.
+ *
+ * @param s Input null-terminated string.
+ * @param c Delimiter character.
+ * @return Number of words found in the string.
+ */
 int	count_words(char const *s, char c)
 {
 	size_t	i;
@@ -25,6 +32,14 @@ int	count_words(char const *s, char c)
 	return (count);
 }
 
+/**
+ * @brief Measures the number of characters in a substring starting from `s`
+ * until the delimiter character `c` or the end of the string.
+ * 
+ * @param s Input string starting at a word.
+ * @param c Delimiter character.
+ * @return Length of the word.
+ */
 static int	find_word_len(char const *s, char c)
 {
 	int	len;
@@ -35,6 +50,16 @@ static int	find_word_len(char const *s, char c)
 	return (len);
 }
 
+/**
+ * @brief Copies a word from the source string into a newly allocated buffer.
+ *
+ * @param s     Source string.
+ * @param c     Delimiter character.
+ * @param word  Destination buffer where the word is stored.
+ * @param count Pointer to index tracker in the original string.
+ *
+ * @return Pointer to the filled word buffer.
+ */
 static char	*fill_word(char const *s, char c, char *word, int *count)
 {
 	int	i;
@@ -50,6 +75,15 @@ static char	*fill_word(char const *s, char c, char *word, int *count)
 	return (word);
 }
 
+/**
+ * @brief Frees a partially allocated array of strings.
+ *
+ * Frees all allocated strings in the array up to index `j`, then frees
+ * the array itself.
+ * @param j             Last valid index in the array.
+ * @param splited_words Null-terminated array of strings to free.
+ * @return Always returns NULL for convenience in error handling.
+ */
 char	**free_arr(int j, char **splited_words)
 {
 	while (--j >= 0)

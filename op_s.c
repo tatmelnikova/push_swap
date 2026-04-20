@@ -1,5 +1,12 @@
 #include "push_swap.h"
 
+/**
+ * @brief Swaps the first two elements of a stack.
+ *
+ * Exchanges the content values of the first two nodes in the stack.
+ * This does not change node links, only their stored values.
+ * @param stack Pointer to the stack whose top two elements are swapped.
+ */
 static void	swap(t_stack *stack)
 {
 	int	tmp;
@@ -9,6 +16,13 @@ static void	swap(t_stack *stack)
 	stack->next->content = tmp;
 }
 
+/**
+ * @brief Swaps the first two elements of stack A.
+ *
+ * Performs a swap of the top two elements of stack A.
+ * The operation is recorded as "sa".
+ * @param stack_holder Pointer to the stack holder containing stack A.
+ */
 void	sa(t_stack_holder *stack_holder)
 {
 	int	a_count;
@@ -21,6 +35,13 @@ void	sa(t_stack_holder *stack_holder)
 	}
 }
 
+/**
+ * @brief Swaps the first two elements of stack B.
+ *
+ * Performs a swap of the top two elements of stack B.
+ * The operation is recorded as "sb".
+ * @param stack_holder Pointer to the stack holder containing stack B.
+ */
 void	sb(t_stack_holder *stack_holder)
 {
 	if (stack_holder->b_count > 1)
@@ -30,6 +51,15 @@ void	sb(t_stack_holder *stack_holder)
 	}
 }
 
+/**
+ * @brief Swaps the first two elements of both stacks A and B.
+ *
+ * Applies the swap operation to both stacks:
+ * - stack A via sa()
+ * - stack B via sb()
+ * The operation is conceptually recorded as "ss".
+ * @param stack_holder Pointer to the stack holder containing both stacks.
+ */
 void	ss(t_stack_holder *stack_holder)
 {
 	int	a_count;
