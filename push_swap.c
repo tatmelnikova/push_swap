@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-int	chose_algorithm(int disorder)
+int	choose_algorithm(int disorder)
 {
 	if (disorder < 20)
 		return (SIMPLE);
@@ -31,7 +31,7 @@ void	sort(t_stack_holder *holder)
 	if (holder->a_count == 1 || sort_check(holder))
 		return ;
 	if (holder->strategy == ADAPTIVE)
-		holder->chosen_strategy = chose_algorithm(holder->disorder);
+		holder->chosen_strategy = choose_algorithm(holder->disorder);
 	else
 		holder->chosen_strategy = holder->strategy;
 	if (holder->a_count == 2)
