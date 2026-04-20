@@ -53,7 +53,7 @@ int	*parse_numbers(char **s_numbers, int size)
 	return (numbers);
 }
 
-int	count_keywords(int argc, char *argv[])
+int	count_non_numeric_args(int argc, char *argv[])
 {
 	int	args_pos;
 	int	had_numbers;
@@ -62,7 +62,7 @@ int	count_keywords(int argc, char *argv[])
 	args_pos = 1;
 	keywords_count = 1;
 	had_numbers = 0;
-	while (args_pos < argc - 1)
+	while (args_pos < argc)
 	{
 		if (is_keyword(argv[args_pos]) && !had_numbers)
 		{
@@ -110,22 +110,25 @@ int	keywords_check(int argc, char *argv[])
 int	*get_numbers(int argc, char *argv[], t_stack_holder *sh)
 {
 	int		*numbers;
-	int		keywords_count;
+	int		non_num_count;
 	int		size;
 	char	**splited_num;
 
-	keywords_count = count_keywords(argc, argv);
-	if (keywords_count < 0 || keywords_count > 3 || !keywords_check(argc, argv))
+	non_num_count = count_non_numeric_args(argc, argv);
+	if (non_num_count < 0 || non_num_count > 3 ||
+		!keywords_check(argc, argv))
 		return (NULL);
-	if (argc - keywords_count > 1)
+	if (argc - non_num_count > 1)
 	{
-		numbers = parse_numbers(&argv[1], argc - keywords_count);
-		size = argc - keywords_count;
+		numbers = parse_numbers(&argv[1], argc - non_num_count);
+		size = argc - non_num_count;
 	}
+	else if (argc == non_num_count)
+		return (NULL);
 	else
 	{
-		size = count_words(argv[keywords_count], ' ');
-		splited_num = ft_split(argv[keywords_count], ' ');
+		size = count_words(argv[non_num_count], ' ');
+		splited_num = ft_split(argv[non_num_count], ' ');
 		numbers = parse_numbers(splited_num, size);
 		free_arr(size, splited_num);
 	}

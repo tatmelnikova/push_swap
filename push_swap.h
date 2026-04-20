@@ -106,7 +106,7 @@ int		get_debug(int argc, char *argv[]);
 void 	print_args(int argc, char *argv[]);
 int		*get_numbers(int argc, char *argv[], t_stack_holder *sh);
 int		*parse_numbers(char **s_numbers, int size);
-int		count_keywords(int argc, char *argv[]);
+int		count_non_numeric_args(int argc, char *argv[]);
 int		is_keyword(char *word);
 int		is_bench(char *word);
 int		is_strategy(char *word);

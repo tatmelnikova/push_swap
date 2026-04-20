@@ -23,9 +23,6 @@ void	sa(t_stack_holder *stack_holder)
 
 void	sb(t_stack_holder *stack_holder)
 {
-	int	b_count;
-
-	b_count = stack_holder->b_count;
 	if (stack_holder->b_count > 1)
 	{
 		swap(stack_holder->b);
