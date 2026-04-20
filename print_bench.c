@@ -9,10 +9,10 @@
  */
 void	print_operations(t_stack_holder *sh)
 {
-	char	*ops[] = {"sa", "sb", "ss", "pa", "pb", "ra", "rb", "rr",
-		"rra", "rrb", "rrr"};
-	int		op_count;
-	int		counter;
+	const char	*ops[] = {"sa", "sb", "ss", "pa", "pb", "ra",
+		"rb", "rr", "rra", "rrb", "rrr"};
+	int			op_count;
+	int			counter;
 
 	op_count = 11;
 	counter = 0;
