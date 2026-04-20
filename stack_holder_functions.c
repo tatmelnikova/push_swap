@@ -1,5 +1,11 @@
 #include "push_swap.h"
 
+/**
+ * @brief Initializes an empty stack holder structure.
+ *
+ * Sets all pointers to NULL and resets control fields to default values.
+ * @param sh Pointer to the stack holder to initialize.
+ */
 void	init_empty(t_stack_holder *sh)
 {
 	sh->operations = NULL;
@@ -10,6 +16,13 @@ void	init_empty(t_stack_holder *sh)
 	sh->chosen_strategy = -1;
 }
 
+/**
+ * @brief Initializes internal parameters of the stack holder.
+ *
+ * Prepares stack B, resets counters, clears operations list pointer,
+ * and computes the initial disorder of stack A.
+ * @param sh Pointer to the stack holder.
+ */
 static	void	init_params(t_stack_holder *sh)
 {
 	sh->b = NULL;
@@ -18,6 +31,15 @@ static	void	init_params(t_stack_holder *sh)
 	sh->disorder = compute_disorder(sh->a);
 }
 
+/**
+ * @brief Builds and initializes stack A from input arguments.
+ *
+ * Creates a linked list from the integer array, assigns it to stack A,
+ * sets stack size, and initializes internal parameters.
+ * @param sh    Pointer to stack holder.
+ * @param args  Array of integers used to build the stack.
+ * @return Pointer to initialized stack holder, or NULL on failure.
+ */
 t_stack_holder	*init_stack_holder(t_stack_holder *sh, int *args)
 {
 	t_stack		*head;
@@ -43,6 +65,12 @@ t_stack_holder	*init_stack_holder(t_stack_holder *sh, int *args)
 	return (sh);
 }
 
+/**
+ * @brief Frees all resources associated with the stack holder.
+ *
+ * Clears both stacks, operation history, and frees the holder itself.
+ * @param sh Pointer to stack holder.
+ */
 void	clear(t_stack_holder *sh)
 {
 	if (!sh)
@@ -53,6 +81,14 @@ void	clear(t_stack_holder *sh)
 	free(sh);
 }
 
+/**
+ * @brief Checks if stack A is sorted in ascending order.
+ *
+ * Iterates through the stack and verifies that each element is
+ * less than or equal to the next.
+ * @param holder Pointer to stack holder containing stack A.
+ * @return 1 if sorted, 0 otherwise.
+ */
 int	sort_check(t_stack_holder *holder)
 {
 	t_stack	*first;

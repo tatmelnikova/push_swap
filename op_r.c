@@ -1,7 +1,13 @@
 #include "push_swap.h"
 
-// Shift up all elements of stack a by one.
-// The first element becomes the last one.
+/**
+ * @brief Rotates stack A upwards by one position.
+ *
+ * The first element of stack A becomes the last element.
+ * All other elements are shifted up by one position.
+ * The operation is recorded as "ra".
+ * @param stack_holder Pointer to the stack holder containing stack A.
+ */
 void	ra(t_stack_holder *stack_holder)
 {
 	t_stack	*head;
@@ -18,8 +24,14 @@ void	ra(t_stack_holder *stack_holder)
 	}
 }
 
-// Shift up all elements of stack b by one.
-// The first element becomes the last one.
+/**
+ * @brief Rotates stack B upwards by one position.
+ *
+ * The first element of stack B becomes the last element.
+ * All other elements are shifted up by one position.
+ * The operation is recorded as "rb".
+ * @param stack_holder Pointer to the stack holder containing stack B.
+ */
 void	rb(t_stack_holder *stack_holder)
 {
 	t_stack	*head;
@@ -36,6 +48,14 @@ void	rb(t_stack_holder *stack_holder)
 	}
 }
 
+/**
+ * @brief Rotates both stacks A and B upwards by one position.
+ *
+ * Executes a simultaneous rotation of stack A and stack B.
+ * Equivalent to calling ra() and rb() in sequence.
+ * The operation is recorded as "rr".
+ * @param stack_holder Pointer to the stack holder containing both stacks.
+ */
 void	rr(t_stack_holder *stack_holder)
 {
 	int	a_count;

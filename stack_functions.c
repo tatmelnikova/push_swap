@@ -1,10 +1,12 @@
 #include "push_swap.h"
 
-// Adds the node ’new’ at the end of the list.
-// lst: The address of a pointer to the first node of
-// a list.
-// new: The address of a pointer to the node to be
-// added.
+/**
+ * @brief Adds the node `new` to the end of the linked list. 
+ * If the list is empty, the new node becomes the head.
+ * 
+ * @param lst Pointer to the head pointer of the stack.
+ * @param new Node to be appended.
+ */
 void	st_add_back(t_stack **lst, t_stack *new)
 {
 	t_stack	*last;
@@ -20,11 +22,13 @@ void	st_add_back(t_stack **lst, t_stack *new)
 		*lst = new;
 }
 
-// Adds the node ’new’ at the beginning of the list.
-// lst: The address of a pointer to the first node of
-// a list.
-// new: The address of a pointer to the node to be
-// added.
+/**
+ * @brief Places the node `new` at the front of the list, making it 
+ * the new head.
+ * 
+ * @param lst Pointer to the head pointer of the stack.
+ * @param new Node to be inserted.
+ */
 void	st_add_front(t_stack **lst, t_stack *new)
 {
 	if (!lst || !new)
@@ -33,6 +37,14 @@ void	st_add_front(t_stack **lst, t_stack *new)
 	*lst = new;
 }
 
+/**
+ * @brief Removes and returns the head node of a stack.
+ *
+ * Detaches the first node from the stack and returns it.
+ * The stack head is updated accordingly.
+ * @param stack Pointer to the head pointer of the stack.
+ * @return Pointer to the removed head node, or NULL if empty.
+ */
 t_stack	*st_pop_head(t_stack **stack)
 {
 	t_stack	*pop_node;
@@ -44,6 +56,12 @@ t_stack	*st_pop_head(t_stack **stack)
 	return (pop_node);
 }
 
+/**
+ * @brief Removes and returns the last node of a stack.
+ *
+ * @param stack Pointer to the head pointer of the stack.
+ * @return Pointer to the removed last node, or NULL if empty.
+ */
 t_stack	*st_pop_tail(t_stack **stack)
 {
 	t_stack	*prev_node;
@@ -62,6 +80,13 @@ t_stack	*st_pop_tail(t_stack **stack)
 	return (current_node);
 }
 
+/**
+ * @brief Creates a new stack node.
+ *
+ * Allocates and initializes a new node with the given content.
+ * @param content Integer value to store in the node.
+ * @return Pointer to the newly created node, or NULL on failure.
+ */
 t_stack	*st_new(int content)
 {
 	t_stack	*newnode;

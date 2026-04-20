@@ -1,5 +1,15 @@
 #include "push_swap.h"
 
+/**
+ * @brief Selects a sorting algorithm based on input disorder.
+ *
+ * Chooses an algorithm depending on the disorder percentage:
+ * - < 20%  → SIMPLE
+ * - >= 50% → COMPLEX
+ * - otherwise → MEDIUM
+ * @param disorder Percentage of disorder in the input dataset.
+ * @return Selected algorithm identifier.
+ */
 int	choose_algorithm(int disorder)
 {
 	if (disorder < 20)
@@ -9,8 +19,15 @@ int	choose_algorithm(int disorder)
 	return (MEDIUM);
 }
 
-// clear stack holder and exit program.
-// @throw_error if != 0, print error message before exit
+/**
+ * @brief Frees all allocated resources and exits the program.
+ *
+ * Clears the stack holder and optionally prints an error message
+ * before exiting.
+ * @param sh          Pointer to stack holder to be cleared.
+ * @param throw_error If non-zero, prints an error message before exit.
+ * @return Always returns 0.
+ */
 static int	clear_and_exit(t_stack_holder *sh, int throw_error)
 {
 	if (throw_error)
@@ -19,6 +36,13 @@ static int	clear_and_exit(t_stack_holder *sh, int throw_error)
 	return (0);
 }
 
+/**
+ * @brief Validates program arguments.
+ *
+ * Ensures that at least one argument is provided to the program.
+ * @param argc Number of command-line arguments.
+ * @return 1 if valid, 0 otherwise.
+ */
 static int	check_args(int argc)
 {
 	if (argc <= 1)
@@ -26,6 +50,14 @@ static int	check_args(int argc)
 	return (1);
 }
 
+/**
+ * @brief Executes sorting logic on the stack holder.
+ *
+ * Selects the appropriate sorting strategy based on input size,
+ * disorder level, and configuration. Executes the sorting algorithm
+ * and optionally prints benchmark information.
+ * @param holder Pointer to stack holder containing all sorting data.
+ */
 void	sort(t_stack_holder *holder)
 {
 	if (holder->a_count == 1 || sort_check(holder))
@@ -50,6 +82,16 @@ void	sort(t_stack_holder *holder)
 	//print_stack_holder(holder);
 }
 
+/**
+ * @brief Program entry point for push_swap.
+ *
+ * Parses input arguments, initializes the stack holder, selects the
+ * strategy and benchmark mode, executes sorting, and performs cleanup
+ * before exit.
+ * @param argc Number of command-line arguments.
+ * @param argv Argument vector.
+ * @return Exit status (0 on success, non-zero on error).
+ */
 int	main(int argc, char *argv[])
 {
 	t_stack_holder	*stack;

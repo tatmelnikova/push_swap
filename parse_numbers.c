@@ -1,7 +1,16 @@
 #include "push_swap.h"
 
-// converts char* s_number and writes the value into number[i]
-// returns 0 on fail
+/**
+ * @brief Converts a string number and stores it in the array while checking
+ *  duplicates.
+ *
+ * Converts `s_number` to an integer and stores it in `numbers[i]`.
+ * Ensures the value is not duplicated in the already-filled part of the array.
+ * @param s_number String representing the number to convert.
+ * @param numbers  Array where converted integers are stored.
+ * @param i        Index where the number will be inserted.
+ * @return 1 on success, 0 on failure (invalid number or duplicate).
+ */
 static int	add_number(char *s_number, int *numbers, int i)
 {
 	int	j;
@@ -25,6 +34,15 @@ static int	add_number(char *s_number, int *numbers, int i)
 	return (1);
 }
 
+/**
+ * @brief Parses an array of string numbers into an integer array.
+ *
+ * Converts valid numeric strings into integers, skips keywords, and ensures
+ * no duplicates exist in the resulting array.
+ * @param s_numbers Array of string arguments.
+ * @param size      Number of expected numeric elements.
+ * @return Pointer to newly allocated integer array, or NULL on failure.
+ */
 int	*parse_numbers(char **s_numbers, int size)
 {
 	int	*numbers;
@@ -53,6 +71,15 @@ int	*parse_numbers(char **s_numbers, int size)
 	return (numbers);
 }
 
+/**
+ * @brief Counts and validates non-numeric (keyword) arguments.
+ *
+ * Iterates through argv and counts keyword arguments while ensuring
+ * correct placement relative to numeric arguments.
+ * @param argc Number of command-line arguments.
+ * @param argv Argument vector.
+ * @return Number of keyword arguments, or -1 if invalid ordering is detected.
+ */
 int	count_non_numeric_args(int argc, char *argv[])
 {
 	int	args_pos;
@@ -82,6 +109,17 @@ int	count_non_numeric_args(int argc, char *argv[])
 	return (keywords_count);
 }
 
+/**
+ * @brief Extracts and prepares numeric input from program arguments.
+ *
+ * Processes command-line arguments, handles optional keywords,
+ * splits strings if necessary, and converts valid inputs into an
+ * integer array stored in the stack holder.
+ * @param argc Number of command-line arguments.
+ * @param argv Argument vector.
+ * @param sh   Pointer to stack holder storing metadata.
+ * @return Pointer to allocated integer array, or NULL on failure.
+ */
 int	*get_numbers(int argc, char *argv[], t_stack_holder *sh)
 {
 	int		*numbers;

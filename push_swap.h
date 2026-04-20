@@ -68,10 +68,6 @@ t_stack_holder	*sort_three(t_stack_holder *holder);
 t_stack_holder	*bubble_sort(t_stack_holder *holder);
 t_stack_holder	*chunk_sort(t_stack_holder	*holder);
 //==================== MERGE SORT =======================================
-t_stack_holder *merge_sort(t_stack_holder *sh);
-int	move_top_b_to_bottom_a(t_stack_holder *sh, int taken_from_b);
-int	move_top_a_to_bottom_a(t_stack_holder *sh, int taken_from_a);
-void	merge_sort_two(t_stack_holder *sh);
 void	radix_sort(t_stack_holder *sh);
 //=======================================================================
 //==================== OPERATIONS =======================================
@@ -101,7 +97,7 @@ int	sort_check(t_stack_holder *holder);
 //========================= INPUT =======================================
 int		get_strategy(int argc, char *argv[]);
 int		get_bench(int argc, char *argv[]);
-void 	print_args(int argc, char *argv[]);
+
 int		validate_numbers_string(char *num_str);
 int		*get_numbers(int argc, char *argv[], t_stack_holder *sh);
 int		*parse_numbers(char **s_numbers, int size);

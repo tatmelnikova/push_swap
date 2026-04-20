@@ -1,5 +1,11 @@
 #include "push_swap.h"
 
+/**
+ * @brief Returns the last node of a stack.
+ *
+ * @param lst Pointer to the first node of the stack.
+ * @return Pointer to the last node, or NULL if the list is empty.
+ */
 t_stack	*st_last(t_stack *lst)
 {
 	if (!lst)
@@ -9,8 +15,12 @@ t_stack	*st_last(t_stack *lst)
 	return (lst);
 }
 
-// Deletes and frees the given node and all its
-// successors. Sets the pointer to the list to NULL.
+/**
+ * @brief Frees an entire stack.
+ *
+ * Deletes and frees all nodes in the stack and sets the pointer to NULL.
+ * @param lst Double pointer to the head of the stack.
+ */
 void	st_clear(t_stack **lst)
 {
 	t_stack	*next_node;
@@ -27,16 +37,18 @@ void	st_clear(t_stack **lst)
 	*lst = NULL;
 }
 
-// function compute_disorder(stack a):
-// mistakes = 0
-// total_pairs = 0
-// for i from 0 to size(a)-1:
-// for j from i+1 to size(a)-1:
-// total_pairs += 1
-// if a[i] > a[j]:
-// mistakes += 1
-// return mistakes / total_pairs
-
+/**
+ * @brief Computes the disorder percentage of a stack.
+ *
+ * Measures how unsorted the stack is by counting inversions:
+ * for each pair of elements (i, j), it checks whether a[i] > a[j].
+ * The result is expressed as a percentage of total pair comparisons.
+ * @param lst Pointer to the stack.
+ * @return Disorder percentage in the range [0, 100].
+ * 
+ * @note A fully sorted stack returns 0.0.
+ * @note A fully reversed stack approaches 100.0.
+ */
 float	compute_disorder(t_stack *lst)
 {
 	int		mistakes;

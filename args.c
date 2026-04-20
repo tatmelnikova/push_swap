@@ -1,12 +1,23 @@
 #include "push_swap.h"
 
-// An optional strategy selector:
-// --simple Forces the use of your O(n * n) algorithm.
-// --medium Forces the use of your O(n √ n) algorithm.
-// --complex Forces the use of your O(n log n) algorithm.
-// --adaptive Forces the use of your adaptive algorithm
-// based on disorder. This is the default behavior if no
-// selector is given.
+/**
+ * @brief Determines which sorting strategy to use.
+ *
+ * This function scans the provided command-line arguments and selects
+ * a strategy flag depending on the presence of specific option strings:
+ *
+ *   --simple   → O(n²) algorithm (SIMPLE)
+ *   --medium   → O(n√n) algorithm (MEDIUM)
+ *   --complex  → O(n log n) algorithm (COMPLEX)
+ *
+ * If none of these flags are found, the function defaults to ADAPTIVE,
+ * which selects an algorithm dynamically based on input disorder.
+ * 
+ * @param argc The number of command-line arguments.
+ * @param argv The array of command-line argument strings.
+ * @return int An integer constant representing the chosen strategy:
+ *         SIMPLE, MEDIUM, COMPLEX, or ADAPTIVE (default).
+ */
 int	get_strategy(int argc, char *argv[])
 {
 	int	i;
@@ -25,6 +36,14 @@ int	get_strategy(int argc, char *argv[])
 	return (ADAPTIVE);
 }
 
+/**
+ * @brief This function scans the command-line arguments for the presence of
+ * the "--bench" flag. If found, benchmarking mode is enabled.
+ * 
+ * @param argc The number of command-line arguments.
+ * @param argv The array of command-line argument strings.
+ * @return int 1 if the "--bench" flag is present, 0 otherwise.
+ */
 int	get_bench(int argc, char *argv[])
 {
 	int	i;
@@ -32,23 +51,11 @@ int	get_bench(int argc, char *argv[])
 	i = 0;
 	while (i < argc)
 	{
-		if (!ft_strcmp(argv[i], "--bench"))
+		if (is_bench(argv[i]))
 			return (1);
 		i++;
 	}
 	return (0);
-}
-
-void	print_args(int argc, char *argv[])
-{
-	int	i;
-
-	i = 0;
-	while (i < argc)
-	{
-		printf("arg[%d] = %s\n", i, argv[i]);
-		i++;
-	}
 }
 
 int	validate_numbers_string(char *num_str)
