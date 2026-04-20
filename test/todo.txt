@@ -4,7 +4,7 @@
  ✓ remove unused flags from Makefile
  - remove test folder
  - remove --debug flag
- - remove assert from op
+ ✓ remove assert from op
  - clean up header
 
  ================================ TODO ==============================

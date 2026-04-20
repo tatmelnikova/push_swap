@@ -12,7 +12,6 @@ static	void	rr_stack(t_stack **stack)
 // The last element becomes the first one.
 void	rrb(t_stack_holder *sh)
 {
-	assert(sh->b_count);
 	if (sh->b_count)
 	{
 		rr_stack(&sh->b);
@@ -24,7 +23,6 @@ void	rrb(t_stack_holder *sh)
 // The last element becomes the first one.
 void	rra(t_stack_holder *sh)
 {
-	assert(sh->a_count);
 	if (sh->a_count)
 	{
 		rr_stack(&sh->a);
@@ -34,8 +32,6 @@ void	rra(t_stack_holder *sh)
 
 void	rrr(t_stack_holder *sh)
 {
-	assert(sh->a_count);
-	assert(sh->b_count);
 	rra(sh);
 	rrb(sh);
 }

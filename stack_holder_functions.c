@@ -34,7 +34,6 @@ t_stack_holder	*init_stack_holder(t_stack_holder *sh, int *args)
 		st_add_back(&head, new_node);
 		i++;
 	}
-	assert(sh->total == i);
 	sh->a_count = i;
 	sh->a = head;
 	init_params(sh);
