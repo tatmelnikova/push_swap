@@ -4,8 +4,9 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
-# include "ft_printf.h"
 # include <limits.h>
+# include <stdarg.h>
+# include <stdint.h>
 
 # define SIMPLE 1
 # define MEDIUM 2
@@ -113,5 +114,6 @@ int	ft_strcmp(const char *s1, const char *s2);
 //========================= BENCH ++=====================================
 void print_bench(t_stack_holder *sh);
 void	print_disorder(float disorder);
+int	ft_printf(int fd, const char *str, ...);
 
 #endif
