@@ -75,46 +75,28 @@ void					rr(t_stack_holder *holder);
 void					rra(t_stack_holder *holder);
 void					rrb(t_stack_holder *holder);
 void					rrr(t_stack_holder *holder);
-
 t_stack_holder			*sort_two(t_stack_holder *holder);
 t_stack_holder			*sort_three(t_stack_holder *holder);
 t_stack_holder			*sort_five(t_stack_holder *holder);
 int						edge_casees_sort_check(t_stack_holder *holder);
 void					find_rang(t_stack_holder *holder);
-
 t_stack_holder			*bubble_sort(t_stack_holder *holder);
 t_stack_holder			*chunk_sort(t_stack_holder *holder);
-//==================== MERGE SORT =======================================
 void					radix_sort(t_stack_holder *holder);
-//=======================================================================
-//==================== OPERATIONS =======================================
-//=======================================================================
 t_operation				*op_new(char *content);
 void					op_clear(t_operation **lst);
 void					op_add_back(t_operation **lst, t_operation *new);
 int						get_op_count(t_operation *lst, char *op);
 void					print_all_ops(t_stack_holder *holder);
-
-//=======================================================================
-//========================= ERROR =======================================
-//=======================================================================
 void					print_error(void);
-
-//=======================================================================
-//========================= TESTS =======================================
-//=======================================================================
-
 void					init_empty(t_stack_holder *holder);
 t_stack_holder			*init_stack_holder(t_stack_holder *holder, int *args);
 void					print_stack_holder(t_stack_holder *holder);
 void					clear(t_stack_holder *holder);
 void					sort(t_stack_holder *holder);
 int						sort_check(t_stack_holder *holder);
-
-//========================= INPUT =======================================
 int						get_strategy(int argc, char *argv[]);
 int						get_bench(int argc, char *argv[]);
-
 int						validate_numbers_string(char *num_str);
 int						*get_numbers(int argc, char *argv[],
 							t_stack_holder *holder);
@@ -123,12 +105,10 @@ int						count_non_numeric_args(int argc, char *argv[]);
 int						is_keyword(char *word);
 int						is_bench(char *word);
 int						is_strategy(char *word);
-//========================= STRINGS =====================================
 int						ft_strcmp(const char *s1, const char *s2);
 int						validate_keywords(int non_num_count, int argc,
 							char *argv[]);
 int						check_uniq_keywords(int argc, char *argv[]);
-//========================= BENCH ++=====================================
 void					print_bench(t_stack_holder *holder);
 void					print_disorder(float disorder);
 int						ft_printf(int fd, const char *str, ...);
