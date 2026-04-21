@@ -41,6 +41,8 @@ t_stack_holder	*bubble_sort(t_stack_holder *holder)
 	int	i;
 	int	j;
 
+	if (edge_casees_sort_check(holder))
+		return (holder);
 	a_count = holder->a_count;
 	j = 0;
 	while (j < a_count)

@@ -1,6 +1,24 @@
 #include "push_swap.h"
 
 /**
+ * @brief eturns the maximum value among three integers.
+ * 
+ * @param first The first integer to compare.
+ * @param second The second integer to compare.
+ * @param third The third integer to compare.
+ * @return The maximum value among `first`, `second`, and `third`.
+ */
+static int	find_max(int first, int second, int third)
+{
+	if (first > second && first > third)
+		return (first);
+	else if (second > first && second > third)
+		return (second);
+	else
+		return (third);
+}
+
+/**
  * @brief Sorts a stack of exactly two elements in ascending order.
  *
  * This function checks the top two elements of stack A and swaps them
@@ -19,55 +37,6 @@ t_stack_holder	*sort_two(t_stack_holder *holder)
 	if (first->content > second->content)
 		sa(holder);
 	return (holder);
-}
-
-/**
- * @brief eturns the maximum value among three integers.
- * 
- * @param first The first integer to compare.
- * @param second The second integer to compare.
- * @param third The third integer to compare.
- * @return The maximum value among `first`, `second`, and `third`.
- */
-int	find_max(int first, int second, int third)
-{
-	if (first > second && first > third)
-		return (first);
-	else if (second > first && second > third)
-		return (second);
-	else
-		return (third);
-}
-
-/**
- * @brief Assigns a rank to each element in stack A based on its value.
- *
- * This function iterates through all elements in stack A and computes
- * a relative rank (`range`) for each node. The rank corresponds to the
- * number of elements in the stack that have a smaller value than the
- * current node.
- * @param holder Pointer to the stack holder containing stack A.
- */
-void	find_rang(t_stack_holder *holder)
-{
-	int		range;
-	t_stack	*node;
-	t_stack	*compare_node;
-
-	node = holder->a;
-	while (node)
-	{
-		range = 0;
-		compare_node = holder->a;
-		while (compare_node)
-		{
-			if (node->content > compare_node->content)
-				range++;
-			compare_node = compare_node->next;
-		}
-		node->range = range;
-		node = node->next;
-	}
 }
 
 /**

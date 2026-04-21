@@ -8,7 +8,7 @@ SRC = ft_atoi.c ft_split.c \
       push_swap.c \
       stack_functions.c stack_functions2.c stack_holder_functions.c \
       bubble_sort.c chunk_sort.c \
-	  edge_cases_sort.c \
+	  edge_cases_sort.c sort_util.c \
       operations.c args.c \
       parse_numbers.c  print_bench.c \
       util.c radix_sort.c keywords.c

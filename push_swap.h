@@ -67,7 +67,9 @@ void					rrr(t_stack_holder *sh);
 t_stack_holder			*sort_two(t_stack_holder *holder);
 t_stack_holder			*sort_three(t_stack_holder *holder);
 t_stack_holder			*sort_five(t_stack_holder *holder);
+int 					edge_casees_sort_check(t_stack_holder *holder);
 void					find_rang(t_stack_holder *holder);
+
 t_stack_holder			*bubble_sort(t_stack_holder *holder);
 t_stack_holder			*chunk_sort(t_stack_holder *holder);
 //==================== MERGE SORT =======================================
