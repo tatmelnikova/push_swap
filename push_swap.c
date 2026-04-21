@@ -87,7 +87,6 @@ void	sort(t_stack_holder *holder)
 	print_all_ops(holder);
 	if (holder->bench)
 		print_bench(holder);
-	//print_stack_holder(holder);
 }
 
 /**

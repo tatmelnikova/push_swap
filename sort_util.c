@@ -43,10 +43,10 @@ void	find_rang(t_stack_holder *holder)
 	}
 }
 
-int edge_casees_sort_check(t_stack_holder *holder)
+int	edge_casees_sort_check(t_stack_holder *holder)
 {
 	if (holder->a_count == 2)
-	{	
+	{
 		sort_two(holder);
 		return (1);
 	}
@@ -56,7 +56,7 @@ int edge_casees_sort_check(t_stack_holder *holder)
 		return (1);
 	}
 	else if (holder->a_count == 5)
-	{	
+	{
 		sort_five(holder);
 		return (1);
 	}
