@@ -114,6 +114,7 @@ static t_stack_holder	*return_in_stack_a(t_stack_holder *holder)
 int	move_next_node(int range, int sqrt_n, t_stack_holder *holder)
 {
 	t_stack	*node;
+
 	node = holder->a;
 	if (node->range >= range && node->range < range + sqrt_n)
 	{
