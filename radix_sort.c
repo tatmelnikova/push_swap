@@ -79,7 +79,7 @@ void	apply_ranges(t_stack_holder *stack)
 }
 
 /**
- * @brief Performs radix sort on stack A using stack B as auxiliary storage.
+ * @brief Performs radix sort on stack A using stack B as a temporary storage.
  *
  * Implements binary radix sort using the `range` field of nodes.
  * Elements are distributed between stacks A and B based on bit values,
