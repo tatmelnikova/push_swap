@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keywords.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkazmina <tkazmina@student.codam.nl>       +#+  +:+       +#+        */
+/*   By: skorenev <skorenev@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 19:17:08 by tkazmina          #+#    #+#             */
-/*   Updated: 2026/04/21 19:17:10 by tkazmina         ###   ########.fr       */
+/*   Updated: 2026/04/21 19:25:06 by skorenev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
