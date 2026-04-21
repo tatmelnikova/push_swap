@@ -109,6 +109,22 @@ static t_stack_holder	*return_in_stack_a(t_stack_holder *holder)
 	return (holder);
 }
 
+// moves next node to stack B if it doesn't belong to current range,
+// otherwise pushes the node to the bottom of stack A
+int	move_next_node(int range, int sqrt_n, t_stack_holder *holder)
+{
+	t_stack	*node;
+	node = holder->a;
+	if (node->range >= range && node->range < range + sqrt_n)
+	{
+		pb(holder);
+		return (-1);
+	}
+	else
+		ra(holder);
+	return (0);
+}
+
 /**
  * @brief Sorts stack A using a chunk-based algorithm and auxiliary stack B.
  *  Overall complexity is approximately O(n√n)
@@ -135,7 +151,6 @@ t_stack_holder	*chunk_sort(t_stack_holder *holder)
 	int		j;
 	int		range;
 	int		sqrt_n;
-	t_stack	*node;
 
 	range = 0;
 	sqrt_n = ft_sqrt(holder->a_count);
@@ -144,16 +159,7 @@ t_stack_holder	*chunk_sort(t_stack_holder *holder)
 	{
 		j = sqrt_n;
 		while (holder->a_count != 0 && j > 0)
-		{
-			node = holder->a;
-			if (node->range >= range && node->range < range + sqrt_n)
-			{
-				pb(holder);
-				j--;
-			}
-			else
-				ra(holder);
-		}
+			j += move_next_node(range, sqrt_n, holder);
 		range += sqrt_n;
 	}
 	return (return_in_stack_a(holder));
