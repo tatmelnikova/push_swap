@@ -1,25 +1,6 @@
 #include "push_swap.h"
 
 /**
- * @brief Selects a sorting algorithm based on input disorder.
- *
- * Chooses an algorithm depending on the disorder percentage:
- * - < 20%  → SIMPLE
- * - >= 50% → COMPLEX
- * - otherwise → MEDIUM
- * @param disorder Percentage of disorder in the input dataset.
- * @return Selected algorithm identifier.
- */
-int	choose_algorithm(int disorder)
-{
-	if (disorder < 20)
-		return (SIMPLE);
-	if (disorder >= 50)
-		return (COMPLEX);
-	return (MEDIUM);
-}
-
-/**
  * @brief Frees all allocated resources and exits the program.
  *
  * Clears the stack holder and optionally prints an error message
@@ -36,25 +17,25 @@ static int	clear_and_exit(t_stack_holder *sh, int throw_error)
 	return (0);
 }
 
-/**
- * @brief Validates program arguments.
- *
- * Ensures that at least one argument is provided to the program.
- * @param argc Number of command-line arguments.
- * @return 1 if valid, 0 otherwise.
- */
-static int	check_args(int argc)
+void sort_adaptive(t_stack_holder *holder)
 {
-	if (argc <= 1)
-		return (0);
-	return (1);
+	if (holder->a_count == 2)
+		sort_two(holder);
+	else if (holder->a_count == 3)
+		sort_three(holder);
+	else if (holder->disorder < 20)
+		bubble_sort(holder);
+	else if (holder->disorder < 50)
+		chunk_sort(holder);
+	else
+		radix_sort(holder);
 }
 
 /**
  * @brief Executes sorting logic on the stack holder.
  *
- * Selects the appropriate sorting strategy based on input size,
- * disorder level, and configuration. Executes the sorting algorithm
+ * Selects the appropriate sorting strategy based on disorder level, 
+ * and given flags. Executes the sorting algorithm
  * and optionally prints benchmark information.
  * @param holder Pointer to stack holder containing all sorting data.
  */
@@ -62,20 +43,14 @@ void	sort(t_stack_holder *holder)
 {
 	if (holder->a_count == 1 || sort_check(holder))
 		return ;
-	if (holder->strategy == ADAPTIVE)
-		holder->chosen_strategy = choose_algorithm(holder->disorder);
-	else
-		holder->chosen_strategy = holder->strategy;
-	if (holder->a_count == 2)
-		sort_two(holder);
-	else if (holder->a_count == 3)
-		sort_three(holder);
-	else if (holder->chosen_strategy == SIMPLE)
+	if (holder->strategy == SIMPLE)
 		bubble_sort(holder);
-	else if (holder->chosen_strategy == MEDIUM)
+	else if (holder->strategy == MEDIUM)
 		chunk_sort(holder);
-	else
+	else if (holder->strategy == COMPLEX)
 		radix_sort(holder);
+	else
+		sort_adaptive(holder);
 	print_all_ops(holder);
 	if (holder->bench)
 		print_bench(holder);
@@ -101,7 +76,7 @@ int	main(int argc, char *argv[])
 	init_empty(stack);
 	if (!stack)
 		return (clear_and_exit(stack, 1));
-	if (!check_args(argc))
+	if (argc <= 1)
 		return (clear_and_exit(stack, 0));
 	numbers = get_numbers(argc, argv, stack);
 	if (!numbers)
