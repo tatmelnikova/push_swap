@@ -152,6 +152,8 @@ t_stack_holder	*chunk_sort(t_stack_holder *holder)
 	int		range;
 	int		sqrt_n;
 
+	if (edge_casees_sort_check(holder))
+		return (holder);
 	range = 0;
 	sqrt_n = ft_sqrt(holder->a_count);
 	find_rang(holder);
