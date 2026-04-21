@@ -40,6 +40,37 @@ int	find_max(int first, int second, int third)
 }
 
 /**
+ * @brief Assigns a rank to each element in stack A based on its value.
+ *
+ * This function iterates through all elements in stack A and computes
+ * a relative rank (`range`) for each node. The rank corresponds to the
+ * number of elements in the stack that have a smaller value than the
+ * current node.
+ * @param holder Pointer to the stack holder containing stack A.
+ */
+void	find_rang(t_stack_holder *holder)
+{
+	int		range;
+	t_stack	*node;
+	t_stack	*compare_node;
+
+	node = holder->a;
+	while (node)
+	{
+		range = 0;
+		compare_node = holder->a;
+		while (compare_node)
+		{
+			if (node->content > compare_node->content)
+				range++;
+			compare_node = compare_node->next;
+		}
+		node->range = range;
+		node = node->next;
+	}
+}
+
+/**
  * @brief Sorts a stack of exactly three elements in ascending order.
  *
  * This function sorts the top three elements of stack A using a minimal
@@ -70,5 +101,29 @@ t_stack_holder	*sort_three(t_stack_holder *holder)
 	second = first->next;
 	if (first->content > second->content)
 		sa(holder);
+	return (holder);
+}
+
+t_stack_holder	*sort_five(t_stack_holder *holder)
+{
+	int		i;
+	t_stack	*node;
+
+	i = 0;
+	find_rang(holder);
+	node = holder->a;
+	while (i < 5)
+	{
+		if (holder->a->range == 0 || holder->a->range == 1)
+			pb(holder);
+		else
+			ra(holder);
+		i++;
+	}
+	sort_three(holder);
+	if (holder->b->content < holder->b->next->content)
+		sb(holder);
+	pa(holder);
+	pa(holder);
 	return (holder);
 }

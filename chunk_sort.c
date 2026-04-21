@@ -37,37 +37,6 @@ static	int	ft_sqrt(int nb)
 }
 
 /**
- * @brief Assigns a rank to each element in stack A based on its value.
- *
- * This function iterates through all elements in stack A and computes
- * a relative rank (`range`) for each node. The rank corresponds to the
- * number of elements in the stack that have a smaller value than the
- * current node.
- * @param holder Pointer to the stack holder containing stack A.
- */
-static void	find_rang(t_stack_holder *holder)
-{
-	int		range;
-	t_stack	*node;
-	t_stack	*compare_node;
-
-	node = holder->a;
-	while (node)
-	{
-		range = 0;
-		compare_node = holder->a;
-		while (compare_node)
-		{
-			if (node->content > compare_node->content)
-				range++;
-			compare_node = compare_node->next;
-		}
-		node->range = range;
-		node = node->next;
-	}
-}
-
-/**
  * @brief Finds the index of the node with the highest rank in stack B.
  *
  * This function iterates through stack B to locate the element with the

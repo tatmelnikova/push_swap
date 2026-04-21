@@ -70,6 +70,8 @@ void	sort(t_stack_holder *holder)
 		sort_two(holder);
 	else if (holder->a_count == 3)
 		sort_three(holder);
+	else if (holder->a_count == 5)
+		sort_five(holder);
 	else if (holder->chosen_strategy == SIMPLE)
 		bubble_sort(holder);
 	else if (holder->chosen_strategy == MEDIUM)
