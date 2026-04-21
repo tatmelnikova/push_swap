@@ -40,13 +40,13 @@ void	print_stack(t_stack *stack)
  * Displays stack A and stack B with labels for debugging purposes.
  * @param sh Pointer to the stack holder containing stacks A and B.
  */
-void	print_stack_holder(t_stack_holder *sh)
+void	print_stack_holder(t_stack_holder *holder)
 {
 	ft_printf(STDOUT_FILENO, "a = ");
-	print_stack(sh->a);
+	print_stack(holder->a);
 	ft_printf(STDOUT_FILENO, "\n");
 	ft_printf(STDOUT_FILENO, "b = ");
-	print_stack(sh->b);
+	print_stack(holder->b);
 	ft_printf(STDOUT_FILENO, "\n");
 }
 
@@ -55,13 +55,13 @@ void	print_stack_holder(t_stack_holder *sh)
  *
  * Iterates through the operation list and prints each operation
  * in order of execution.
- * @param st Pointer to the stack holder containing the operations list.
+ * @param holder Pointer to the stack holder containing the operations list.
  */
-void	print_all_ops(t_stack_holder *st)
+void	print_all_ops(t_stack_holder *holder)
 {
 	t_operation	*current;
 
-	current = st->operations;
+	current = holder->operations;
 	while (current)
 	{
 		ft_printf(STDOUT_FILENO, "%s\n", current->content);

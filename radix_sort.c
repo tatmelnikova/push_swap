@@ -33,11 +33,11 @@ int	get_max_bits(t_stack *a)
  * preparing the stack for indexing.
  * @param stack Pointer to the stack holder.
  */
-void	init_ranges(t_stack_holder *stack)
+void	init_ranges(t_stack_holder *holder)
 {
 	t_stack	*current;
 
-	current = stack->a;
+	current = holder->a;
 	while (current)
 	{
 		current->range = -1;
@@ -50,9 +50,9 @@ void	init_ranges(t_stack_holder *stack)
  *
  * Replaces each node's value with a normalized index (rank) based
  * on ascending order of `content`. This is used for radix sorting.
- * @param stack Pointer to the stack holder containing stack A.
+ * @param holder Pointer to the stack holder containing stack A.
  */
-void	apply_ranges(t_stack_holder *stack)
+void	apply_ranges(t_stack_holder *holder)
 {
 	int		i;
 	int		min_val;
@@ -60,10 +60,10 @@ void	apply_ranges(t_stack_holder *stack)
 	t_stack	*current;
 
 	i = 0;
-	while (i < stack->total)
+	while (i < holder->total)
 	{
 		min_val = INT_MAX;
-		current = stack->a;
+		current = holder->a;
 		while (current)
 		{
 			if (current->content <= min_val && current->range == -1)
@@ -84,31 +84,31 @@ void	apply_ranges(t_stack_holder *stack)
  * Implements binary radix sort using the `range` field of nodes.
  * Elements are distributed between stacks A and B based on bit values,
  * then reassembled over multiple passes.
- * @param sh Pointer to the stack holder containing both stacks.
+ * @param holder Pointer to the stack holder containing both stacks.
  */
-void	execute_sort(t_stack_holder *sh)
+void	execute_sort(t_stack_holder *holder)
 {
 	int	i;
 	int	j;
 	int	max_bits;
 	int	size;
 
-	size = sh->a_count;
+	size = holder->a_count;
 	i = 0;
-	max_bits = get_max_bits(sh->a);
+	max_bits = get_max_bits(holder->a);
 	while (i < max_bits)
 	{
 		j = 0;
 		while (j < size)
 		{
-			if (((sh->a->range >> i) & 1) == 0)
-				pb(sh);
+			if (((holder->a->range >> i) & 1) == 0)
+				pb(holder);
 			else
-				ra(sh);
+				ra(holder);
 			j++;
 		}
-		while (sh->b_count > 0)
-			pa(sh);
+		while (holder->b_count > 0)
+			pa(holder);
 		i++;
 	}
 }
@@ -116,11 +116,13 @@ void	execute_sort(t_stack_holder *sh)
 /**
  * @brief Prepares necessary range calculation and runs the sort function
  *
- * @param sh Pointer to the stack holder containing both stacks.
+ * @param holder Pointer to the stack holder containing both stacks.
  */
-void	radix_sort(t_stack_holder *sh)
+void	radix_sort(t_stack_holder *holder)
 {
-	init_ranges(sh);
-	apply_ranges(sh);
-	execute_sort(sh);
+	if (edge_casees_sort_check(holder))
+		return ;
+	init_ranges(holder);
+	apply_ranges(holder);
+	execute_sort(holder);
 }

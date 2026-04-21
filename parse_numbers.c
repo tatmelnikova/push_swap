@@ -117,10 +117,10 @@ int	count_non_numeric_args(int argc, char *argv[])
  * integer array stored in the stack holder.
  * @param argc Number of command-line arguments.
  * @param argv Argument vector.
- * @param sh   Pointer to stack holder storing metadata.
+ * @param holder   Pointer to stack holder storing metadata.
  * @return Pointer to allocated integer array, or NULL on failure.
  */
-int	*get_numbers(int argc, char *argv[], t_stack_holder *sh)
+int	*get_numbers(int argc, char *argv[], t_stack_holder *holder)
 {
 	int		*numbers;
 	int		non_num_count;
@@ -144,6 +144,6 @@ int	*get_numbers(int argc, char *argv[], t_stack_holder *sh)
 		numbers = parse_numbers(splited_num, size);
 		free_arr(size, splited_num);
 	}
-	sh->total = size;
+	holder->total = size;
 	return (numbers);
 }

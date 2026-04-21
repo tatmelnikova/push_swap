@@ -90,24 +90,24 @@ void	sort(t_stack_holder *holder)
  */
 int	main(int argc, char *argv[])
 {
-	t_stack_holder	*stack;
+	t_stack_holder	*holder;
 	int				*numbers;
 
-	stack = (t_stack_holder *)malloc(sizeof(t_stack_holder));
-	init_empty(stack);
-	if (!stack)
-		return (clear_and_exit(stack, 1));
+	holder = (t_stack_holder *)malloc(sizeof(t_stack_holder));
+	init_empty(holder);
+	if (!holder)
+		return (clear_and_exit(holder, 1));
 	if (!check_args(argc))
-		return (clear_and_exit(stack, 0));
-	numbers = get_numbers(argc, argv, stack);
+		return (clear_and_exit(holder, 0));
+	numbers = get_numbers(argc, argv, holder);
 	if (!numbers)
 	{
-		return (clear_and_exit(stack, 1));
+		return (clear_and_exit(holder, 1));
 	}
-	init_stack_holder(stack, numbers);
+	init_stack_holder(holder, numbers);
 	free(numbers);
-	stack->strategy = get_strategy(argc, argv);
-	stack->bench = get_bench(argc, argv);
-	sort(stack);
-	return (clear_and_exit(stack, 0));
+	holder->strategy = get_strategy(argc, argv);
+	holder->bench = get_bench(argc, argv);
+	sort(holder);
+	return (clear_and_exit(holder, 0));
 }

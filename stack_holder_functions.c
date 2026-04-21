@@ -4,16 +4,16 @@
  * @brief Initializes an empty stack holder structure.
  *
  * Sets all pointers to NULL and resets control fields to default values.
- * @param sh Pointer to the stack holder to initialize.
+ * @param holder Pointer to the stack holder to initialize.
  */
-void	init_empty(t_stack_holder *sh)
+void	init_empty(t_stack_holder *holder)
 {
-	sh->operations = NULL;
-	sh->a = NULL;
-	sh->b = NULL;
-	sh->disorder = -1;
-	sh->strategy = -1;
-	sh->chosen_strategy = -1;
+	holder->operations = NULL;
+	holder->a = NULL;
+	holder->b = NULL;
+	holder->disorder = -1;
+	holder->strategy = -1;
+	holder->chosen_strategy = -1;
 }
 
 /**
@@ -23,12 +23,12 @@ void	init_empty(t_stack_holder *sh)
  * and computes the initial disorder of stack A.
  * @param sh Pointer to the stack holder.
  */
-static	void	init_params(t_stack_holder *sh)
+static	void	init_params(t_stack_holder *holder)
 {
-	sh->b = NULL;
-	sh->b_count = 0;
-	sh->operations = NULL;
-	sh->disorder = compute_disorder(sh->a);
+	holder->b = NULL;
+	holder->b_count = 0;
+	holder->operations = NULL;
+	holder->disorder = compute_disorder(holder->a);
 }
 
 /**
@@ -40,7 +40,7 @@ static	void	init_params(t_stack_holder *sh)
  * @param args  Array of integers used to build the stack.
  * @return Pointer to initialized stack holder, or NULL on failure.
  */
-t_stack_holder	*init_stack_holder(t_stack_holder *sh, int *args)
+t_stack_holder	*init_stack_holder(t_stack_holder *holder, int *args)
 {
 	t_stack		*head;
 	t_stack		*new_node;
@@ -48,7 +48,7 @@ t_stack_holder	*init_stack_holder(t_stack_holder *sh, int *args)
 
 	i = 0;
 	head = NULL;
-	while (i < sh->total)
+	while (i < holder->total)
 	{
 		new_node = st_new(args[i]);
 		if (!new_node)
@@ -59,26 +59,26 @@ t_stack_holder	*init_stack_holder(t_stack_holder *sh, int *args)
 		st_add_back(&head, new_node);
 		i++;
 	}
-	sh->a_count = i;
-	sh->a = head;
-	init_params(sh);
-	return (sh);
+	holder->a_count = i;
+	holder->a = head;
+	init_params(holder);
+	return (holder);
 }
 
 /**
  * @brief Frees all resources associated with the stack holder.
  *
  * Clears both stacks, operation history, and frees the holder itself.
- * @param sh Pointer to stack holder.
+ * @param holder Pointer to stack holder.
  */
-void	clear(t_stack_holder *sh)
+void	clear(t_stack_holder *holder)
 {
-	if (!sh)
+	if (!holder)
 		return ;
-	st_clear(&sh->a);
-	st_clear(&sh->b);
-	op_clear(&sh->operations);
-	free(sh);
+	st_clear(&holder->a);
+	st_clear(&holder->b);
+	op_clear(&holder->operations);
+	free(holder);
 }
 
 /**

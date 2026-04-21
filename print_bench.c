@@ -5,9 +5,9 @@
  *
  * Displays how many times each push_swap operation was executed,
  * grouped in two lines for readability.
- * @param sh Pointer to the stack holder containing the operations list.
+ * @param holder Pointer to the stack holder containing the operations list.
  */
-void	print_operations(t_stack_holder *sh)
+void	print_operations(t_stack_holder *holder)
 {
 	const char	*ops[] = {"sa", "sb", "ss", "pa", "pb", "ra",
 		"rb", "rr", "rra", "rrb", "rrr"};
@@ -26,7 +26,7 @@ void	print_operations(t_stack_holder *sh)
 		}
 		ft_printf(STDERR_FILENO, "%s: %d  ",
 			(char *)ops[counter],
-			get_op_count(sh->operations, (char *)ops[counter]));
+			get_op_count(holder->operations, (char *)ops[counter]));
 		counter++;
 	}
 	ft_printf(STDERR_FILENO, "\n");
@@ -37,19 +37,19 @@ void	print_operations(t_stack_holder *sh)
  *
  * Displays whether adaptive mode is enabled and which strategy
  * was ultimately chosen (simple, medium, or complex).
- * @param sh Pointer to the stack holder containing strategy information.
+ * @param holder Pointer to the stack holder containing strategy information.
  */
-void	print_strategy(t_stack_holder *sh)
+void	print_strategy(t_stack_holder *holder)
 {
 	ft_printf(STDERR_FILENO, "[bench] ");
 	ft_printf(STDERR_FILENO, "strategy: ");
-	if (sh->strategy == ADAPTIVE)
+	if (holder->strategy == ADAPTIVE)
 		ft_printf(STDERR_FILENO, "adaptive / ");
-	if (sh->chosen_strategy == SIMPLE)
+	if (holder->chosen_strategy == SIMPLE)
 		ft_printf(STDERR_FILENO, "simple");
-	else if (sh->chosen_strategy == COMPLEX)
+	else if (holder->chosen_strategy == COMPLEX)
 		ft_printf(STDERR_FILENO, "complex");
-	else if (sh->chosen_strategy == MEDIUM)
+	else if (holder->chosen_strategy == MEDIUM)
 		ft_printf(STDERR_FILENO, "medium");
 	ft_printf(STDERR_FILENO, "\n");
 }
@@ -59,13 +59,13 @@ void	print_strategy(t_stack_holder *sh)
  *
  * Counts all recorded operations in the operations list and outputs
  * the total.
- * @param sh Pointer to the stack holder containing operations list.
+ * @param holder Pointer to the stack holder containing operations list.
  */
-void	print_total(t_stack_holder *sh)
+void	print_total(t_stack_holder *holder)
 {
 	ft_printf(STDERR_FILENO, "[bench] ");
 	ft_printf(STDERR_FILENO, "total_ops: %d\n",
-		get_op_count(sh->operations, NULL));
+		get_op_count(holder->operations, NULL));
 }
 
 /**
@@ -76,14 +76,14 @@ void	print_total(t_stack_holder *sh)
  * - selected strategy
  * - total number of operations
  * - breakdown of all operation types
- * @param sh Pointer to the stack holder containing benchmark data.
+ * @param holder Pointer to the stack holder containing benchmark data.
  */
-void	print_bench(t_stack_holder *sh)
+void	print_bench(t_stack_holder *holder)
 {
-	print_disorder(sh->disorder);
-	print_strategy(sh);
-	print_total(sh);
-	print_operations(sh);
+	print_disorder(holder->disorder);
+	print_strategy(holder);
+	print_total(holder);
+	print_operations(holder);
 }
 
 /**

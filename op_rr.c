@@ -22,14 +22,14 @@ static	void	rr_stack(t_stack **stack)
  * The last element of stack B becomes the first element.
  * All other elements are shifted down by one position.
  * The operation is recorded as "rrb".
- * @param sh Pointer to the stack holder containing stack B.
+ * @param holder Pointer to the stack holder containing stack B.
  */
-void	rrb(t_stack_holder *sh)
+void	rrb(t_stack_holder *holder)
 {
-	if (sh->b_count)
+	if (holder->b_count)
 	{
-		rr_stack(&sh->b);
-		op_add_back(&sh->operations, op_new("rrb"));
+		rr_stack(&holder->b);
+		op_add_back(&holder->operations, op_new("rrb"));
 	}
 }
 
@@ -39,14 +39,14 @@ void	rrb(t_stack_holder *sh)
  * The last element of stack A becomes the first element.
  * All other elements are shifted down by one position.
  * The operation is recorded as "rra".
- * @param sh Pointer to the stack holder containing stack A.
+ * @param holder Pointer to the stack holder containing stack A.
  */
-void	rra(t_stack_holder *sh)
+void	rra(t_stack_holder *holder)
 {
-	if (sh->a_count)
+	if (holder->a_count)
 	{
-		rr_stack(&sh->a);
-		op_add_back(&sh->operations, op_new("rra"));
+		rr_stack(&holder->a);
+		op_add_back(&holder->operations, op_new("rra"));
 	}
 }
 
@@ -57,10 +57,10 @@ void	rra(t_stack_holder *sh)
  * - stack A via rra()
  * - stack B via rrb()
  * The operation is conceptually recorded as "rrr".
- * @param sh Pointer to the stack holder containing both stacks.
+ * @param holder Pointer to the stack holder containing both stacks.
  */
-void	rrr(t_stack_holder *sh)
+void	rrr(t_stack_holder *holder)
 {
-	rra(sh);
-	rrb(sh);
+	rra(holder);
+	rrb(holder);
 }

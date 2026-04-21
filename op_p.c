@@ -5,18 +5,18 @@
  *
  * Removes the head node from stack B and places it at the front of stack A.
  * Updates both stack sizes accordingly and records the operation ("pa").
- * @param stack Pointer to the stack holder containing stacks A and B.
+ * @param holder Pointer to the stack holder containing stacks A and B.
  * @note If stack B is empty, behavior depends on st_pop_head() implementation.
  */
-void	pa(t_stack_holder *stack)
+void	pa(t_stack_holder *holder)
 {
 	t_stack	*head_b;
 
-	head_b = st_pop_head(&stack->b);
-	st_add_front(&stack->a, head_b);
-	stack->a_count = stack->a_count + 1;
-	stack->b_count = stack->b_count - 1;
-	op_add_back(&stack->operations, op_new("pa"));
+	head_b = st_pop_head(&holder->b);
+	st_add_front(&holder->a, head_b);
+	holder->a_count = holder->a_count + 1;
+	holder->b_count = holder->b_count - 1;
+	op_add_back(&holder->operations, op_new("pa"));
 }
 
 /**
@@ -27,13 +27,13 @@ void	pa(t_stack_holder *stack)
  * @param stack Pointer to the stack holder containing stacks A and B.
  * @note If stack A is empty, behavior depends on st_pop_head() implementation.
  */
-void	pb(t_stack_holder *stack)
+void	pb(t_stack_holder *holder)
 {
 	t_stack	*head_a;
 
-	head_a = st_pop_head(&stack->a);
-	st_add_front(&stack->b, head_a);
-	stack->a_count = stack->a_count - 1;
-	stack->b_count = stack->b_count + 1;
-	op_add_back(&stack->operations, op_new("pb"));
+	head_a = st_pop_head(&holder->a);
+	st_add_front(&holder->b, head_a);
+	holder->a_count = holder->a_count - 1;
+	holder->b_count = holder->b_count + 1;
+	op_add_back(&holder->operations, op_new("pb"));
 }
