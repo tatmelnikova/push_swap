@@ -86,18 +86,16 @@ void	apply_ranges(t_stack_holder *stack)
  * then reassembled over multiple passes.
  * @param sh Pointer to the stack holder containing both stacks.
  */
-void	radix_sort(t_stack_holder *sh)
+void	execute_sort(t_stack_holder *sh)
 {
 	int	i;
 	int	j;
-	int	size;
 	int	max_bits;
+	int	size;
 
 	size = sh->a_count;
-	init_ranges(sh);
-	apply_ranges(sh);
-	max_bits = get_max_bits(sh->a);
 	i = 0;
+	max_bits = get_max_bits(sh->a);
 	while (i < max_bits)
 	{
 		j = 0;
@@ -113,4 +111,16 @@ void	radix_sort(t_stack_holder *sh)
 			pa(sh);
 		i++;
 	}
+}
+
+/**
+ * @brief Prepares necessary range calculation and runs the sort function
+ *
+ * @param sh Pointer to the stack holder containing both stacks.
+ */
+void	radix_sort(t_stack_holder *sh)
+{
+	init_ranges(sh);
+	apply_ranges(sh);
+	execute_sort(sh);
 }
