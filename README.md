@@ -43,6 +43,9 @@ ARG="4 67 3 87 23"; ./push_swap --complex $ARG | ./checker_linux $ARG
 - [man pages online — Linux man-pages project](https://man7.org/linux/man-pages/)
 - [wikipedia.org sorting algorithms overview](https://en.wikipedia.org/wiki/Sorting_algorithm)
 
+### AI usage
+- Documentation for code was written with AI help
+
 ## Relization details
 
 **Bubble sort**

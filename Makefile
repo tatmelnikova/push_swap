@@ -20,8 +20,6 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
-bonus: all
-
 clean:
 	rm -f $(OBJ)
 
@@ -30,4 +28,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re
